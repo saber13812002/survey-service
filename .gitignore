@@ -11,3 +11,11 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/.idea/.gitignore
+/.idea/blade.xml
+/.idea/laravel-idea.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/phpunit.xml
+/.idea/survey-service.iml
+/.idea/vcs.xml
