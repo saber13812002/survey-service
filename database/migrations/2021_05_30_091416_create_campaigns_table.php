@@ -18,6 +18,8 @@ class CreateCampaignsTable extends Migration
 
             $table->unsignedInteger('client_app_id');
 
+            $table->unsignedBigInteger('parent_id')->nullable();
+
             $table->string('title');
             $table->longText('description')->nullable();
 

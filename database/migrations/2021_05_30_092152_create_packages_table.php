@@ -17,6 +17,7 @@ class CreatePackagesTable extends Migration
             $table->id();
 
             $table->unsignedInteger('client_app_id');
+
             $table->unsignedBigInteger('parent_id')->nullable();
 
             $table->integer('packable_id');
