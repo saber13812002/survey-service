@@ -23,6 +23,7 @@ class TagFactory extends Factory
     {
         return [
             'title' => 'Tag ' . $this->faker->name,
+            'description' => $this->faker->paragraph,
         ];
     }
 }

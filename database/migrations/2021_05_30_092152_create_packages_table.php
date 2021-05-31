@@ -24,10 +24,13 @@ class CreatePackagesTable extends Migration
 
             $table->string('title');
             $table->longText('description')->nullable();
+
             $table->string('first_text')->nullable();
             $table->string('final_text')->nullable();
+
             $table->date('started_at')->nullable();
             $table->date('finished_at')->nullable();
+
             $table->boolean('is_active')->default(1);
             $table->boolean('is_deletable')->default(1);
 
