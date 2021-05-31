@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7759431e303e2d722a264a8a991a9e84",
+    "content-hash": "ee432e11e3a5e32eea42aaa1433bc75d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,127 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
+        },
+        {
+            "name": "behamin/bfilters",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alirezabahram7/bfilter.git",
+                "reference": "e372c2a31ab8adcac346606ccd6cb06f9d64dd21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alirezabahram7/bfilter/zipball/e372c2a31ab8adcac346606ccd6cb06f9d64dd21",
+                "reference": "e372c2a31ab8adcac346606ccd6cb06f9d64dd21",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^7.0|^8.0",
+                "php": "^7.2|^7.3|^7.4|^8.0",
+                "symfony/console": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BFilters\\BFilterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BFilters\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alireza Bahram",
+                    "email": "alib327@gmail.com"
+                },
+                {
+                    "name": "Hossein Ebrahimzadeh",
+                    "email": "abi.hossein@gmail.com"
+                },
+                {
+                    "name": "Omid Alizadeh",
+                    "email": "om.alizadeh1@gmail.com"
+                }
+            ],
+            "description": "A package for customized filtering on eloquent models",
+            "support": {
+                "issues": "https://github.com/alirezabahram7/bfilter/issues",
+                "source": "https://github.com/alirezabahram7/bfilter/tree/1.5.2"
+            },
+            "time": "2021-05-27T08:08:48+00:00"
+        },
+        {
+            "name": "behamin/bresources",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/omalizadeh/bresources.git",
+                "reference": "6b407f1c29cec6724de0c445ec53dc02d8fc3c06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/omalizadeh/bresources/zipball/6b407f1c29cec6724de0c445ec53dc02d8fc3c06",
+                "reference": "6b407f1c29cec6724de0c445ec53dc02d8fc3c06",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "~6.0|~7.0|~8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Behamin\\BResources\\BResourceServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Behamin\\BResources\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Omid Alizadeh",
+                    "email": "om_alizadeh@yahoo.com"
+                },
+                {
+                    "name": "Hossein Ebrahimzadeh",
+                    "email": "abi.hossein@gmail.com"
+                }
+            ],
+            "description": "Behamin basic and standard api response format for laravel",
+            "keywords": [
+                "behamin",
+                "collection",
+                "json",
+                "laravel",
+                "package",
+                "request",
+                "resource",
+                "response"
+            ],
+            "support": {
+                "issues": "https://github.com/omalizadeh/bresources/issues",
+                "source": "https://github.com/omalizadeh/bresources/tree/v1.2.1"
+            },
+            "time": "2021-04-16T08:38:51+00:00"
         },
         {
             "name": "brick/math",
