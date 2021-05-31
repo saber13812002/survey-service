@@ -31,9 +31,25 @@ class Package extends Model
     /**
      * Get all of the tags for the package.
      */
-    public function tags()
+    public function tags(): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    /**
+     * Get all of the categories for the package.
+     */
+    public function categories(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    {
+        return $this->morphToMany(Category::class, 'categorizable');
+    }
+
+    /**
+     * Get all of the tags for the package.
+     */
+    public function campaigns(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    {
+        return $this->morphToMany(Campaign::class, 'campanile');
     }
 
 }

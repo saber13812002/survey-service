@@ -19,4 +19,12 @@ class Campaign extends Model
     protected $fillable = [
         'title', 'client_app_id'
     ];
+
+    /**
+     * Get all of the packages that are assigned this tag.
+     */
+    public function campaigns(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    {
+        return $this->morphedByMany(Package::class, 'campanile');
+    }
 }

@@ -2,19 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Categorizable;
-use App\Models\Category;
+use App\Models\Campaign;
+use App\Models\Campanile;
+use App\Models\ClientApp;
 use App\Models\Package;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CategorizableFactory extends Factory
+class CampanileFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Categorizable::class;
+    protected $model = Campanile::class;
 
     /**
      * Define the model's default state.
@@ -23,20 +24,21 @@ class CategorizableFactory extends Factory
      */
     public function definition()
     {
-        $category = Category::factory()->create();
+        $campaign = Campaign::factory()->create();
 
         $package = Package::factory()->create();
 
         return [
-            'category_id' => function () use ($category) {
-                return $category->id;
+            'campaign_id' => function () use ($campaign) {
+                return $campaign->id;
             },
-            'categorizable_id' => function () use ($package) {
+            'campanile_id' => function () use ($package) {
                 return $package->id;
             },
-            'categorizable_type' => function () {
+            'campanile_type' => function () {
                 return Package::class;
             },
         ];
+
     }
 }

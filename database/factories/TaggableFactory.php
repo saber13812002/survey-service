@@ -25,24 +25,20 @@ class TaggableFactory extends Factory
      */
     public function definition()
     {
-        $tags = Tag::query()->get();
+        $tag = Tag::factory()->create();
 
-        $packages = Package::query()->get();
+        $package = Package::factory()->create();
 
-        foreach ($tags as $tag) {
-            foreach ($packages as $package) {
-                return [
-                    'tag_id' => function () use ($tag) {
-                        return $tag->id;
-                    },
-                    'taggable_id' => function () use ($package) {
-                        return $package->id;
-                    },
-                    'taggable_type' => function () {
-                        return Package::class;
-                    },
-                ];
-            }
-        }
+        return [
+            'tag_id' => function () use ($tag) {
+                return $tag->id;
+            },
+            'taggable_id' => function () use ($package) {
+                return $package->id;
+            },
+            'taggable_type' => function () {
+                return Package::class;
+            },
+        ];
     }
 }
