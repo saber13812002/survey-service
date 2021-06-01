@@ -16,7 +16,7 @@ class CreateCampaignsTable extends Migration
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedInteger('client_app_id');
+            $table->unsignedInteger('client_app_id')->nullable();
 
             $table->unsignedBigInteger('parent_id')->nullable();
 

@@ -1,7 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ClientAppResource;
+use App\Http\Resources\ClientAppResourceCollection;
+use App\Interfaces\Repositories\ClientAppRepositoryInterface;
 use App\Models\ClientApp;
 use Illuminate\Http\Request;
 
@@ -10,76 +14,63 @@ class ClientAppController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ClientAppResourceCollection
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return new ClientAppResourceCollection(["data" => app()->make(ClientAppRepositoryInterface::class)
+            ->index()]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return ClientAppResource
      */
     public function store(Request $request)
     {
-        //
+        return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
+            ->store($request->all())]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ClientApp  $clientApp
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return ClientAppResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function show(ClientApp $clientApp)
+    public function show(int $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ClientApp  $clientApp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ClientApp $clientApp)
-    {
-        //
+        return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
+            ->show($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ClientApp  $clientApp
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return ClientAppResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function update(Request $request, ClientApp $clientApp)
+    public function update(Request $request, int $id): ClientAppResource
     {
-        //
+        return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
+            ->update($id,$request->all())]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ClientApp  $clientApp
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return ClientAppResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function destroy(ClientApp $clientApp)
+    public function destroy(int $id): ClientAppResource
     {
-        //
+        return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
+            ->destroy($id)]);
     }
 }

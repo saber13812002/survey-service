@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\CampaignResource;
+use App\Http\Resources\CampaignResourceCollection;
+use App\Interfaces\Repositories\CampaignRepositoryInterface;
 use App\Models\Campaign;
+use Behamin\BResources\Traits\CollectionResource;
 use Illuminate\Http\Request;
 
 class CampaignController extends Controller
@@ -10,76 +15,63 @@ class CampaignController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return CampaignResourceCollection
      */
-    public function index()
+    public function index(): CampaignResourceCollection
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return new CampaignResourceCollection(["data" => app()->make(CampaignRepositoryInterface::class)
+            ->index()]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return CampaignResource
      */
-    public function store(Request $request)
+    public function store(Request $request): CampaignResource
     {
-        //
+        return new CampaignResource(["data" => app()->make(CampaignRepositoryInterface::class)
+            ->store($request->all())]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Campaign  $campaign
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return CampaignResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function show(Campaign $campaign)
+    public function show(int $id): CampaignResource
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Campaign  $campaign
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Campaign $campaign)
-    {
-        //
+        return new CampaignResource(["data" => app()->make(CampaignRepositoryInterface::class)
+            ->show($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Campaign  $campaign
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return CampaignResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function update(Request $request, Campaign $campaign)
+    public function update(Request $request, int $id): CampaignResource
     {
-        //
+        return new CampaignResource(["data" => app()->make(CampaignRepositoryInterface::class)
+            ->update($id, $request->all())]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Campaign  $campaign
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return CampaignResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function destroy(Campaign $campaign)
+    public function destroy(int $id): CampaignResource
     {
-        //
+        return new CampaignResource(["data" => app()->make(CampaignRepositoryInterface::class)
+            ->destroy($id)]);
     }
 }

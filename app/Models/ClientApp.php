@@ -19,4 +19,9 @@ class ClientApp extends Model
     protected $fillable = [
         'title', 'description', 'logo'
     ];
+
+    /**
+     * @var mixed
+     */
+    public $id;
 }

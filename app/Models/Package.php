@@ -17,7 +17,23 @@ class Package extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'client_app_id', 'packable_id', 'packable_type'
+        'title',
+        'description',
+
+        'client_app_id',
+
+        'packable_id',
+        'packable_type',
+
+        'first_text',
+        'final_text',
+
+        'started_at',
+        'finished_at',
+
+        'is_active',
+        'is_deletable',
+
     ];
 
     /**

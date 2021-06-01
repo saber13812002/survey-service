@@ -20,6 +20,7 @@ class CreateTagsTable extends Migration
             $table->longText('description')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

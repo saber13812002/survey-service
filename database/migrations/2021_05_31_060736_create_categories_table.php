@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->longText('description')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

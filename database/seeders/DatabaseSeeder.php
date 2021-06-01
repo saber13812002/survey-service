@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         \App\Models\ClientApp::factory(10)->create();
         \App\Models\Campaign::factory(10)->create();
-        \App\Models\Campanile::factory(10)->create();
         \App\Models\Package::factory(10)->create();
         \App\Models\Tag::factory(10)->create();
         \App\Models\Taggable::factory(10)->create();
         \App\Models\Category::factory(10)->create();
         \App\Models\Categorizable::factory(10)->create();
+        \App\Models\Campanile::factory(10)->create();
+
     }
 }
