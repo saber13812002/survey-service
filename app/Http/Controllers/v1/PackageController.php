@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use App\Models\Package;
@@ -24,10 +25,11 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param PackageRequest $request
      * @return PackageResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function store(Request $request): PackageResource
+    public function store(PackageRequest $request): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
             ->store($request->all())]);

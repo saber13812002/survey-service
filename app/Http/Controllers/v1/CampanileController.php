@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PackageConnectToCampaignRequest;
 use App\Http\Resources\CampanileResource;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use Illuminate\Http\Request;
@@ -12,13 +13,12 @@ class CampanileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param PackageConnectToCampaignRequest $request
      * @param int $id
      * @return CampanileResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     * @throws \Exception
      */
-    public function connect(Request $request, int $id): CampanileResource
+    public function connect(PackageConnectToCampaignRequest $request, int $id): CampanileResource
     {
         if (!$request->has('campaigns.connect')) {
             throw new \Exception("failed to found campaigns connect");

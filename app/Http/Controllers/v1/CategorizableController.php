@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PackageConnectToCategoryRequest;
 use App\Http\Resources\CategorizableResource;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use http\Exception\BadHeaderException;
@@ -21,7 +22,7 @@ class CategorizableController extends Controller
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Exception
      */
-    public function connect(Request $request, int $id): CategorizableResource
+    public function connect(PackageConnectToCategoryRequest $request, int $id): CategorizableResource
     {
         if (!$request->has('categories.connect')) {
             throw new \Exception("failed to found categories connect");
