@@ -19,14 +19,23 @@ Survey-service is a service to manage surveys in Kermany.com architecture
     - clone this repo
     - create .env file by clone .env.example
     - create db and update .env
-    - run ```php artisan migrate```
-    - run ```php artisan key:generate```
-    - run ```php artisan serve```
+
+    - run 
+```php artisan migrate```
+
+    - run 
+```php artisan key:generate```
+
+    - run 
+```php artisan serve```
 
 ## for test in locahost ENV
     
-    - ```php artisan migrate:refresh --seed```
+- run these commands:
 
+```php artisan migrate:refresh --seed```
+
+```php artisan test```
 
 ## How to test
 
