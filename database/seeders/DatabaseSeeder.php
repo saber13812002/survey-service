@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PackageType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\Category::factory(10)->create();
         \App\Models\Categorizable::factory(10)->create();
         \App\Models\Campanile::factory(10)->create();
+
+        $this->call([
+            PackageTypeSeeder::class,
+        ]);
 
     }
 }

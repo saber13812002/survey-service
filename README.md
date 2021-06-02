@@ -26,6 +26,10 @@ Survey-service is a service to manage surveys in Kermany.com architecture
     - run 
 ```php artisan key:generate```
 
+    - we should have PackageType with run:
+
+```php artisan db:seed --class=PackageTypeSeeder```
+
     - run 
 ```php artisan serve```
 
@@ -36,6 +40,8 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 ```php artisan migrate:refresh --seed```
 
 ```php artisan test```
+
+```php artisan db:seed --class=PackageTypeSeeder```
 
 ## How to test
 

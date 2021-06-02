@@ -23,6 +23,11 @@ interface PackageRepositoryInterface
      */
     public function store(array $data);
 
+    /**
+     * @param int $Id
+     * @param array $data
+     * @return mixed
+     */
     public function update(int $Id, array $data);
 
     /**

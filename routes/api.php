@@ -53,6 +53,9 @@ Route::group([
             Route::put('/tags/{id}', [Controllers\v1\TagController::class, 'update'])->name('tag.update');
             Route::delete('/tags/{id}', [Controllers\v1\TagController::class, 'destroy'])->name('tag.destroy');
 
+            // package Type
+            Route::get('/package-types', [Controllers\v1\PackageTypeController::class, 'index'])->name('package.type.index');
+
             // package
             Route::get('/packages', [Controllers\v1\PackageController::class, 'index'])->name('package.index');
             Route::get('/packages/{id}', [Controllers\v1\PackageController::class, 'show'])->name('package.show');
