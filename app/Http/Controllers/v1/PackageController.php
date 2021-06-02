@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
-use App\Models\Package;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -56,7 +55,7 @@ class PackageController extends Controller
      * @return PackageResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function update(Request $request, int $id): PackageResource
+    public function update(PackageRequest $request, int $id): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
             ->update($id, $request->all())]);

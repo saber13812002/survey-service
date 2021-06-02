@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Models\Package;
+use App\Models\PackageType;
 
 class PackageRepository implements \App\Interfaces\Repositories\PackageRepositoryInterface
 {
@@ -21,7 +22,11 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function store(array $data): Package
     {
+        $packageType = PackageType::query()->findOrFail($data['package_type_id']);
+
         $item = new Package($data);
+        $item->packable_id = $packageType->id;
+        $item->packable_type = $packageType->model_name;
         $item->save();
 
         return $item;
@@ -29,7 +34,11 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function update(int $Id, array $data)
     {
+        $packageType = PackageType::query()->findOrFail($data['package_type_id']);
+
         $item = Package::query()->findOrFail($Id);
+        $item->packable_id = $packageType->id;
+        $item->packable_type = $packageType->model_name;
         $item->fill($data);
         $item->save();
         return $item;

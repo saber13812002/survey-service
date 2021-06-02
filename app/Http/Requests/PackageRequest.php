@@ -7,6 +7,11 @@ use Behamin\BResources\Requests\BasicRequest;
 class PackageRequest extends BasicRequest
 {
     /**
+     * @var mixed
+     */
+    private $package_type_id;
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -27,8 +32,9 @@ class PackageRequest extends BasicRequest
             'title' => 'required|string',
             'description' => 'nullable|string',
 //            'client_app_id' => 'required',    //TODO: client app id is required or not
-            'packable_id' => 'required',
-            'packable_type' => 'required|string',
+            'package_type_id' => 'required|exists:package_types,id',
+//            'packable_id' => 'required',
+//            'packable_type' => 'required|string',
             'tags.connect' => 'nullable|exists_va:tags,id',
             'categories.connect' => 'nullable|exists_va:categories,id',
             'campaigns.connect' => 'nullable|exists_va:categories,id',

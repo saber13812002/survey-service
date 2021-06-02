@@ -37,6 +37,18 @@ class Package extends Model
     ];
 
     /**
+     * @var \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|\Illuminate\Support\HigherOrderCollectionProxy|mixed
+     */
+
+    public $packable_id;
+
+    /**
+     * @var \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|\Illuminate\Support\HigherOrderCollectionProxy|mixed
+     */
+
+    public $packable_type;
+
+    /**
      * Get all of the owning packable models.
      */
     public function packable(): \Illuminate\Database\Eloquent\Relations\MorphTo
