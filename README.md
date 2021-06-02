@@ -30,6 +30,8 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 
 ```php artisan db:seed --class=PackageTypeSeeder```
 
+```php artisan db:seed --class=AnswerTypeSeeder```
+
     - run 
 ```php artisan serve```
 
@@ -42,6 +44,8 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 ```php artisan test```
 
 ```php artisan db:seed --class=PackageTypeSeeder```
+
+```php artisan db:seed --class=AnswerTypeSeeder```
 
 ## How to test
 

@@ -75,6 +75,11 @@ Route::group([
             Route::put('package/{package_id}/tags', [Controllers\v1\TaggableController::class, 'connect'])->name('connect.tag.to.package');
             Route::delete('package/{package_id}/tags', [Controllers\v1\TaggableController::class, 'disconnect'])->name('disconnect.tag.from.package');
 
+
+            // answer Type
+            Route::get('/answer-types', [Controllers\v1\AnswerTypeController::class, 'index'])->name('answer.type.index');
+
+
             //test
             Route::get('/test', [Controllers\TestController::class, 'test']);
 

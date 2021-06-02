@@ -28,5 +28,9 @@ class DatabaseSeeder extends Seeder
             PackageTypeSeeder::class,
         ]);
 
+        $this->call([
+            AnswerTypeSeeder::class,
+        ]);
+
     }
 }
