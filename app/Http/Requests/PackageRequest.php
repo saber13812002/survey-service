@@ -4,6 +4,26 @@ namespace App\Http\Requests;
 
 use Behamin\BResources\Requests\BasicRequest;
 
+/**
+ * @OA\Schema(
+ *      title="PackageRequest",
+ *      description="Package Request",
+ *      type="object",
+ *      example={
+ *          "title": "نام پکیج",
+ *          "package_type_id": 1,
+ *          "client_app_id": 1,
+ *          "parent_id": null,
+ *          "description": "description",
+ *          "first_text": "first_text",
+ *          "final_text": "final_text",
+ *          "started_at": "2021-06-02T14:48:37",
+ *          "finished_at": "2021-06-02T14:48:37",
+ *          "is_active": 1,
+ *          "is_deletable": 1
+ *      }
+ * )
+ */
 class PackageRequest extends BasicRequest
 {
     /**
@@ -33,8 +53,6 @@ class PackageRequest extends BasicRequest
             'description' => 'nullable|string',
 //            'client_app_id' => 'required',    //TODO: client app id is required or not
             'package_type_id' => 'required|exists:package_types,id',
-//            'packable_id' => 'required',
-//            'packable_type' => 'required|string',
             'tags.connect' => 'nullable|exists_va:tags,id',
             'categories.connect' => 'nullable|exists_va:categories,id',
             'campaigns.connect' => 'nullable|exists_va:categories,id',

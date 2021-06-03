@@ -11,9 +11,34 @@ use Illuminate\Http\Request;
 class PackageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *  path="/api/v1/packages",
+     *  operationId="getListOfPackages",
+     *  summary="get list of all packages",
+     *  tags={"Packages"},
      *
-     * @return PackageResource
+     *  @OA\Parameter(
+     *       name="access_token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
      */
     public function index(): PackageResource
     {
@@ -22,6 +47,51 @@ class PackageController extends Controller
     }
 
     /**
+     * @OA\Post (
+     *  path="/api/v1/packages",
+     *  operationId="createNewPackage",
+     *  summary="create new package",
+     *  tags={"Packages"},
+     *
+     *  @OA\Parameter(
+     *       name="access_token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="Content-Type",
+     *       required=true,
+     *       in="header",
+     *       example="application/json",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\RequestBody(
+     *      required=true,
+     *      @OA\JsonContent(ref="#/components/schemas/PackageRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
      * Store a newly created resource in storage.
      *
      * @param PackageRequest $request
@@ -50,7 +120,7 @@ class PackageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param PackageRequest $request
      * @param int $id
      * @return PackageResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
