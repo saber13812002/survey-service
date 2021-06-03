@@ -18,10 +18,11 @@ class CreatePackageQuestionsTable extends Migration
 
             $table->unsignedBigInteger('package_id');
 
-            $table->lineString('title');
+            $table->string('title');
             $table->longText('description')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -32,5 +32,7 @@ class DatabaseSeeder extends Seeder
             AnswerTypeSeeder::class,
         ]);
 
+        \App\Models\PackageQuestion::factory(10)->create();
+
     }
 }

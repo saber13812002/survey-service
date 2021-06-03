@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
-use App\Models\PackageQuestion;
+use App\Http\Controllers\Controller;
+use App\Models\PackageAnswer;
 use Illuminate\Http\Request;
 
-class PackageQuestionController extends Controller
+class PackageAnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PackageQuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PackageQuestion  $packageQuestion
+     * @param  \App\Models\PackageAnswer  $packageAnswer
      * @return \Illuminate\Http\Response
      */
-    public function show(PackageQuestion $packageQuestion)
+    public function show(PackageAnswer $packageAnswer)
     {
         //
     }
@@ -52,10 +53,10 @@ class PackageQuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PackageQuestion  $packageQuestion
+     * @param  \App\Models\PackageAnswer  $packageAnswer
      * @return \Illuminate\Http\Response
      */
-    public function edit(PackageQuestion $packageQuestion)
+    public function edit(PackageAnswer $packageAnswer)
     {
         //
     }
@@ -64,10 +65,10 @@ class PackageQuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PackageQuestion  $packageQuestion
+     * @param  \App\Models\PackageAnswer  $packageAnswer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PackageQuestion $packageQuestion)
+    public function update(Request $request, PackageAnswer $packageAnswer)
     {
         //
     }
@@ -75,10 +76,10 @@ class PackageQuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PackageQuestion  $packageQuestion
+     * @param  \App\Models\PackageAnswer  $packageAnswer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PackageQuestion $packageQuestion)
+    public function destroy(PackageAnswer $packageAnswer)
     {
         //
     }

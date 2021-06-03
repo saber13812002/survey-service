@@ -15,7 +15,15 @@ class CreatePackageAnswersTable extends Migration
     {
         Schema::create('package_answers', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('package_id');
+            $table->unsignedBigInteger('question_id');
+
+            $table->string('title');
+            $table->longText('description')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

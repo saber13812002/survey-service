@@ -78,6 +78,29 @@ Route::group([
             // answer Type
             Route::get('/answer-types', [Controllers\v1\AnswerTypeController::class, 'index'])->name('answer.type.index');
 
+            // question
+            Route::get('/questions', [Controllers\v1\PackageQuestionController::class, 'index'])->name('package.question.index');
+            Route::get('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'show'])->name('package.question.show');
+            Route::post('/questions', [Controllers\v1\PackageQuestionController::class, 'store'])->name('package.question.store');
+            Route::put('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'update'])->name('package.question.update');
+            Route::delete('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'destroy'])->name('package.question.destroy');
+
+            // question choice
+            Route::get('/question/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'index'])->name('package.question.choice.index');
+            Route::get('/question/choices/{id}', [Controllers\v1\PackageQuestionChoiceController::class, 'show'])->name('package.question.choice.show');
+            Route::post('/question/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'store'])->name('package.question.choice.store');
+            Route::post('/question/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'storeBulk'])->name('package.question.choice.store.bulk');
+            Route::put('/question/choices/{id}', [Controllers\v1\PackageQuestionChoiceController::class, 'update'])->name('package.question.choice.update');
+            Route::delete('/question/choices/{id}', [Controllers\v1\PackageQuestionChoiceController::class, 'destroy'])->name('package.question.choice.destroy');
+
+            // package answer
+            Route::get('/package/{id}/answer', [Controllers\v1\PackageAnswerController::class, 'index'])->name('package.question.choice.index');
+            Route::get('/question/choices/{id}', [Controllers\v1\PackageAnswerController::class, 'show'])->name('package.question.choice.show');
+            Route::post('/question/{id}/choices', [Controllers\v1\PackageAnswerController::class, 'store'])->name('package.question.choice.store');
+            Route::post('/question/choices', [Controllers\v1\PackageAnswerController::class, 'storeBulk'])->name('package.question.choice.store.bulk');
+            Route::put('/question/{id}/choices/{id}', [Controllers\v1\PackageAnswerController::class, 'update'])->name('package.question.choice.update');
+            Route::delete('/question/choices/{id}', [Controllers\v1\PackageAnswerController::class, 'destroy'])->name('package.question.choice.destroy');
+
             //test
             Route::get('/test', [Controllers\TestController::class, 'test']);
 

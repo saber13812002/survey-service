@@ -43,7 +43,7 @@ class PackageController extends Controller
     public function index(): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->index()]);
+            ->index()],true);
     }
 
     /**
@@ -111,10 +111,10 @@ class PackageController extends Controller
      * @return PackageResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function show(int $id)
+    public function show(int $id): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->show($id)]);
+            ->show($id)],true);
     }
 
     /**
@@ -138,9 +138,9 @@ class PackageController extends Controller
      * @return PackageResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function destroy(Request $request, int $id): PackageResource
+    public function destroy(int $id): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->destroy($id, $request->all())]);
+            ->destroy($id)]);
     }
 }
