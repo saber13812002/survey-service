@@ -63,5 +63,10 @@ class AppServiceProvider extends ServiceProvider
             RepositoryInterfaces\PackageQuestionChoiceRepositoryInterface::class,
             Repositories\PackageQuestionChoiceRepository::class
         );
+
+        $this->app->bind(
+            RepositoryInterfaces\PackageAnswerRepositoryInterface::class,
+            Repositories\PackageAnswerRepository::class
+        );
     }
 }

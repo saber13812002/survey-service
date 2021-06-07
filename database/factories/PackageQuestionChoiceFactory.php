@@ -30,6 +30,9 @@ class PackageQuestionChoiceFactory extends Factory
             'question_id' => function () use ($packageQuestion) {
                 return $packageQuestion->id;
             },
+            'order' => function () use ($packageQuestion) {
+                return 1;
+            },
         ];
     }
 }

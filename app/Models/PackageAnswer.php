@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PackageAnswer extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -17,9 +16,14 @@ class PackageAnswer extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
         'package_id',
         'question_id',
+
+        'title',
+        'description',
+
+        'client_app_id',
+        'user_id',
+        'choice_id',
     ];
 }

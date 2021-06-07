@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\ClientApp;
+use App\Models\Package;
 use App\Models\PackageAnswer;
+use App\Models\PackageQuestion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PackageAnswerFactory extends Factory
@@ -21,8 +24,26 @@ class PackageAnswerFactory extends Factory
      */
     public function definition()
     {
+        $package = Package::factory()->create();
+
         return [
-            //
+            'package_id' => function () use ($package) {
+                return $package->id;
+            },
+            'question_id' => function () {
+                return PackageQuestion::factory()->create()->id;
+            },
+            'title' => 'Answer ' . $this->faker->name,
+            'description' => $this->faker->paragraph,
+            'client_app_id' => function () {
+                return 1;
+            },
+            'user_id' => function () {
+                return 1;
+            },
+            'choice_id' => function () {
+                return 1;
+            },
         ];
     }
 }

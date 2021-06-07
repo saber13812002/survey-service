@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PackageAnswer;
 use App\Models\PackageType;
 use Illuminate\Database\Seeder;
 
@@ -85,6 +86,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PackageQuestionChoiceSeeder::class,
+        ]);
+
+        \App\Models\PackageAnswer::factory(10)->create();
+
+        $this->call([
+            PackageAnswerSeeder::class,
         ]);
 
     }
