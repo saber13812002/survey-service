@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\PackageQuestion;
 use App\Models\PackageQuestionChoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,8 +22,14 @@ class PackageQuestionChoiceFactory extends Factory
      */
     public function definition()
     {
+        $packageQuestion = PackageQuestion::factory()->create();
+
         return [
-            //
+            'title' => 'Choice ' . $this->faker->name,
+            'description' => $this->faker->paragraph,
+            'question_id' => function () use ($packageQuestion) {
+                return $packageQuestion->id;
+            },
         ];
     }
 }

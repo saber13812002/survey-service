@@ -20,5 +20,6 @@ class PackageQuestionChoice extends Model
         'title',
         'description',
         'question_id',
+        'order',
     ];
 }
