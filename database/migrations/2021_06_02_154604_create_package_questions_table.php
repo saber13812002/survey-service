@@ -20,6 +20,10 @@ class CreatePackageQuestionsTable extends Migration
 
             $table->string('title');
             $table->longText('description')->nullable();
+            $table->unsignedBigInteger('answer_type_id')->nullable(); // TODO: answer type id should implement
+            $table->unsignedBigInteger('correct_choice_id')->nullable();
+            $table->unsignedBigInteger('source_id')->nullable();
+            $table->json('event_ids')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

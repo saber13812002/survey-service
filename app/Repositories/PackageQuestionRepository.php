@@ -14,9 +14,9 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
         return PackageQuestion::query()->simplePaginate();
     }
 
-    public function getByPackageId(int $package_id): \Illuminate\Contracts\Pagination\Paginator
+    public function getByQuestionId(int $question_id): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageQuestion::query()->where('package_id',$package_id)->simplePaginate();
+        return PackageQuestion::query()->where('$question_id',$question_id)->simplePaginate();
     }
 
     public function show(int $Id)

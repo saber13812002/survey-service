@@ -15,7 +15,7 @@ interface PackageQuestionRepositoryInterface
      * @param int $package_id
      * @return mixed
      */
-    public function getByPackageId(int $package_id);
+    public function getByQuestionId(int $question_id);
 
     /**
      * @param int $Id

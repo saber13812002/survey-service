@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackageQuestionResource extends BasicResource
@@ -13,8 +14,15 @@ class PackageQuestionResource extends BasicResource
 
     public function getArray($resource)
     {
+
+        $items = app()->make(PackageQuestionRepositoryInterface::class)
+            ->getByPackageId($resource->id);
+
+        $questions = new PackageQuestionResourceCollection(["data" => $items]);
+
         return [
-            'title' => $resource->id,
+            'id' => $resource->id,
+            'title' => $resource->title,
             "package_id" => $resource->package_id,
             "description" => $resource->description,
             'created_at' => $resource->created_at,

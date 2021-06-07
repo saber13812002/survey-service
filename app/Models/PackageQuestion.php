@@ -19,6 +19,10 @@ class PackageQuestion extends Model
     protected $fillable = [
         'title',
         'description',
+
         'package_id',
+
+        'answer_type_id',
+        'correct_choice_id',
     ];
 }
