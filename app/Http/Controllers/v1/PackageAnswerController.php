@@ -14,7 +14,10 @@ class PackageAnswerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     * @param int $packageId
      * @return PackageAnswerResourceCollection
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(Request $request, int $packageId): PackageAnswerResourceCollection
     {
@@ -26,7 +29,9 @@ class PackageAnswerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
+     * @param int $questionId
      * @return PackageAnswerResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function store(Request $request, int $questionId)
     {
@@ -51,6 +56,7 @@ class PackageAnswerController extends Controller
      *
      * @param \App\Models\PackageAnswer $packageAnswer
      * @return PackageAnswerResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function show(int $packageAnswerId)
     {
@@ -88,6 +94,7 @@ class PackageAnswerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\PackageAnswer $packageAnswer
      * @return PackageAnswerResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function update(Request $request, int $questionId)
     {
