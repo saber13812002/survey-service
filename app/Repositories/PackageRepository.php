@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Models\Package;
 use App\Models\PackageType;
+use Illuminate\Http\Request;
 
 class PackageRepository implements \App\Interfaces\Repositories\PackageRepositoryInterface
 {

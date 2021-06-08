@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PackageQuestionChoiceResource;
 use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
-use App\Models\PackageQuestionChoice;
 use Illuminate\Http\Request;
 
 class PackageQuestionChoiceController extends Controller
@@ -46,7 +45,7 @@ class PackageQuestionChoiceController extends Controller
     public function show(int $id)
     {
         return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->show($id)], true);
+            ->show($id)]);
     }
 
     /**
