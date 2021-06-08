@@ -14,9 +14,9 @@ class TagRepository implements \App\Interfaces\Repositories\TagRepositoryInterfa
         return Tag::query()->simplePaginate();
     }
 
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return Tag::query()->findOrFail($Id);
+        return Tag::query()->findOrFail($id);
     }
 
     public function store(array $data): Tag
@@ -27,17 +27,17 @@ class TagRepository implements \App\Interfaces\Repositories\TagRepositoryInterfa
         return $item;
     }
 
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
-        $item = Tag::query()->findOrFail($Id);
+        $item = Tag::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = Tag::query()->findOrFail($Id);
+        $item = Tag::query()->findOrFail($id);
         return $item->delete();
     }
 }

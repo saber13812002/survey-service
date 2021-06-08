@@ -12,16 +12,16 @@ interface PackageQuestionRepositoryInterface
     public function index();
 
     /**
-     * @param int $package_id
+     * @param int $packageId
      * @return mixed
      */
-    public function getByQuestionId(int $question_id);
+    public function getByPackageId(int $packageId);
 
     /**
-     * @param int $Id
+     * @param int $id
      * @return mixed
      */
-    public function show(int $Id);
+    public function show(int $id);
 
     /**
      * @param array $data
@@ -36,17 +36,17 @@ interface PackageQuestionRepositoryInterface
     public function storeBulk(array $data);
 
     /**
-     * @param int $Id
+     * @param int $id
      * @param array $data
      * @return mixed
      */
-    public function update(int $Id, array $data);
+    public function update(int $id, array $data);
 
     /**
-     * @param int $Id
+     * @param int $id
      * @return mixed
      */
-    public function destroy(int $Id);
+    public function destroy(int $id);
 
 
 }

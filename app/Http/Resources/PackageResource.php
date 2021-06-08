@@ -14,11 +14,6 @@ class PackageResource extends BasicResource
 
     public function getArray($resource)
     {
-        $items = app()->make(PackageQuestionRepositoryInterface::class)
-            ->getByPackageId($resource->id);
-
-        $questions = new PackageQuestionResourceCollection(["data" => $items]);
-
         return [
             'id' => $resource->id,
             "client_app_id" => $resource->client_app_id,
@@ -27,7 +22,6 @@ class PackageResource extends BasicResource
             "description" => $resource->description,
             'created_at' => $resource->created_at,
             'updated_at' => $resource->updated_at,
-            'questions' => $questions
         ];
     }
 }

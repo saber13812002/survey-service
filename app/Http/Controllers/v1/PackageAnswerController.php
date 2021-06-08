@@ -16,10 +16,10 @@ class PackageAnswerController extends Controller
      *
      * @return PackageAnswerResourceCollection
      */
-    public function index(Request $request, int $package_id): PackageAnswerResourceCollection
+    public function index(Request $request, int $packageId): PackageAnswerResourceCollection
     {
         return new PackageAnswerResourceCollection(["data" => app()->make(PackageAnswerRepositoryInterface::class)
-            ->index($request, $package_id)]);
+            ->index($request, $packageId)]);
     }
 
     /**
@@ -28,17 +28,19 @@ class PackageAnswerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return PackageAnswerResource
      */
-    public function store(Request $request)
+    public function store(Request $request, int $questionId)
     {
         $item = PackageAnswer::query()
-            ->where('question_id', $request->question_id)
+            ->where('question_id', $questionId)
             ->where('user_id', $request->user_id)
             ->first();
 
         if ($item) {
             return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
-                ->update($request->question_id, $request->all())]);
+                ->update($questionId, $request->all())]);
         }
+
+        $request->request->add(['question_id' => $questionId]);
 
         return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
             ->store($request->all())]);
@@ -59,13 +61,14 @@ class PackageAnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\PackageAnswer $packageAnswer
+     * @param int $questionId
      * @return PackageAnswerResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function showByquestionId(int $questionId)
+    public function getByQuestionId(int $questionId)
     {
         return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
-            ->showByQuestionId($questionId)]);
+            ->getByQuestionId($questionId)]);
     }
 
     /**

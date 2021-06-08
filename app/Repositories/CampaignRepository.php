@@ -14,9 +14,9 @@ class CampaignRepository implements \App\Interfaces\Repositories\CampaignReposit
         return Campaign::query()->simplePaginate();
     }
 
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return Campaign::query()->findOrFail($Id);
+        return Campaign::query()->findOrFail($id);
     }
 
     public function store(array $data): Campaign
@@ -27,17 +27,17 @@ class CampaignRepository implements \App\Interfaces\Repositories\CampaignReposit
         return $item;
     }
 
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
-        $item = Campaign::query()->findOrFail($Id);
+        $item = Campaign::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = Campaign::query()->findOrFail($Id);
+        $item = Campaign::query()->findOrFail($id);
         return $item->delete();
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
-use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
@@ -43,7 +42,7 @@ class PackageController extends Controller
     public function index(): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->index()],true);
+            ->index()]);
     }
 
     /**
@@ -114,7 +113,7 @@ class PackageController extends Controller
     public function show(int $id): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->show($id)],true);
+            ->show($id)], true);
     }
 
     /**

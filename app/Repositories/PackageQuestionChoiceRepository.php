@@ -20,17 +20,17 @@ class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\Pa
     /**
      * @inheritDoc
      */
-    public function getByQuestionId(int $question_id)
+    public function getByQuestionId(int $questionId)
     {
-        return PackageQuestionChoice::query()->where('question_id',$question_id)->simplePaginate();
+        return PackageQuestionChoice::query()->where('question_id',$questionId)->simplePaginate();
     }
 
     /**
      * @inheritDoc
      */
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return PackageQuestionChoice::query()->findOrFail($Id);
+        return PackageQuestionChoice::query()->findOrFail($id);
     }
 
     /**
@@ -58,9 +58,9 @@ class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\Pa
     /**
      * @inheritDoc
      */
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
-        $item = PackageQuestionChoice::query()->findOrFail($Id);
+        $item = PackageQuestionChoice::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
@@ -69,9 +69,9 @@ class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\Pa
     /**
      * @inheritDoc
      */
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = PackageQuestionChoice::query()->findOrFail($Id);
+        $item = PackageQuestionChoice::query()->findOrFail($id);
         return $item->delete();
     }
 }

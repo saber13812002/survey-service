@@ -12,10 +12,10 @@ interface PackageRepositoryInterface
     public function index();
 
     /**
-     * @param int $Id
+     * @param int $id
      * @return mixed
      */
-    public function show(int $Id);
+    public function show(int $id);
 
     /**
      * @param array $data
@@ -24,57 +24,57 @@ interface PackageRepositoryInterface
     public function store(array $data);
 
     /**
-     * @param int $Id
+     * @param int $id
      * @param array $data
      * @return mixed
      */
-    public function update(int $Id, array $data);
+    public function update(int $id, array $data);
 
     /**
-     * @param int $Id
+     * @param int $id
      * @return mixed
      */
-    public function destroy(int $Id);
+    public function destroy(int $id);
 
     /**
-     * @param array $category_ids
-     * @param int $package_id
+     * @param array $categoryIds
+     * @param int $packageId
      * @return mixed
      */
-    public function attachCategorizable(array $category_ids, int $package_id);
+    public function attachCategorizable(array $categoryIds, int $packageId);
 
     /**
-     * @param array $category_ids
-     * @param int $package_id
+     * @param array $categoryIds
+     * @param int $packageId
      * @return mixed
      */
-    public function detachCategorizable(array $category_ids, int $package_id);
+    public function detachCategorizable(array $categoryIds, int $packageId);
 
     /**
-     * @param array $campaign_ids
-     * @param int $package_id
+     * @param array $campaignIds
+     * @param int $packageId
      * @return mixed
      */
-    public function attachCampanile(array $campaign_ids, int $package_id);
+    public function attachCampanile(array $campaignIds, int $packageId);
 
     /**
-     * @param array $campaign_ids
-     * @param int $package_id
+     * @param array $campaignIds
+     * @param int $packageId
      * @return mixed
      */
-    public function detachCampanile(array $campaign_ids, int $package_id);
+    public function detachCampanile(array $campaignIds, int $packageId);
 
     /**
-     * @param array $tag_ids
-     * @param int $package_id
+     * @param array $tagIds
+     * @param int $packageId
      * @return mixed
      */
-    public function attachTaggable(array $tag_ids, int $package_id);
+    public function attachTaggable(array $tagIds, int $packageId);
 
     /**
-     * @param array $tag_ids
-     * @param int $package_id
+     * @param array $tagIds
+     * @param int $packageId
      * @return mixed
      */
-    public function detachTaggable(array $tag_ids, int $package_id);
+    public function detachTaggable(array $tagIds, int $packageId);
 }

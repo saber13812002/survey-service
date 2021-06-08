@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAnswerRepositoryInterface
 {
 
-    public function index(Request $request, int $package_id): \Illuminate\Contracts\Pagination\Paginator
+    public function index(Request $request, int $packageId): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageAnswer::query()->where('package_id', $package_id)->simplePaginate();
+        return PackageAnswer::query()->where('package_id', $packageId)->simplePaginate();
     }
 
     public function show(int $id)
@@ -20,9 +20,9 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
         return PackageAnswer::query()->findOrFail($id);
     }
 
-    public function showByQuestionId(int $question_id): \Illuminate\Contracts\Pagination\Paginator
+    public function getByQuestionId(int $questionId): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageAnswer::query()->where('question_id', $question_id)->simplePaginate();
+        return PackageAnswer::query()->where('question_id', $questionId)->simplePaginate();
     }
 
     public function store(array $data): PackageAnswer
@@ -33,17 +33,17 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
         return $item;
     }
 
-    public function update(int $question_id, array $data)
+    public function update(int $questionId, array $data)
     {
-        $item = PackageAnswer::query()->where('question_id', $question_id)->firstOrFail();
+        $item = PackageAnswer::query()->where('question_id', $questionId)->firstOrFail();
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = PackageAnswer::query()->findOrFail($Id);
+        $item = PackageAnswer::query()->findOrFail($id);
         return $item->delete();
     }
 }

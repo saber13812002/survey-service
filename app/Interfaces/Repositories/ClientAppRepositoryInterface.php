@@ -8,11 +8,11 @@ interface ClientAppRepositoryInterface
 {
     public function index();
 
-    public function show(int $Id);
+    public function show(int $id);
 
     public function store(array $data);
 
-    public function update(int $Id, array $data);
+    public function update(int $id, array $data);
 
-    public function destroy(int $Id);
+    public function destroy(int $id);
 }

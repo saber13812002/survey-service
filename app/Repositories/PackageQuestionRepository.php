@@ -14,14 +14,14 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
         return PackageQuestion::query()->simplePaginate();
     }
 
-    public function getByQuestionId(int $question_id): \Illuminate\Contracts\Pagination\Paginator
+    public function getByPackageId(int $packageId): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageQuestion::query()->where('$question_id',$question_id)->simplePaginate();
+        return PackageQuestion::query()->where('package_id',$packageId)->simplePaginate();
     }
 
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return PackageQuestion::query()->findOrFail($Id);
+        return PackageQuestion::query()->findOrFail($id);
     }
 
     public function store(array $data): PackageQuestion
@@ -40,19 +40,19 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
         // TODO: Implement storeBulk() method.
     }
 
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
 //        $data = $this->setRequestedData($data); // TODO: when want to update all questions by one request
 
-        $item = PackageQuestion::query()->findOrFail($Id);
+        $item = PackageQuestion::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = PackageQuestion::query()->findOrFail($Id);
+        $item = PackageQuestion::query()->findOrFail($id);
         return $item->delete();
     }
 }

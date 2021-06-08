@@ -14,9 +14,9 @@ class ClientAppRepository implements \App\Interfaces\Repositories\ClientAppRepos
         return ClientApp::query()->simplePaginate();
     }
 
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return ClientApp::query()->findOrFail($Id);
+        return ClientApp::query()->findOrFail($id);
     }
 
     public function store(array $data): ClientApp
@@ -27,17 +27,17 @@ class ClientAppRepository implements \App\Interfaces\Repositories\ClientAppRepos
         return $item;
     }
 
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
-        $item = ClientApp::query()->findOrFail($Id);
+        $item = ClientApp::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = ClientApp::query()->findOrFail($Id);
+        $item = ClientApp::query()->findOrFail($id);
         return $item->delete();
     }
 }

@@ -17,9 +17,9 @@ class CategoryRepository implements \App\Interfaces\Repositories\CategoryReposit
         return Category::query()->simplePaginate();
     }
 
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return Category::query()->findOrFail($Id);
+        return Category::query()->findOrFail($id);
     }
 
     public function store(array $data): Category
@@ -30,17 +30,17 @@ class CategoryRepository implements \App\Interfaces\Repositories\CategoryReposit
         return $item;
     }
 
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
-        $item = Category::query()->findOrFail($Id);
+        $item = Category::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = Category::query()->findOrFail($Id);
+        $item = Category::query()->findOrFail($id);
         return $item->delete();
     }
 }

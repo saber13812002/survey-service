@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\ClientApp;
 use App\Models\Package;
 use App\Models\Survey;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PackageFactory extends Factory
@@ -27,8 +28,17 @@ class PackageFactory extends Factory
 
         return [
             'title' => 'Package ' . $this->faker->name,
+            'description' => $this->faker->paragraph,
+
+            'first_text' => $this->faker->text,
+            'final_text' => $this->faker->text,
+
+            'started_at' => Carbon::today('Europe/London'),
+            'finished_at' => Carbon::tomorrow('Europe/London')->addDay(20),
+
+            'description' => $this->faker->paragraph,
             'client_app_id' => function () {
-                return ClientApp::factory()->create()->id;
+                return 1;
             },
             'packable_id' => function () use ($survey) {
                 return $survey->id;

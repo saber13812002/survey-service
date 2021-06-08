@@ -15,9 +15,9 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
         return Package::query()->simplePaginate();
     }
 
-    public function show(int $Id)
+    public function show(int $id)
     {
-        return Package::query()->findOrFail($Id);
+        return Package::query()->findOrFail($id);
     }
 
     public function store(array $data): Package
@@ -30,71 +30,71 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
         return $item;
     }
 
-    public function update(int $Id, array $data)
+    public function update(int $id, array $data)
     {
         $data = $this->setRequestedData($data);
 
-        $item = Package::query()->findOrFail($Id);
+        $item = Package::query()->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
     }
 
-    public function destroy(int $Id)
+    public function destroy(int $id)
     {
-        $item = Package::query()->findOrFail($Id);
+        $item = Package::query()->findOrFail($id);
         return $item->delete();
     }
 
-    public function attachCategorizable(array $category_ids, int $package_id)
+    public function attachCategorizable(array $categoryIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($package_id);
-        return $item->categories()->sync($category_ids, false);
+        $item = Package::query()->findOrFail($packageId);
+        return $item->categories()->sync($categoryIds, false);
     }
 
     /**
      * @inheritDoc
      */
-    public function detachCategorizable(array $category_ids, int $package_id)
+    public function detachCategorizable(array $categoryIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($package_id);
-        return $item->categories()->detach($category_ids, false);
+        $item = Package::query()->findOrFail($packageId);
+        return $item->categories()->detach($categoryIds, false);
     }
 
     /**
      * @inheritDoc
      */
-    public function attachCampanile(array $campaign_ids, int $package_id)
+    public function attachCampanile(array $campaignIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($package_id);
-        return $item->campaigns()->sync($campaign_ids, false);
+        $item = Package::query()->findOrFail($packageId);
+        return $item->campaigns()->sync($campaignIds, false);
     }
 
     /**
      * @inheritDoc
      */
-    public function detachCampanile(array $campaign_ids, int $package_id)
+    public function detachCampanile(array $campaignIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($package_id);
-        return $item->campaigns()->detach($campaign_ids, false);
+        $item = Package::query()->findOrFail($packageId);
+        return $item->campaigns()->detach($campaignIds, false);
     }
 
     /**
      * @inheritDoc
      */
-    public function attachTaggable(array $tag_ids, int $package_id)
+    public function attachTaggable(array $tagIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($package_id);
-        return $item->tags()->sync($tag_ids, false);
+        $item = Package::query()->findOrFail($packageId);
+        return $item->tags()->sync($tagIds, false);
     }
 
     /**
      * @inheritDoc
      */
-    public function detachTaggable(array $tag_ids, int $package_id)
+    public function detachTaggable(array $tagIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($package_id);
-        return $item->tags()->detach($tag_ids, false);
+        $item = Package::query()->findOrFail($packageId);
+        return $item->tags()->detach($tagIds, false);
     }
 
     /**
