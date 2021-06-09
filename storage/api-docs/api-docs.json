@@ -58,6 +58,208 @@
                 }
             }
         },
+        "/api/v1/campaigns": {
+            "get": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "get list of all campaigns",
+                "operationId": "getListOfCampaigns",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "define a new campaign",
+                "operationId": "postANewCampaign",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/campaigns/{campaignId}": {
+            "get": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "get item by id",
+                "operationId": "getCampaignItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "campaignId",
+                        "in": "path",
+                        "description": "ID of campaign",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "update campaign item by id",
+                "operationId": "updateCampaignItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "campaignId",
+                        "in": "path",
+                        "description": "ID of campaign",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "remove item by id",
+                "operationId": "removeAnItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "campaignId",
+                        "in": "path",
+                        "description": "ID of campaign",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/categories": {
             "get": {
                 "tags": [
@@ -578,6 +780,17 @@
             "AppStoreRequest": {
                 "title": "AppStoreRequest",
                 "description": "App Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ..."
+                }
+            },
+            "CampaignStoreRequest": {
+                "title": "CampaignStoreRequest",
+                "description": "Campaign Store Request body data",
                 "required": [
                     "title"
                 ],
