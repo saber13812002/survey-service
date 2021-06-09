@@ -773,6 +773,208 @@
                     }
                 }
             }
+        },
+        "/api/v1/tags": {
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "get list of all items",
+                "operationId": "getListOfAllItems",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "define a new item",
+                "operationId": "postANewItem",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TagStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/tags/{tagId}": {
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "get app item by id",
+                "operationId": "getAppItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "tagId",
+                        "in": "path",
+                        "description": "ID of tag",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "update Tag item by id",
+                "operationId": "updateTagItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "tagId",
+                        "in": "path",
+                        "description": "ID of Tag",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TagStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "remove and app by id",
+                "operationId": "removeAnItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "tagId",
+                        "in": "path",
+                        "description": "ID of tag",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -826,6 +1028,17 @@
                     "finished_at": "2021-06-02T14:48:37",
                     "is_active": 1,
                     "is_deletable": 1
+                }
+            },
+            "TagStoreRequest": {
+                "title": "TagStoreRequest",
+                "description": "Tag Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ..."
                 }
             }
         },
