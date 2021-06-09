@@ -260,6 +260,210 @@
                 }
             }
         },
+        "/api/v1/packages/{packageId}/campaigns": {
+            "put": {
+                "tags": [
+                    "Campaigns into Package"
+                ],
+                "summary": "connect campaigns array into package by package id",
+                "operationId": "connectCampaignsArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectCampaignsIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Campaigns into Package"
+                ],
+                "summary": "disconnect campaigns array into package by package id",
+                "operationId": "disconnectCampaignsArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DisconnectCampaignsIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/categories": {
+            "put": {
+                "tags": [
+                    "Categories into Package"
+                ],
+                "summary": "connect categories array into package by package id",
+                "operationId": "connectCategoriesArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectCategoriesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories into Package"
+                ],
+                "summary": "disconnect categories array into package by package id",
+                "operationId": "disconnectCategoriesArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DisconnectCategoriesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/categories": {
             "get": {
                 "tags": [
@@ -1107,6 +1311,108 @@
                     }
                 }
             }
+        },
+        "/api/v1/packages/{packageId}/tags": {
+            "put": {
+                "tags": [
+                    "Tags into Package"
+                ],
+                "summary": "connect tags array into package by package id",
+                "operationId": "connectTagsArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectTagsIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tags into Package"
+                ],
+                "summary": "disconnect tags array into package by package id",
+                "operationId": "disconnectTagsArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DisconnectTagsIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1142,6 +1448,102 @@
                 "type": "object",
                 "example": {
                     "title": "YOUR TITLE OF ..."
+                }
+            },
+            "ConnectCampaignsIntoPackageRequest": {
+                "title": "ConnectCampaignsIntoPackageRequest",
+                "description": "Connect Campaigns Into Package Request",
+                "required": [
+                    "campaigns"
+                ],
+                "type": "object",
+                "example": {
+                    "campaigns": {
+                        "connect": [
+                            12,
+                            17
+                        ]
+                    }
+                }
+            },
+            "ConnectCategoriesIntoPackageRequest": {
+                "title": "ConnectCategoriesIntoPackageRequest",
+                "description": "Connect Categories Into Package Request",
+                "required": [
+                    "categories"
+                ],
+                "type": "object",
+                "example": {
+                    "categories": {
+                        "connect": [
+                            12,
+                            17
+                        ]
+                    }
+                }
+            },
+            "ConnectTagsIntoPackageRequest": {
+                "title": "ConnectTagsIntoPackageRequest",
+                "description": "Connect Tags Into Package Request",
+                "required": [
+                    "tags"
+                ],
+                "type": "object",
+                "example": {
+                    "tags": {
+                        "connect": [
+                            12,
+                            17
+                        ]
+                    }
+                }
+            },
+            "DisconnectCampaignsIntoPackageRequest": {
+                "title": "DisconnectCampaignsIntoPackageRequest",
+                "description": "Connect Campaigns Into Package Request",
+                "required": [
+                    "campaigns"
+                ],
+                "type": "object",
+                "example": {
+                    "campaigns": {
+                        "disconnect": [
+                            12,
+                            17
+                        ]
+                    }
+                }
+            },
+            "DisconnectCategoriesIntoPackageRequest": {
+                "title": "ConnectCategoriesIntoPackageRequest",
+                "description": "Connect Categories Into Package Request",
+                "required": [
+                    "categories"
+                ],
+                "type": "object",
+                "example": {
+                    "categories": {
+                        "disconnect": [
+                            12,
+                            17
+                        ]
+                    }
+                }
+            },
+            "DisconnectTagsIntoPackageRequest": {
+                "title": "DisconnectTagsIntoPackageRequest",
+                "description": "Connect Tags Into Package Request",
+                "required": [
+                    "tags"
+                ],
+                "type": "object",
+                "example": {
+                    "tags": {
+                        "disconnect": [
+                            12,
+                            17
+                        ]
+                    }
                 }
             },
             "PackageRequest": {
