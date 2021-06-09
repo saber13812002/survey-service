@@ -104,6 +104,47 @@ class PackageController extends Controller
     }
 
     /**
+         * @OA\Get(
+         *  path="/api/v1/packages/{packageId}",
+         *  operationId="getAppItemById",
+         *  summary="get app item by id",
+         *  tags={"Packages"},
+         *
+         *  @OA\Parameter(
+         *       name="access_token",
+         *       required=true,
+         *       in="header",
+         *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+         *       @OA\Schema(
+         *           type="string"
+         *       )
+         *   ),
+         *
+         *  @OA\Parameter(
+         *       description="ID of package",
+         *       name="packageId",
+         *       required=true,
+         *       in="path",
+         *       example="1",
+         *       @OA\Schema(
+         *           type="integer",
+         *           format="int64"
+         *       )
+         *   ),
+         *
+         *   @OA\Response(
+         *      response=200,
+         *       description="Success",
+         *      @OA\MediaType(
+         *           mediaType="application/json",
+         *      )
+         *   ),
+         *   @OA\Response(
+         *      response=404,
+         *      description="not found"
+         *   ),
+         *)
+         *
      * Display the specified resource.
      *
      * @param int $id
@@ -117,13 +158,60 @@ class PackageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param PackageRequest $request
-     * @param int $id
-     * @return PackageResource
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     */
+    * @OA\Put(
+    *  path="/api/v1/packages/{packageId}",
+    *  operationId="updatepackageItemById",
+    *  summary="update package item by id",
+    *  tags={"Packages"},
+    *
+    *  @OA\Parameter(
+    *       name="access_token",
+    *       required=true,
+    *       in="header",
+    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       @OA\Schema(
+    *           type="string"
+    *       )
+    *   ),
+    *
+    *  @OA\Parameter(
+    *       description="ID of package",
+    *       name="packageId",
+    *       required=true,
+    *       in="path",
+    *       example="1",
+    *       @OA\Schema(
+    *           type="integer",
+    *           format="int64"
+    *       )
+    *   ),
+    *
+    *   @OA\RequestBody(
+    *       required=true,
+    *       @OA\JsonContent(ref="#/components/schemas/PackageRequest")
+    *   ),
+    *
+    *   @OA\Response(
+    *      response=200,
+    *       description="Success",
+    *      @OA\MediaType(
+    *           mediaType="application/json",
+    *      )
+    *   ),
+    *
+    *   @OA\Response(
+    *      response=404,
+    *      description="not found"
+    *   ),
+    *)
+    *
+    * Update the specified resource in storage.
+    *
+    * @param PackageRequest $request
+    * @param int $id
+    * @return PackageResource
+    * @throws \Illuminate\Contracts\Container\BindingResolutionException
+    */
     public function update(PackageRequest $request, int $id): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
@@ -131,6 +219,47 @@ class PackageController extends Controller
     }
 
     /**
+         * @OA\Delete(
+         *  path="/api/v1/packages/{packageId}",
+         *  operationId="removeAnItemById",
+         *  summary="remove and app by id",
+         *  tags={"Packages"},
+         *
+         *  @OA\Parameter(
+         *       name="access_token",
+         *       required=true,
+         *       in="header",
+         *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+         *       @OA\Schema(
+         *           type="string"
+         *       )
+         *   ),
+         *
+         *  @OA\Parameter(
+         *       description="ID of package",
+         *       name="packageId",
+         *       required=true,
+         *       in="path",
+         *       example="1",
+         *       @OA\Schema(
+         *           type="integer",
+         *           format="int64"
+         *       )
+         *   ),
+         *
+         *   @OA\Response(
+         *      response=200,
+         *       description="Success",
+         *      @OA\MediaType(
+         *           mediaType="application/json",
+         *      )
+         *   ),
+         *   @OA\Response(
+         *      response=404,
+         *      description="not found"
+         *   ),
+         *)
+         *
      * Remove the specified resource from storage.
      *
      * @param int $id
