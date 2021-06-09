@@ -6,17 +6,16 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="PackageQuestionRequest",
- *      description="Package Question Store Request body data",
+ *      title="QuestionStoreRequest",
+ *      description="Question Store Request body data",
  *      type="object",
- *      required={"title"},
+ *      required={"title", "package_id"},
  *     example={
  *           "title": "YOUR TITLE OF ..."
  *     }
  * )
  */
-
-class PackageQuestionRequest extends BasicRequest
+class QuestionStoreRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +24,7 @@ class PackageQuestionRequest extends BasicRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**

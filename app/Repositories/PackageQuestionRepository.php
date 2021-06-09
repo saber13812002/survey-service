@@ -16,7 +16,7 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
 
     public function getByPackageId(int $packageId): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageQuestion::query()->where('package_id',$packageId)->simplePaginate();
+        return PackageQuestion::query()->where('package_id', $packageId)->simplePaginate();
     }
 
     public function show(int $id)
@@ -24,8 +24,9 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
         return PackageQuestion::query()->findOrFail($id);
     }
 
-    public function store(array $data): PackageQuestion
+    public function store(array $data, int $packageId): PackageQuestion
     {
+        $data['package_id'] = $packageId;
         $item = new PackageQuestion($data);
         $item->save();
 

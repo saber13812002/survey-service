@@ -81,7 +81,7 @@ Route::group([
             // question
             Route::get('/questions/packages/{id}', [Controllers\v1\PackageQuestionController::class, 'index'])->name('package.question.index');
             Route::get('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'show'])->name('package.question.show');
-            Route::post('/questions', [Controllers\v1\PackageQuestionController::class, 'store'])->name('package.question.store');
+            Route::post('/questions/packages/{id}', [Controllers\v1\PackageQuestionController::class, 'store'])->name('package.question.store');
             Route::put('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'update'])->name('package.question.update');
             Route::delete('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'destroy'])->name('package.question.destroy');
 
