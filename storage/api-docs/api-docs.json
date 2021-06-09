@@ -1,0 +1,149 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Survey Service OpenApi3 Documentation",
+        "description": "Behandam Survey Service Api documentation",
+        "contact": {
+            "email": "admin@kermany.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "LocalHost API Server"
+        },
+        {
+            "url": "https://debug.behaminplus.ir/survey-service",
+            "description": "Debug API Server"
+        },
+        {
+            "url": "https://develop.behaminplus.ir/survey-service",
+            "description": "DEVELOP API Server"
+        }
+    ],
+    "paths": {
+        "/api/v1/packages": {
+            "get": {
+                "tags": [
+                    "Packages"
+                ],
+                "summary": "get list of all packages",
+                "operationId": "getListOfPackages",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Packages"
+                ],
+                "summary": "create new package",
+                "operationId": "createNewPackage",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PackageRequest": {
+                "title": "PackageRequest",
+                "description": "Package Request",
+                "type": "object",
+                "example": {
+                    "title": "نام پکیج",
+                    "package_type_id": 1,
+                    "client_app_id": 1,
+                    "parent_id": null,
+                    "description": "description",
+                    "first_text": "first_text",
+                    "final_text": "final_text",
+                    "started_at": "2021-06-02T14:48:37",
+                    "finished_at": "2021-06-02T14:48:37",
+                    "is_active": 1,
+                    "is_deletable": 1
+                }
+            }
+        },
+        "securitySchemes": {
+            "access-token": {
+                "type": "http",
+                "description": "Use Custom access token",
+                "name": "AccessToken",
+                "scheme": "access-token"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Messages",
+            "description": "API Endpoints for creating survey by our another service"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

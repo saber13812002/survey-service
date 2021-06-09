@@ -10,4 +10,9 @@ class TestController extends Controller
     {
         return "test";
     }
+
+    public function phpinfo()
+    {
+        return view("info");
+    }
 }
