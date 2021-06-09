@@ -27,6 +27,441 @@
         }
     ],
     "paths": {
+        "/api/v1/answers/types": {
+            "get": {
+                "tags": [
+                    "Answer Types"
+                ],
+                "summary": "get list of all Answer types : if empty you should run seeder",
+                "operationId": "getListOfAnswerTypes",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "get list of all categories",
+                "operationId": "getListOfCategories",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "define a new category",
+                "operationId": "postANewCategories",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/{categoryId}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "get category item by id",
+                "operationId": "getCategoryItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "ID of category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "update category item",
+                "operationId": "updateCategoryItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "ID of category item",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "remove item by id",
+                "operationId": "removeItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "ID of category item",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/apps": {
+            "get": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "get list of all apps",
+                "operationId": "getListOfApps",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "define a new app",
+                "operationId": "postANewApp",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/apps/{appId}": {
+            "get": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "get app item by id",
+                "operationId": "getAppItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "ID of app",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "update a new app item",
+                "operationId": "updateANewApp",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "ID of app",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "remove and app",
+                "operationId": "removeAnApp",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "ID of app",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/packages": {
             "get": {
                 "tags": [
@@ -105,10 +540,63 @@
                     }
                 }
             }
+        },
+        "/api/v1/packages/types": {
+            "get": {
+                "tags": [
+                    "Package Types"
+                ],
+                "summary": "get list of all package types : if empty you should run seeder",
+                "operationId": "getListOfPackageTypes",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
+            "AppStoreRequest": {
+                "title": "AppStoreRequest",
+                "description": "App Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ..."
+                }
+            },
+            "CategoryStoreRequest": {
+                "title": "CategoryStoreRequest",
+                "description": "Category Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ..."
+                }
+            },
             "PackageRequest": {
                 "title": "PackageRequest",
                 "description": "Package Request",
