@@ -19,7 +19,7 @@ class AnswerTypeController extends Controller
      *       name="access_token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="$tagIds4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
      *       )
