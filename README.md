@@ -54,6 +54,21 @@ Survey-service is a service to manage surveys in Kermany.com architecture
     - import postman link then import it
     - run and test apis
 
+## Description
+
+- Campaign for marketing activities: مثال
+  
+  - کمپین تبلیغاتی بهار
+  - کمپین تبلیغاتی سال 1400
+    
+- Category for report goals e.g:
+  
+  - روانشناسی  
+  - یا سوالات رضایت مشتری 
+  -    یا سوالات هوش 
+  - یا سوالات دغدغه های اجتماعی
+
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
