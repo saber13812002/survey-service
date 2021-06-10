@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
+use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackageQuestionResource extends BasicResource
@@ -14,13 +14,17 @@ class PackageQuestionResource extends BasicResource
 
     public function getArray($resource)
     {
+        $choices = new PackageQuestionChoiceResourceCollection(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
+            ->getByQuestionId($resource->id)]);
+
         return [
             'id' => $resource->id,
             'title' => $resource->title,
             "package_id" => $resource->package_id,
             "description" => $resource->description,
             'created_at' => $resource->created_at,
-            'updated_at' => $resource->updated_at
+            'updated_at' => $resource->updated_at,
+            'choices' => $choices,
         ];
     }
 }
