@@ -6,19 +6,17 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="PackageQuestionRequest",
- *      description="Package Question Store Request body data",
+ *      title="TagStoreRequest",
+ *      description="Tag Store Request body data",
  *      type="object",
  *      required={"title"},
  *     example={
- *           "title": "YOUR TITLE OF ...",
- *           "answer_type_id": 1,
- *           "correct_choice_id": 1
+ *           "title": "YOUR TITLE OF ..."
  *     }
  * )
  */
 
-class PackageQuestionRequest extends BasicRequest
+class TagStoreRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +25,7 @@ class PackageQuestionRequest extends BasicRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**

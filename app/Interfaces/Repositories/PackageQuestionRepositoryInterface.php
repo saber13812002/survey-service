@@ -27,7 +27,7 @@ interface PackageQuestionRepositoryInterface
      * @param array $data
      * @return mixed
      */
-    public function store(array $data);
+    public function store(array $data, int $packageId);
 
     /**
      * @param array $data

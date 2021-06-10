@@ -12,6 +12,53 @@ use Illuminate\Http\Request;
 class TaggableController extends Controller
 {
     /**
+     * @OA\Put(
+     *  path="/api/v1/packages/{packageId}/tags",
+     *  operationId="connectTagsArrayIntoPackageById",
+     *  summary="connect tags array into package by package id",
+     *  tags={"Tags into Package"},
+     *
+     *  @OA\Parameter(
+     *       name="access_token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/ConnectTagsIntoPackageRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
      * Update the specified resource in storage.
      *
      * @param PackageConnectToTagRequest $request
@@ -32,6 +79,53 @@ class TaggableController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *  path="/api/v1/packages/{packageId}/tags",
+     *  operationId="disconnectTagsArrayIntoPackageById",
+     *  summary="disconnect tags array into package by package id",
+     *  tags={"Tags into Package"},
+     *
+     *  @OA\Parameter(
+     *       name="access_token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/DisconnectTagsIntoPackageRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Exception
      */

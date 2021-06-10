@@ -6,19 +6,22 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="PackageQuestionRequest",
- *      description="Package Question Store Request body data",
+ *      title="ConnectCategoriesIntoPackageRequest",
+ *      description="Connect Categories Into Package Request",
  *      type="object",
- *      required={"title"},
+ *      required={"categories"},
  *     example={
- *           "title": "YOUR TITLE OF ...",
- *           "answer_type_id": 1,
- *           "correct_choice_id": 1
+ *     "categories": {
+ *             "disconnect": {
+ *                 12,
+ *                 17
+ *             }
+ *         }
  *     }
  * )
  */
 
-class PackageQuestionRequest extends BasicRequest
+class DisconnectCategoriesIntoPackageRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +30,7 @@ class PackageQuestionRequest extends BasicRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
