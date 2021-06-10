@@ -37,6 +37,9 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 - run 
 ```php artisan serve```
 
+- open {APP_URL}/health
+- open {APP_URL}/api/docs
+
 ## for test in locahost ENV
     
 - run these commands:
