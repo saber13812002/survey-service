@@ -11,28 +11,29 @@
 
 Survey-service is a service to manage surveys in Kermany.com architecture
 
-    - this service has api to commiuncate with other microserice
-    - every app can get token and interact with this service
+- this service has api to commiuncate with other microserice
+- every app can get token and interact with this service
 
 ## Installation
 
-    - clone this repo
-    - create .env file by clone .env.example
-    - create db and update .env
+- clone this repo
+- composer install
+- create .env file by clone .env.example
+- create db and update .env
 
-    - run 
+- run 
 ```php artisan migrate```
 
-    - run 
+- run 
 ```php artisan key:generate```
 
-    - we should have PackageType with run:
+- we should have PackageType with run:
 
 ```php artisan db:seed --class=PackageTypeSeeder```
 
 ```php artisan db:seed --class=AnswerTypeSeeder```
 
-    - run 
+- run 
 ```php artisan serve```
 
 ## for test in locahost ENV
