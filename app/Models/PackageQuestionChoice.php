@@ -21,5 +21,7 @@ class PackageQuestionChoice extends Model
         'description',
         'question_id',
         'order',
+        'weight',
+        'is_active',
     ];
 }

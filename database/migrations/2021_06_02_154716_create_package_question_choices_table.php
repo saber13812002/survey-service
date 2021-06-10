@@ -21,6 +21,8 @@ class CreatePackageQuestionChoicesTable extends Migration
             $table->string('title');
             $table->longText('description')->nullable();
             $table->integer('order')->default(0);
+            $table->integer('weight')->default(0);
+            $table->boolean('is_active')->default(1);
 
             $table->timestamps();
             $table->softDeletes();
