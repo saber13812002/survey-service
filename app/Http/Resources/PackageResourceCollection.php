@@ -18,4 +18,5 @@ class PackageResourceCollection extends BasicResourceCollection
             'title' => $resource->title,
             'description' => $resource->description,
         ];
-    }}
+    }
+}
