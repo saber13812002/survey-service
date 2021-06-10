@@ -1079,6 +1079,230 @@
                 }
             }
         },
+        "/api/v1/questions/{questionId}/choices": {
+            "get": {
+                "tags": [
+                    "Choices"
+                ],
+                "summary": "get list of all items",
+                "operationId": "getListOfAllItems",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "questionId",
+                        "in": "path",
+                        "description": "ID of question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Choices"
+                ],
+                "summary": "define a new choice item for specific question ",
+                "operationId": "postANewItem",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "questionId",
+                        "in": "path",
+                        "description": "ID of question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChoiceStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/questions/choices/{choiceId}": {
+            "get": {
+                "tags": [
+                    "Choices"
+                ],
+                "summary": "get choice item by choice id",
+                "operationId": "getAppItemByChoiceId",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "choiceId",
+                        "in": "path",
+                        "description": "ID of choice",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Choices"
+                ],
+                "summary": "update choice item by id",
+                "operationId": "updatechoiceItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "choiceId",
+                        "in": "path",
+                        "description": "ID of choice",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChoiceStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Choices"
+                ],
+                "summary": "remove and app by id",
+                "operationId": "removeAnItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "choiceId",
+                        "in": "path",
+                        "description": "ID of choice",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/questions/packages/{packageId}": {
             "get": {
                 "tags": [
@@ -1666,6 +1890,17 @@
             "CategoryStoreRequest": {
                 "title": "CategoryStoreRequest",
                 "description": "Category Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ..."
+                }
+            },
+            "ChoiceStoreRequest": {
+                "title": "ChoiceStoreRequest",
+                "description": "Choices Store Request body data",
                 "required": [
                     "title"
                 ],
