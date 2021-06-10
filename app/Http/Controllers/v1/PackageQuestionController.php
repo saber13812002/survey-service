@@ -126,7 +126,7 @@ class PackageQuestionController extends Controller
      * @OA\Get(
      *  path="/api/v1/questions/{questionId}",
      *  operationId="getItemById",
-     *  summary="get app item by id",
+     *  summary="get question item by id",
      *  tags={"Questions"},
      *
      *  @OA\Parameter(

@@ -127,7 +127,7 @@ class PackageQuestionChoiceController extends Controller
     /**
     * @OA\Get(
     *  path="/api/v1/questions/choices/{choiceId}",
-    *  operationId="getAppItemByChoiceId",
+    *  operationId="getChoiceItemById",
     *  summary="get choice item by choice id",
     *  tags={"Choices"},
     *
@@ -287,7 +287,7 @@ class PackageQuestionChoiceController extends Controller
     * @return PackageQuestionChoiceResource
     * @throws \Illuminate\Contracts\Container\BindingResolutionException
     */
-    public function destroy(int $packageQuestionChoice)
+    public function destroy(int $packageQuestionChoice): PackageQuestionChoiceResource
     {
         return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
             ->destroy($packageQuestionChoice)]);

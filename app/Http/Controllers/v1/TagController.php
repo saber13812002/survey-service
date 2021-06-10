@@ -101,8 +101,8 @@ class TagController extends Controller
     /**
     * @OA\Get(
     *  path="/api/v1/tags/{tagId}",
-    *  operationId="getAppItemById",
-    *  summary="get app item by id",
+    *  operationId="getTagItemById",
+    *  summary="get tag item by id",
     *  tags={"Tags"},
     *
     *  @OA\Parameter(

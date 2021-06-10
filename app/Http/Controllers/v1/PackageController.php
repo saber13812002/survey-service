@@ -106,8 +106,8 @@ class PackageController extends Controller
     /**
          * @OA\Get(
          *  path="/api/v1/packages/{packageId}",
-         *  operationId="getAppItemById",
-         *  summary="get app item by id",
+         *  operationId="getPackageItemById",
+         *  summary="get package item by id",
          *  tags={"Packages"},
          *
          *  @OA\Parameter(

@@ -100,7 +100,7 @@ Route::group([
             Route::post('/questions/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'store'])->name('package.question.choice.store');
 //            Route::post('/questions/answers', [Controllers\v1\PackageAnswerController::class, 'storeBulk'])->name('package.question.choice.store.bulk');
             Route::put('/questions/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'update'])->name('package.question.choice.update');
-            Route::delete('/questions/answers/{id}', [Controllers\v1\PackageAnswerController::class, 'destroy'])->name('package.question.choice.destroy');
+            Route::delete('/answers/{id}', [Controllers\v1\PackageAnswerController::class, 'destroy'])->name('package.question.choice.destroy');
 
             //test
             Route::get('/test', [Controllers\TestController::class, 'test']);

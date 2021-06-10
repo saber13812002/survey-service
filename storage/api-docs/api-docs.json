@@ -868,6 +868,274 @@
                 }
             }
         },
+        "/api/v1/packages/{packageId}/answers": {
+            "get": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "get list of all asnwer items for this package group by users",
+                "operationId": "getListOfAllAnswerItemsForPackage",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/questions/{questionId}/answers": {
+            "get": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "get answer items by question id",
+                "operationId": "getAnswerItemByQuestionId",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "questionId",
+                        "in": "path",
+                        "description": "ID of question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "update Answer item by question id",
+                "operationId": "updateAnswerItemByQuestionId",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "questionId",
+                        "in": "path",
+                        "description": "ID of question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AnswerStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "define a new answer item for this Question by question id",
+                "operationId": "postANewAnswerItemForThisQuestion",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "questionId",
+                        "in": "path",
+                        "description": "ID of question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AnswerStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/questions/answers/{answerId}": {
+            "get": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "get answer item by id",
+                "operationId": "getAnswerItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "answerId",
+                        "in": "path",
+                        "description": "ID of answer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/answers/{answerId}": {
+            "delete": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "remove and app by id",
+                "operationId": "removeAnItemById",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "answerId",
+                        "in": "path",
+                        "description": "ID of answer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/packages": {
             "get": {
                 "tags": [
@@ -952,8 +1220,8 @@
                 "tags": [
                     "Packages"
                 ],
-                "summary": "get app item by id",
-                "operationId": "getAppItemById",
+                "summary": "get package item by id",
+                "operationId": "getPackageItemById",
                 "parameters": [
                     {
                         "name": "access_token",
@@ -1177,7 +1445,7 @@
                     "Choices"
                 ],
                 "summary": "get choice item by choice id",
-                "operationId": "getAppItemByChoiceId",
+                "operationId": "getChoiceItemById",
                 "parameters": [
                     {
                         "name": "access_token",
@@ -1400,7 +1668,7 @@
                 "tags": [
                     "Questions"
                 ],
-                "summary": "get app item by id",
+                "summary": "get question item by id",
                 "operationId": "getItemById",
                 "parameters": [
                     {
@@ -1633,8 +1901,8 @@
                 "tags": [
                     "Tags"
                 ],
-                "summary": "get app item by id",
-                "operationId": "getAppItemById",
+                "summary": "get tag item by id",
+                "operationId": "getTagItemById",
                 "parameters": [
                     {
                         "name": "access_token",
@@ -1865,6 +2133,30 @@
     },
     "components": {
         "schemas": {
+            "AnswerStoreRequest": {
+                "title": "AnswerStoreRequest",
+                "description": "Answer Store Request body data",
+                "required": [
+                    "package_id",
+                    "question_id",
+                    "user_id"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ...",
+                    "description": "YOUR TITLE OF ...",
+                    "package_id": 1,
+                    "question_id": 1,
+                    "user_id": 1,
+                    "choice_id": 2,
+                    "choice_ids": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "client_app_id": 1
+                }
+            },
             "AppStoreRequest": {
                 "title": "AppStoreRequest",
                 "description": "App Store Request body data",
@@ -2013,7 +2305,9 @@
                 ],
                 "type": "object",
                 "example": {
-                    "title": "YOUR TITLE OF ..."
+                    "title": "YOUR TITLE OF ...",
+                    "answer_type_id": 1,
+                    "correct_choice_id": 1
                 }
             },
             "PackageRequest": {
