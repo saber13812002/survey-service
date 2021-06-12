@@ -25,4 +25,13 @@ class PackageQuestion extends Model
         'answer_type_id',
         'correct_choice_id',
     ];
+
+
+    /**
+     * Get the choices
+     */
+    public function choices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PackageQuestionChoice::class,'question_id');
+    }
 }

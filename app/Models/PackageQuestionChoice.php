@@ -24,4 +24,14 @@ class PackageQuestionChoice extends Model
         'weight',
         'is_active',
     ];
+
+
+    /**
+     * Get the question that owns the choice.
+     */
+    public function question(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(PackageQuestion::class);
+    }
+
 }

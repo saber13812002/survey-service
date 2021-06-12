@@ -23,7 +23,7 @@ class CategoryController extends Controller
      *       name="access_token",
      *       required=true,
      *       in="header",
-     *       example="$tagIds4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
      *       )
@@ -63,7 +63,7 @@ class CategoryController extends Controller
      *       name="access_token",
      *       required=true,
      *       in="header",
-     *       example="$tagIds4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
      *       )
@@ -110,7 +110,7 @@ class CategoryController extends Controller
     *       name="access_token",
     *       required=true,
     *       in="header",
-    *       example="$tagIds4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -164,7 +164,7 @@ class CategoryController extends Controller
      *       name="access_token",
      *       required=true,
      *       in="header",
-     *       example="$tagIds4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
      *       )
@@ -225,7 +225,7 @@ class CategoryController extends Controller
     *       name="access_token",
     *       required=true,
     *       in="header",
-    *       example="$tagIds4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
     *       @OA\Schema(
     *           type="string"
     *       )
