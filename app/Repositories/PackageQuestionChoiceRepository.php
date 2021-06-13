@@ -14,17 +14,9 @@ class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\Pa
     /**
      * @inheritDoc
      */
-    public function index()
-    {
-        return PackageQuestionChoice::query()->simplePaginate();
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getByQuestionId(int $questionId)
     {
-        return PackageQuestionChoice::query()->where('question_id', $questionId)->simplePaginate();
+        return PackageQuestionChoice::query()->where('question_id', $questionId)->orderBy('order')->simplePaginate();
     }
 
     /**

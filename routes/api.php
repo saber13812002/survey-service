@@ -86,7 +86,7 @@ Route::group([
             Route::delete('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'destroy'])->name('package.question.destroy');
 
             // question choice
-            Route::get('/questions/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'index'])->name('package.question.choice.index');
+            Route::get('/questions/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'getByQuestionId'])->name('package.question.choice.index');
             Route::get('/questions/choices/{id}', [Controllers\v1\PackageQuestionChoiceController::class, 'show'])->name('package.question.choice.show');
             Route::post('/questions/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'store'])->name('package.question.choice.store');
             Route::post('/questions/{id}/choices/bulk', [Controllers\v1\PackageQuestionChoiceController::class, 'storeBulk'])->name('package.question.choice.store.bulk');

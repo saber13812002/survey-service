@@ -6,10 +6,6 @@ namespace App\Interfaces\Repositories;
 
 interface PackageQuestionChoiceRepositoryInterface
 {
-    /**
-     * @return mixed
-     */
-    public function index();
 
     /**
      * @param int $packageId

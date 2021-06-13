@@ -55,10 +55,12 @@ class PackageQuestionChoiceController extends Controller
      *)
      * Display a listing of the resource.
      *
+     * @param Request $request
+     * @param int $packageQuestionId
      * @return PackageQuestionChoiceResourceCollection
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index(Request $request, int $packageQuestionId)
+    public function getByQuestionId(Request $request, int $packageQuestionId): PackageQuestionChoiceResourceCollection
     {
         return new PackageQuestionChoiceResourceCollection(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
             ->getByQuestionId($packageQuestionId)]);
