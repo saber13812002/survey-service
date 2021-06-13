@@ -2250,40 +2250,49 @@
                 ],
                 "type": "object",
                 "example": {
-                    "title": "YOUR TITLE OF ..."
+                    "title": "YOUR TITLE OF ...2",
+                    "weight": 2,
+                    "is_active": 1,
+                    "order": 1
                 }
             },
             "ChoicesStoreRequest": {
                 "title": "ChoicesStoreRequest",
                 "description": "Choices Store Request body data",
-                "required": [
-                    "choices"
-                ],
                 "type": "object",
                 "example": {
                     "create": [
                         {
-                            "title": "FOR EXAMPLE ..."
+                            "title": "FOR EXAMPLE ...",
+                            "order": 1
                         },
                         {
-                            "title": "FOR EXAMPLE ..."
+                            "title": "FOR EXAMPLE ...",
+                            "order": 1
                         },
                         {
-                            "title": "FOR EXAMPLE ..."
+                            "title": "FOR EXAMPLE ...",
+                            "order": 1
                         }
                     ],
                     "update": [
                         {
                             "id": 18,
-                            "title": "FOR EXAMPLE ..."
+                            "title": "FOR EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 1
                         },
                         {
                             "id": 19,
-                            "title": "FOR EXAMPLE ..."
+                            "title": "FOR EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 2
                         },
                         {
                             "id": 20,
-                            "title": "FOR EXAMPLE ..."
+                            "title": "FOR EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 3
                         }
                     ],
                     "delete": [

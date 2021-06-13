@@ -9,18 +9,41 @@ use Behamin\BResources\Requests\BasicRequest;
  *      title="ChoicesStoreRequest",
  *      description="Choices Store Request body data",
  *      type="object",
- *      required={"choices"},
  *     example={
  *              "create": {
- *                  {"title":"FOR EXAMPLE ..."},
- *                  {"title":"FOR EXAMPLE ..."},
- *                  {"title":"FOR EXAMPLE ..."}
+ *                  {
+ *                      "title":"FOR EXAMPLE ...",
+ *                      "order": 1
+ *                  },
+ *                  {
+ *                      "title":"FOR EXAMPLE ...",
+ *                      "order": 1
+ *                  },
+ *                  {
+ *                      "title":"FOR EXAMPLE ...",
+ *                      "order": 1
+ *                  }
  *              },
  *
  *              "update": {
- *                  {"id":18,"title":"FOR EXAMPLE ..."},
- *                  {"id":19,"title":"FOR EXAMPLE ..."},
- *                  {"id":20,"title":"FOR EXAMPLE ..."}
+ *                  {
+ *                      "id":18,
+ *                      "title":"FOR EXAMPLE ...",
+ *                      "is_active": 1,
+ *                      "order": 1
+ *                  },
+ *                  {
+ *                      "id":19,
+ *                      "title":"FOR EXAMPLE ...",
+ *                      "is_active": 1,
+ *                      "order": 2
+ *                  },
+ *                  {
+ *                      "id":20,
+ *                      "title":"FOR EXAMPLE ...",
+ *                      "is_active": 1,
+ *                      "order": 3
+ *                  }
  *              },
  *
  *              "delete": {
