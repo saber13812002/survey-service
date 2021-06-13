@@ -56,7 +56,7 @@ class PackageQuestionController extends Controller
      *
      * @return PackageQuestionResource
      */
-    public function index(int $packageId)
+    public function getByPackageId(int $packageId)
     {
         return new PackageQuestionResourceCollection(["data" => app()->make(PackageQuestionRepositoryInterface::class)
             ->getByPackageId($packageId)]);

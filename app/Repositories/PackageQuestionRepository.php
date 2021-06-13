@@ -9,14 +9,9 @@ use App\Models\PackageQuestion;
 class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQuestionRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
-    {
-        return PackageQuestion::query()->simplePaginate();
-    }
-
     public function getByPackageId(int $packageId): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageQuestion::query()->where('package_id', $packageId)->simplePaginate();
+        return PackageQuestion::query()->where('package_id', $packageId)->orderBy('order')->simplePaginate();
     }
 
     public function show(int $id)

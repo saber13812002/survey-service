@@ -22,7 +22,7 @@ class CreatePackageAnswersTable extends Migration
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('user_id')->nullable();
 
-            $table->unsignedBigInteger('choice_id')->nullable(); // TODO for descriptive questions
+            $table->unsignedBigInteger('choice_id')->nullable();
 
             $table->string('title')->nullable();
             $table->longText('description')->nullable();

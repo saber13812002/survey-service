@@ -79,7 +79,7 @@ Route::group([
             Route::delete('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'disconnect'])->name('disconnect.tag.from.package');
 
             // question
-            Route::get('/questions/packages/{id}', [Controllers\v1\PackageQuestionController::class, 'index'])->name('package.question.index');
+            Route::get('/questions/packages/{id}', [Controllers\v1\PackageQuestionController::class, 'getByPackageId'])->name('package.question.index');
             Route::get('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'show'])->name('package.question.show');
             Route::post('/questions/packages/{id}', [Controllers\v1\PackageQuestionController::class, 'store'])->name('package.question.store');
             Route::put('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'update'])->name('package.question.update');

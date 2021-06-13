@@ -11,7 +11,11 @@ use Behamin\BResources\Requests\BasicRequest;
  *      type="object",
  *      required={"title", "package_id"},
  *     example={
- *           "title": "YOUR TITLE OF ..."
+ *          "title": "YOUR TITLE OF ...",
+ *          "package_id": 1,
+ *          "weight": 2,
+ *          "is_active": 1,
+ *          "order": 1
  *     }
  * )
  */
