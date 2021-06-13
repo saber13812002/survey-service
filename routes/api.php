@@ -102,6 +102,9 @@ Route::group([
             Route::put('/questions/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'update'])->name('package.question.choice.update');
             Route::delete('/answers/{id}', [Controllers\v1\PackageAnswerController::class, 'destroy'])->name('package.question.choice.destroy');
 
+            // report package
+            Route::get('/packages/{id}/reports', [Controllers\v1\ReportController::class, 'byPackageId'])->name('report.by.package.id');
+
             //test
             Route::get('/test', [Controllers\TestController::class, 'test']);
 

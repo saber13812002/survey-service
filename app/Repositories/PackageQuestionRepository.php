@@ -14,6 +14,14 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
         return PackageQuestion::query()->where('package_id', $packageId)->orderBy('order')->simplePaginate();
     }
 
+    public function getReportByPackageId(int $packageId)
+    {
+        return PackageQuestion::query()
+            ->where('package_id', $packageId)
+            ->orderBy('order')
+            ->get();
+    }
+
     public function show(int $id)
     {
         return PackageQuestion::query()->findOrFail($id);

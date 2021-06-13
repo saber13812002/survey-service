@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Models\PackageAnswer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAnswerRepositoryInterface
 {
@@ -45,5 +46,16 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
     {
         $item = PackageAnswer::query()->findOrFail($id);
         return $item->delete();
+    }
+
+
+    public function getbyPackageIdAndQuestionId(int $packageId, int $questionId)
+    {
+        return DB::table('package_answers')
+            ->where('package_id', $packageId)
+            ->where('question_id', $questionId)
+            ->groupBy('choice_id')
+            ->select('choice_id', DB::raw('count(*) as total'))
+            ->get();
     }
 }
