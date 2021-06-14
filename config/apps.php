@@ -12,7 +12,7 @@ return [
         "NAME" => "fitamin"
     ],
     "bornafit" => [
-        'KEY' => "APA91bGbGbh8EGHta65u3K51uT5PMvwlhZsmYr",
+        'KEY' => "CD3E1F89CE42C287B859AA35CD71C",
         "NAME" => "bornafit"
     ]
 ];
