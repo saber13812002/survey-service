@@ -51,7 +51,7 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
 
     public function getbyPackageIdAndQuestionId(int $packageId, int $questionId)
     {
-        return DB::table('package_answers')
+        return PackageAnswer::query()
             ->where('package_id', $packageId)
             ->where('question_id', $questionId)
             ->groupBy('choice_id')

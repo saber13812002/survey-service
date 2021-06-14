@@ -34,7 +34,7 @@ class ReportController extends Controller
      *       name="packageId",
      *       required=true,
      *       in="path",
-     *       example="1",
+     *       example="161",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"

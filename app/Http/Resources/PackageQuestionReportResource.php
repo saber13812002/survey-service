@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
+use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackageQuestionReportResource extends BasicResource
@@ -17,6 +18,9 @@ class PackageQuestionReportResource extends BasicResource
         $choicesStatistics = app()->make(PackageAnswerRepositoryInterface::class)
             ->getbyPackageIdAndQuestionId($resource->package_id, $resource->id);
 
+        $choices = app()->make(PackageQuestionChoiceRepositoryInterface::class)
+            ->getByQuestionId($resource->id);
+
         return [
             'id' => $resource->id,
             'title' => $resource->title,
@@ -24,7 +28,8 @@ class PackageQuestionReportResource extends BasicResource
             "description" => $resource->description,
             'created_at' => $resource->created_at,
             'updated_at' => $resource->updated_at,
-            'choices' => $choicesStatistics,
+            'choices_results' => $choicesStatistics,
+            'choices' => $choices,
         ];
     }
 }

@@ -76,13 +76,13 @@ class DatabaseSeeder extends Seeder
             AnswerTypeSeeder::class,
         ]);
 
-        \App\Models\PackageQuestion::factory(10)->create();
+        \App\Models\PackageQuestion::factory()->count(10);
 
         $this->call([
             PackageQuestionSeeder::class,
         ]);
 
-        \App\Models\PackageQuestionChoice::factory(10)->create();
+        \App\Models\PackageQuestionChoice::factory(40)->create();
 
         $this->call([
             PackageQuestionChoiceSeeder::class,
@@ -94,5 +94,10 @@ class DatabaseSeeder extends Seeder
             PackageAnswerSeeder::class,
         ]);
 
+        $this->call(PackageAnswersTableSeeder::class);
+
+        $this->call(PackageQuestionsTableSeeder::class);
+
+        $this->call(PackageChoicesTableSeeder::class);
     }
 }

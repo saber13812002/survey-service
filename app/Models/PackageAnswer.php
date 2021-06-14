@@ -26,4 +26,9 @@ class PackageAnswer extends Model
         'user_id',
         'choice_id',
     ];
+
+    public function choice(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(PackageQuestionChoice::class, 'id');
+    }
 }
