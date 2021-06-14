@@ -32,6 +32,8 @@ class AuthServiceProvider extends ServiceProvider
             $userProvider = app(TokenToAppProvider::class);
             $request = app('request');
 
+            $config['input_key'] = env('input_key', 'X-Proxy-Token');
+
             return new AccessTokenGuard($userProvider, $request, $config);
         });
     }
