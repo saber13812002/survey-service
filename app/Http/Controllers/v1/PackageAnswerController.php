@@ -13,7 +13,7 @@ class PackageAnswerController extends Controller
 {
     /**
     * @OA\Get(
-    *  path="/api/v1/answers/packages/{packageId}",
+    *  path="/api/v1/packages/{packageId}/answers",
     *  operationId="getListOfAllAnswerItemsForPackage",
     *  summary="get list of all asnwer items for this package group by users",
     *  tags={"Answers"},
@@ -66,7 +66,7 @@ class PackageAnswerController extends Controller
 
     /**
     * @OA\Post(
-    *  path="/api/v1/answers/questions/{questionId}",
+    *  path="/api/v1/questions/{questionId}/answers",
     *  operationId="postANewAnswerItemForThisQuestion",
     *  summary="define a new answer item for this Question by question id",
     *  tags={"Answers"},
@@ -139,7 +139,7 @@ class PackageAnswerController extends Controller
 
     /**
          * @OA\Get(
-         *  path="/api/v1/answers/{answerId}/questions",
+         *  path="/api/v1/answers/{answerId}",
          *  operationId="getAnswerItemById",
          *  summary="get answer item by id",
          *  tags={"Answers"},
@@ -193,7 +193,7 @@ class PackageAnswerController extends Controller
 
     /**
          * @OA\Get(
-         *  path="/api/v1/answers/questions/{questionId}",
+         *  path="/api/v1/questions/{questionId}/answers",
          *  operationId="getAnswerItemByQuestionId",
          *  summary="get answer items by question id",
          *  tags={"Answers"},
@@ -247,7 +247,7 @@ class PackageAnswerController extends Controller
 
     /**
          * @OA\Put(
-         *  path="/api/v1/answers/questions/{questionId}",
+         *  path="/api/v1/questions/{questionId}/answers",
          *  operationId="updateAnswerItemByQuestionId",
          *  summary="update Answer item by question id",
          *  tags={"Answers"},

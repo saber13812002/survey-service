@@ -13,7 +13,7 @@ class PackageQuestionController extends Controller
 {
     /**
      * @OA\Get(
-     *  path="/api/v1/questions/packages/{packageId}",
+     *  path="/api/v1/packages/{packageId}/questions",
      *  operationId="getListOfAllItemsByPackageId",
      *  summary="get list of all items by package id",
      *  tags={"Questions"},
@@ -64,7 +64,7 @@ class PackageQuestionController extends Controller
 
     /**
      * @OA\Post(
-     *  path="/api/v1/questions/packages/{packageId}",
+     *  path="/api/v1/packages/{packageId}/questions",
      *  operationId="postANewItemByPackageId",
      *  summary="define a new item by package id",
      *  tags={"Questions"},
@@ -113,6 +113,7 @@ class PackageQuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param PackageQuestionRequest $request
+     * @param int $packageId
      * @return PackageQuestionResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */

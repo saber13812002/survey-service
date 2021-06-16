@@ -13,7 +13,7 @@ class PackageQuestionChoiceController extends Controller
 {
     /**
      * @OA\Get(
-     *  path="/api/v1/choices/questions/{questionId}",
+     *  path="/api/v1/questions/{questionId}/choices",
      *  operationId="getListOfAllItems",
      *  summary="get list of all items",
      *  tags={"Choices"},
@@ -39,7 +39,6 @@ class PackageQuestionChoiceController extends Controller
      *           format="int64"
      *       )
      *   ),
-     *
      *
      *   @OA\Response(
      *      response=200,
@@ -68,7 +67,7 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Post(
-     *  path="/api/v1/choices/questions/{questionId}",
+     *  path="/api/v1/questions/{questionId}/choices",
      *  operationId="postANewItem",
      *  summary="define a new choice item for specific question ",
      *  tags={"Choices"},
@@ -129,7 +128,7 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Post(
-     *  path="/api/v1/choices/questions/{questionId}/bulk",
+     *  path="/api/v1/questions/{questionId}/choices/bulk",
      *  operationId="postArrayOfChoicesByQuestionIdToUpdateDeleteCreate",
      *  summary="post all choices by question id for create update delete",
      *  tags={"Choices"},
@@ -190,7 +189,7 @@ class PackageQuestionChoiceController extends Controller
 
     /**
     * @OA\Get(
-    *  path="/api/v1/choices/{choiceId}/questions",
+    *  path="/api/v1/choices/{choiceId}",
     *  operationId="getChoiceItemById",
     *  summary="get choice item by choice id",
     *  tags={"Choices"},
@@ -244,7 +243,7 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Put(
-     *  path="/api/v1/choices/{choiceId}/questions",
+     *  path="/api/v1/choices/{choiceId}",
      *  operationId="updatechoiceItemById",
      *  summary="update choice item by id",
      *  tags={"Choices"},
@@ -305,7 +304,7 @@ class PackageQuestionChoiceController extends Controller
 
     /**
     * @OA\Delete(
-    *  path="/api/v1/choices/{choiceId}/questions",
+    *  path="/api/v1/choices/{choiceId}",
     *  operationId="removeAnItemById",
     *  summary="remove and app by id",
     *  tags={"Choices"},
