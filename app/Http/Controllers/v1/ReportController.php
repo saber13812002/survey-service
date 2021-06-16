@@ -20,7 +20,7 @@ class ReportController extends Controller
      *  tags={"Reports"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",

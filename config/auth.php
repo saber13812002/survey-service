@@ -47,8 +47,8 @@ return [
             'hash' => false,
         ],
 
-        'access_token' => [
-            'driver' => 'access_token',
+        'X-Proxy-Token' => [
+            'driver' => 'X-Proxy-Token',
         ],
     ],
 

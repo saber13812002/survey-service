@@ -13,13 +13,13 @@ class PackageAnswerController extends Controller
 {
     /**
     * @OA\Get(
-    *  path="/api/v1/packages/{packageId}/answers",
+    *  path="/api/v1/answers/packages/{packageId}",
     *  operationId="getListOfAllAnswerItemsForPackage",
     *  summary="get list of all asnwer items for this package group by users",
     *  tags={"Answers"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -66,13 +66,13 @@ class PackageAnswerController extends Controller
 
     /**
     * @OA\Post(
-    *  path="/api/v1/questions/{questionId}/answers",
+    *  path="/api/v1/answers/questions/{questionId}",
     *  operationId="postANewAnswerItemForThisQuestion",
     *  summary="define a new answer item for this Question by question id",
     *  tags={"Answers"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -139,13 +139,13 @@ class PackageAnswerController extends Controller
 
     /**
          * @OA\Get(
-         *  path="/api/v1/questions/answers/{answerId}",
+         *  path="/api/v1/answers/{answerId}/questions",
          *  operationId="getAnswerItemById",
          *  summary="get answer item by id",
          *  tags={"Answers"},
          *
          *  @OA\Parameter(
-         *       name="access_token",
+         *       name="X-Proxy-Token",
          *       required=true,
          *       in="header",
          *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -193,13 +193,13 @@ class PackageAnswerController extends Controller
 
     /**
          * @OA\Get(
-         *  path="/api/v1/questions/{questionId}/answers",
+         *  path="/api/v1/answers/questions/{questionId}",
          *  operationId="getAnswerItemByQuestionId",
          *  summary="get answer items by question id",
          *  tags={"Answers"},
          *
          *  @OA\Parameter(
-         *       name="access_token",
+         *       name="X-Proxy-Token",
          *       required=true,
          *       in="header",
          *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -247,13 +247,13 @@ class PackageAnswerController extends Controller
 
     /**
          * @OA\Put(
-         *  path="/api/v1/questions/{questionId}/answers",
+         *  path="/api/v1/answers/questions/{questionId}",
          *  operationId="updateAnswerItemByQuestionId",
          *  summary="update Answer item by question id",
          *  tags={"Answers"},
          *
          *  @OA\Parameter(
-         *       name="access_token",
+         *       name="X-Proxy-Token",
          *       required=true,
          *       in="header",
          *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -267,7 +267,7 @@ class PackageAnswerController extends Controller
          *       name="questionId",
          *       required=true,
          *       in="path",
-         *       example="1",
+         *       example="61",
          *       @OA\Schema(
          *           type="integer",
          *           format="int64"
@@ -314,7 +314,7 @@ class PackageAnswerController extends Controller
     *  tags={"Answers"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",

@@ -19,7 +19,7 @@ class PackageQuestionController extends Controller
      *  tags={"Questions"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -70,7 +70,7 @@ class PackageQuestionController extends Controller
      *  tags={"Questions"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -130,7 +130,7 @@ class PackageQuestionController extends Controller
      *  tags={"Questions"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -184,7 +184,7 @@ class PackageQuestionController extends Controller
      *  tags={"Questions"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -245,7 +245,7 @@ class PackageQuestionController extends Controller
     *  tags={"Questions"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",

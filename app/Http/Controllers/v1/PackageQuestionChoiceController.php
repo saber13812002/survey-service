@@ -13,13 +13,13 @@ class PackageQuestionChoiceController extends Controller
 {
     /**
      * @OA\Get(
-     *  path="/api/v1/questions/{questionId}/choices",
+     *  path="/api/v1/choices/questions/{questionId}",
      *  operationId="getListOfAllItems",
      *  summary="get list of all items",
      *  tags={"Choices"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -68,13 +68,13 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Post(
-     *  path="/api/v1/questions/{questionId}/choices",
+     *  path="/api/v1/choices/questions/{questionId}",
      *  operationId="postANewItem",
      *  summary="define a new choice item for specific question ",
      *  tags={"Choices"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -129,13 +129,13 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Post(
-     *  path="/api/v1/questions/{questionId}/choices/bulk",
+     *  path="/api/v1/choices/questions/{questionId}/bulk",
      *  operationId="postArrayOfChoicesByQuestionIdToUpdateDeleteCreate",
      *  summary="post all choices by question id for create update delete",
      *  tags={"Choices"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -190,13 +190,13 @@ class PackageQuestionChoiceController extends Controller
 
     /**
     * @OA\Get(
-    *  path="/api/v1/questions/choices/{choiceId}",
+    *  path="/api/v1/choices/{choiceId}/questions",
     *  operationId="getChoiceItemById",
     *  summary="get choice item by choice id",
     *  tags={"Choices"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -244,13 +244,13 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Put(
-     *  path="/api/v1/questions/choices/{choiceId}",
+     *  path="/api/v1/choices/{choiceId}/questions",
      *  operationId="updatechoiceItemById",
      *  summary="update choice item by id",
      *  tags={"Choices"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -305,13 +305,13 @@ class PackageQuestionChoiceController extends Controller
 
     /**
     * @OA\Delete(
-    *  path="/api/v1/questions/choices/{choiceId}",
+    *  path="/api/v1/choices/{choiceId}/questions",
     *  operationId="removeAnItemById",
     *  summary="remove and app by id",
     *  tags={"Choices"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",

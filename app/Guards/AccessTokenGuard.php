@@ -24,9 +24,9 @@ class AccessTokenGuard implements Guard
         $this->provider = $provider;
         $this->request = $request;
         // key to check in request
-        $this->inputKey = $configuration['input_key'] ?? 'access_token';
+        $this->inputKey = $configuration['input_key'] ?? 'X-Proxy-Token';
         // key to check in database
-        $this->storageKey = $configuration['storage_key'] ?? 'access_token';
+        $this->storageKey = $configuration['storage_key'] ?? 'X-Proxy-Token';
 
         $this->token = $this->request->header($this->inputKey);
         $this->checkAppToken();

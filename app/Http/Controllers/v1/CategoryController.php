@@ -20,7 +20,7 @@ class CategoryController extends Controller
      *  tags={"Categories"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -60,7 +60,7 @@ class CategoryController extends Controller
      *  tags={"Categories"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -107,7 +107,7 @@ class CategoryController extends Controller
     *  tags={"Categories"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -161,7 +161,7 @@ class CategoryController extends Controller
      *  tags={"Categories"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -222,7 +222,7 @@ class CategoryController extends Controller
     *  tags={"Categories"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",

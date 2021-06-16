@@ -36,7 +36,7 @@
                 "operationId": "getListOfAnswerTypes",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -67,7 +67,7 @@
                 "operationId": "getListOfCampaigns",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -96,7 +96,7 @@
                 "operationId": "postANewCampaign",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -137,7 +137,7 @@
                 "operationId": "getCampaignItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -177,7 +177,7 @@
                 "operationId": "updateCampaignItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -227,7 +227,7 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -269,7 +269,7 @@
                 "operationId": "connectCampaignsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -319,7 +319,7 @@
                 "operationId": "disconnectCampaignsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -371,7 +371,7 @@
                 "operationId": "connectCategoriesArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -421,7 +421,7 @@
                 "operationId": "disconnectCategoriesArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -473,7 +473,7 @@
                 "operationId": "getListOfCategories",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -502,7 +502,7 @@
                 "operationId": "postANewCategories",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -543,7 +543,7 @@
                 "operationId": "getCategoryItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -583,7 +583,7 @@
                 "operationId": "updateCategoryItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -633,7 +633,7 @@
                 "operationId": "removeItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -675,7 +675,7 @@
                 "operationId": "getListOfApps",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -704,7 +704,7 @@
                 "operationId": "postANewApp",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -745,7 +745,7 @@
                 "operationId": "getAppItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -785,7 +785,7 @@
                 "operationId": "updateANewApp",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -835,7 +835,7 @@
                 "operationId": "removeAnApp",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -868,7 +868,7 @@
                 }
             }
         },
-        "/api/v1/packages/{packageId}/answers": {
+        "/api/v1/answers/packages/{packageId}": {
             "get": {
                 "tags": [
                     "Answers"
@@ -877,7 +877,7 @@
                 "operationId": "getListOfAllAnswerItemsForPackage",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -910,7 +910,7 @@
                 }
             }
         },
-        "/api/v1/questions/{questionId}/answers": {
+        "/api/v1/answers/questions/{questionId}": {
             "get": {
                 "tags": [
                     "Answers"
@@ -919,7 +919,7 @@
                 "operationId": "getAnswerItemByQuestionId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -959,7 +959,7 @@
                 "operationId": "updateAnswerItemByQuestionId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -976,7 +976,7 @@
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "61"
                     }
                 ],
                 "requestBody": {
@@ -1009,7 +1009,7 @@
                 "operationId": "postANewAnswerItemForThisQuestion",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1052,7 +1052,7 @@
                 }
             }
         },
-        "/api/v1/questions/answers/{answerId}": {
+        "/api/v1/answers/{answerId}/questions": {
             "get": {
                 "tags": [
                     "Answers"
@@ -1061,7 +1061,7 @@
                 "operationId": "getAnswerItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1103,7 +1103,7 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1145,7 +1145,7 @@
                 "operationId": "getListOfPackages",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1174,7 +1174,7 @@
                 "operationId": "createNewPackage",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1224,7 +1224,7 @@
                 "operationId": "getPackageItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1264,7 +1264,7 @@
                 "operationId": "updatepackageItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1314,7 +1314,7 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1347,7 +1347,7 @@
                 }
             }
         },
-        "/api/v1/questions/{questionId}/choices": {
+        "/api/v1/choices/questions/{questionId}": {
             "get": {
                 "tags": [
                     "Choices"
@@ -1356,7 +1356,7 @@
                 "operationId": "getListOfAllItems",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1396,7 +1396,7 @@
                 "operationId": "postANewItem",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1439,7 +1439,7 @@
                 }
             }
         },
-        "/api/v1/questions/{questionId}/choices/bulk": {
+        "/api/v1/choices/questions/{questionId}/bulk": {
             "post": {
                 "tags": [
                     "Choices"
@@ -1448,7 +1448,7 @@
                 "operationId": "postArrayOfChoicesByQuestionIdToUpdateDeleteCreate",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1491,7 +1491,7 @@
                 }
             }
         },
-        "/api/v1/questions/choices/{choiceId}": {
+        "/api/v1/choices/{choiceId}/questions": {
             "get": {
                 "tags": [
                     "Choices"
@@ -1500,7 +1500,7 @@
                 "operationId": "getChoiceItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1540,7 +1540,7 @@
                 "operationId": "updatechoiceItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1590,7 +1590,7 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1632,7 +1632,7 @@
                 "operationId": "getListOfAllItemsByPackageId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1672,7 +1672,7 @@
                 "operationId": "postANewItemByPackageId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1724,7 +1724,7 @@
                 "operationId": "getItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1764,7 +1764,7 @@
                 "operationId": "updateQuestionItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1814,7 +1814,7 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1856,7 +1856,7 @@
                 "operationId": "getListOfPackageTypes",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1887,7 +1887,7 @@
                 "operationId": "getReportByPackageId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1904,7 +1904,7 @@
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "161"
                     }
                 ],
                 "responses": {
@@ -1929,7 +1929,7 @@
                 "operationId": "getListOfAllItems",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1958,7 +1958,7 @@
                 "operationId": "postANewItem",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -1999,7 +1999,7 @@
                 "operationId": "getTagItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -2039,7 +2039,7 @@
                 "operationId": "updateTagItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -2089,7 +2089,7 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -2131,7 +2131,7 @@
                 "operationId": "connectTagsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -2181,7 +2181,7 @@
                 "operationId": "disconnectTagsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
@@ -2455,6 +2455,9 @@
             "PackageRequest": {
                 "title": "PackageRequest",
                 "description": "Package Request",
+                "required": [
+                    "title"
+                ],
                 "type": "object",
                 "example": {
                     "title": "نام پکیج",

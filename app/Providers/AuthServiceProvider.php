@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::extend('access_token', function ($app, $name, array $config) {
+        Auth::extend('X-Proxy-Token', function ($app, $name, array $config) {
             // automatically build the DI, put it as reference
             $userProvider = app(TokenToAppProvider::class);
             $request = app('request');

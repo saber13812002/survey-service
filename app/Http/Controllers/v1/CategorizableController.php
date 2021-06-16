@@ -21,7 +21,7 @@ class CategorizableController extends Controller
     *  tags={"Categories into Package"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
@@ -89,7 +89,7 @@ class CategorizableController extends Controller
      *  tags={"Categories into Package"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",

@@ -9,6 +9,7 @@ use Behamin\BResources\Requests\BasicRequest;
  *      title="PackageRequest",
  *      description="Package Request",
  *      type="object",
+ *      required={"title"},
  *      example={
  *          "title": "نام پکیج",
  *          "package_type_id": 1,
