@@ -18,7 +18,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function show(int $id)
     {
-        return Package::query()->findOrFail($id);
+        return Package::with(['campaigns', 'categories', 'tags'])->findOrFail($id);
     }
 
     public function store(array $data): Package

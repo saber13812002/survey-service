@@ -16,7 +16,7 @@ class CampaignRepository implements \App\Interfaces\Repositories\CampaignReposit
 
     public function show(int $id)
     {
-        return Campaign::query()->findOrFail($id);
+        return Campaign::with('packages')->findOrFail($id);
     }
 
     public function store(array $data): Campaign

@@ -5,8 +5,6 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageConnectToCategoryRequest;
 use App\Http\Resources\CategorizableResource;
-use App\Http\Resources\CategoryResourceCollection;
-use App\Interfaces\Repositories\CategoryRepositoryInterface;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,64 +12,6 @@ use Illuminate\Http\Request;
 
 class CategorizableController extends Controller
 {
-    /**
-     * @OA\Get(
-     *  path="/api/v1/packages/{packageId}/categories",
-     *  operationId="showCategoriesArrayIntoPackageById",
-     *  summary="show categories array into package by package id",
-     *  tags={"Categories into Package"},
-     *
-     *  @OA\Parameter(
-     *       name="X-Proxy-Token",
-     *       required=true,
-     *       in="header",
-     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
-     *       @OA\Schema(
-     *           type="string"
-     *       )
-     *   ),
-     *
-     *  @OA\Parameter(
-     *       description="ID of package",
-     *       name="packageId",
-     *       required=true,
-     *       in="path",
-     *       example="1",
-     *       @OA\Schema(
-     *           type="integer",
-     *           format="int64"
-     *       )
-     *   ),
-     *
-     *
-     *   @OA\Response(
-     *      response=200,
-     *       description="Success",
-     *      @OA\MediaType(
-     *           mediaType="application/json",
-     *      )
-     *   ),
-     *
-     *   @OA\Response(
-     *      response=404,
-     *      description="not found"
-     *   ),
-     *)
-     *
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return CategoryResourceCollection
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     * @throws \Exception
-     */
-    public function show(int $id)
-    {
-        return new CategoryResourceCollection(["data" => app()->make(CategoryRepositoryInterface::class)
-            ->getByPackageId($id)]);
-    }
-
     /**
      * @OA\Put(
      *  path="/api/v1/packages/{packageId}/categories",

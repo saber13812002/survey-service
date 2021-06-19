@@ -35,6 +35,10 @@ class PackageResource extends BasicResource
 
             'created_at' => $resource->created_at,
             'updated_at' => $resource->updated_at,
+
+            'tags' => $resource->tags,
+            'categories' => $resource->categories,
+            'campaigns' => $resource->campaigns,
         ];
     }
 }

@@ -19,7 +19,7 @@ class CategoryRepository implements \App\Interfaces\Repositories\CategoryReposit
 
     public function show(int $id)
     {
-        return Category::query()->findOrFail($id);
+        return Category::with('packages')->findOrFail($id);
     }
 
     public function store(array $data): Category

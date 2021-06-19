@@ -16,7 +16,7 @@ class TagRepository implements \App\Interfaces\Repositories\TagRepositoryInterfa
 
     public function show(int $id)
     {
-        return Tag::query()->findOrFail($id);
+        return Tag::with('packages')->findOrFail($id);
     }
 
     public function store(array $data): Tag

@@ -67,16 +67,16 @@ Route::group([
             Route::delete('/packages/{id}', [Controllers\v1\PackageController::class, 'destroy'])->name('package.destroy');
 
             // category to package
-            Route::put('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'connect'])->name('connect.category.to.package');
-            Route::delete('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'disconnect'])->name('disconnect.category.from.package');
+            Route::put('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'connect'])->name('connect.categories.to.package');
+            Route::delete('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'disconnect'])->name('disconnect.categories.from.package');
 
             // campaign to package
-            Route::put('packages/{packageId}/campaigns', [Controllers\v1\CampanileController::class, 'connect'])->name('connect.campaign.to.package');
-            Route::delete('packages/{packageId}/campaigns', [Controllers\v1\CampanileController::class, 'disconnect'])->name('disconnect.campaign.from.package');
+            Route::put('packages/{packageId}/campaigns', [Controllers\v1\CampanileController::class, 'connect'])->name('connect.campaigns.to.package');
+            Route::delete('packages/{packageId}/campaigns', [Controllers\v1\CampanileController::class, 'disconnect'])->name('disconnect.campaigns.from.package');
 
             // tag to package
-            Route::put('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'connect'])->name('connect.tag.to.package');
-            Route::delete('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'disconnect'])->name('disconnect.tag.from.package');
+            Route::put('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'connect'])->name('connect.tags.to.package');
+            Route::delete('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'disconnect'])->name('disconnect.tags.from.package');
 
             // package question
             Route::get('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'getByPackageId'])->name('package.question.index');
