@@ -74,7 +74,6 @@ class ChoicesStoreRequest extends BasicRequest
     public function rules()
     {
         return [
-//            'choices' => 'array|required',
             'create' => 'array|required',
             'create.*.title' => 'string|required',
         ];

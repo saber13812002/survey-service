@@ -55,6 +55,7 @@ class PackageQuestionController extends Controller
      * Display a listing of the resource.
      *
      * @return PackageQuestionResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getByPackageId(int $packageId)
     {
