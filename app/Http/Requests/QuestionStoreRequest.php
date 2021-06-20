@@ -26,7 +26,7 @@ class QuestionStoreRequest extends BasicRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return false;
     }
@@ -36,7 +36,7 @@ class QuestionStoreRequest extends BasicRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             //

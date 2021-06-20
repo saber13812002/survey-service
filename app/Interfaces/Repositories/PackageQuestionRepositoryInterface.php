@@ -27,15 +27,17 @@ interface PackageQuestionRepositoryInterface
 
     /**
      * @param array $data
+     * @param int $packageId
      * @return mixed
      */
     public function store(array $data, int $packageId);
 
     /**
      * @param array $data
+     * @param int $packageId
      * @return mixed
      */
-    public function storeBulk(array $data);
+    public function updateBulk(array $data, int $packageId);
 
     /**
      * @param int $id

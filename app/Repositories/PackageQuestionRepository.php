@@ -4,12 +4,16 @@
 namespace App\Repositories;
 
 
+use App\Helpers\BulkActions\PackageQuestionHelper;
+use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
+use App\Models\Package;
 use App\Models\PackageQuestion;
+use \Illuminate\Contracts\Pagination\Paginator;
 
-class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQuestionRepositoryInterface
+class PackageQuestionRepository implements PackageQuestionRepositoryInterface
 {
 
-    public function getByPackageId(int $packageId): \Illuminate\Contracts\Pagination\Paginator
+    public function getByPackageId(int $packageId): Paginator
     {
         return PackageQuestion::query()->where('package_id', $packageId)->orderBy('order')->simplePaginate();
     }
@@ -39,9 +43,11 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
     /**
      * @inheritDoc
      */
-    public function storeBulk(array $data)
+    public function updateBulk(array $data, int $packageId)
     {
-        // TODO: Implement storeBulk() method.
+        $packageItem = Package::query()->findOrFail($packageId);
+        PackageQuestionHelper::manage($data, $packageItem);
+        return $packageItem;
     }
 
     public function update(int $id, array $data)

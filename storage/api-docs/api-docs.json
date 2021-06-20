@@ -1471,7 +1471,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/ChoicesStoreRequest"
+                                "$ref": "#/components/schemas/ChoiceBulkStoreRequest"
                             }
                         }
                     }
@@ -1696,6 +1696,58 @@
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/QuestionStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/questions/bulk": {
+            "post": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "post all questions by package id for create update or delete",
+                "operationId": "postArrayOfQuestionsByPackageIdToUpdateDeleteOrCreate",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of item",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuestionBulkStoreRequest"
                             }
                         }
                     }
@@ -2282,22 +2334,8 @@
                     "title": "YOUR TITLE OF ..."
                 }
             },
-            "ChoiceStoreRequest": {
-                "title": "ChoiceStoreRequest",
-                "description": "Choices Store Request body data",
-                "required": [
-                    "title"
-                ],
-                "type": "object",
-                "example": {
-                    "title": "YOUR TITLE OF ...2",
-                    "weight": 2,
-                    "is_active": 1,
-                    "order": 1
-                }
-            },
-            "ChoicesStoreRequest": {
-                "title": "ChoicesStoreRequest",
+            "ChoiceBulkStoreRequest": {
+                "title": "ChoiceBulkStoreRequest",
                 "description": "Choices Store Request body data",
                 "type": "object",
                 "example": {
@@ -2339,6 +2377,20 @@
                         13,
                         16
                     ]
+                }
+            },
+            "ChoiceStoreRequest": {
+                "title": "ChoiceStoreRequest",
+                "description": "Choices Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ...2",
+                    "weight": 2,
+                    "is_active": 1,
+                    "order": 1
                 }
             },
             "ConnectCampaignsIntoPackageRequest": {
@@ -2406,7 +2458,7 @@
                 }
             },
             "DisconnectCategoriesIntoPackageRequest": {
-                "title": "ConnectCategoriesIntoPackageRequest",
+                "title": "DisconnectCategoriesIntoPackageRequest",
                 "description": "Connect Categories Into Package Request",
                 "required": [
                     "categories"
@@ -2469,6 +2521,51 @@
                     "finished_at": "2021-06-02T14:48:37",
                     "is_active": 1,
                     "is_deletable": 1
+                }
+            },
+            "QuestionBulkStoreRequest": {
+                "title": "QuestionBulkStoreRequest",
+                "description": "Question Store Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "Question Example 1 ...",
+                            "order": 1
+                        },
+                        {
+                            "title": "Question Example 2 ...",
+                            "order": 2
+                        },
+                        {
+                            "title": "Question Example 3 ...",
+                            "order": 3
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "Question EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 1
+                        },
+                        {
+                            "id": 19,
+                            "title": "Question EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 2
+                        },
+                        {
+                            "id": 20,
+                            "title": "Question EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 3
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
                 }
             },
             "QuestionStoreRequest": {

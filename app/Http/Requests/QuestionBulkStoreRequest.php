@@ -6,41 +6,41 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="ChoicesStoreRequest",
- *      description="Choices Store Request body data",
+ *      title="QuestionBulkStoreRequest",
+ *      description="Question Store Request body data",
  *      type="object",
  *     example={
  *              "create": {
  *                  {
- *                      "title":"FOR EXAMPLE ...",
+ *                      "title":"Question Example 1 ...",
  *                      "order": 1
  *                  },
  *                  {
- *                      "title":"FOR EXAMPLE ...",
- *                      "order": 1
+ *                      "title":"Question Example 2 ...",
+ *                      "order": 2
  *                  },
  *                  {
- *                      "title":"FOR EXAMPLE ...",
- *                      "order": 1
+ *                      "title":"Question Example 3 ...",
+ *                      "order": 3
  *                  }
  *              },
  *
  *              "update": {
  *                  {
  *                      "id":18,
- *                      "title":"FOR EXAMPLE ...",
+ *                      "title":"Question EXAMPLE ...",
  *                      "is_active": 1,
  *                      "order": 1
  *                  },
  *                  {
  *                      "id":19,
- *                      "title":"FOR EXAMPLE ...",
+ *                      "title":"Question EXAMPLE ...",
  *                      "is_active": 1,
  *                      "order": 2
  *                  },
  *                  {
  *                      "id":20,
- *                      "title":"FOR EXAMPLE ...",
+ *                      "title":"Question EXAMPLE ...",
  *                      "is_active": 1,
  *                      "order": 3
  *                  }
@@ -54,7 +54,7 @@ use Behamin\BResources\Requests\BasicRequest;
  * )
  */
 
-class ChoicesStoreRequest extends BasicRequest
+class QuestionBulkStoreRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.

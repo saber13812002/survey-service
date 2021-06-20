@@ -4,10 +4,10 @@ namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageQuestionRequest;
+use App\Http\Requests\QuestionBulkStoreRequest;
 use App\Http\Resources\PackageQuestionResource;
 use App\Http\Resources\PackageQuestionResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
-use Illuminate\Http\Request;
 
 class PackageQuestionController extends Controller
 {
@@ -122,6 +122,67 @@ class PackageQuestionController extends Controller
     {
         return new PackageQuestionResource(["data" => app()->make(PackageQuestionRepositoryInterface::class)
             ->store($request->all(), $packageId)]);
+    }
+
+    /**
+     * @OA\Post(
+     *  path="/api/v1/packages/{packageId}/questions/bulk",
+     *  operationId="postArrayOfQuestionsByPackageIdToUpdateDeleteOrCreate",
+     *  summary="post all questions by package id for create update or delete",
+     *  tags={"Questions"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of item",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/QuestionBulkStoreRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param QuestionBulkStoreRequest $request
+     * @param int $packageId
+     * @return PackageQuestionResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function updateBulk(QuestionBulkStoreRequest $request, int $packageId): PackageQuestionResource
+    {
+        return new PackageQuestionResource(["data" => app()->make(PackageQuestionRepositoryInterface::class)
+            ->updateBulk($request->all(), $packageId)]);
     }
 
     /**

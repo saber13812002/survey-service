@@ -8,10 +8,10 @@ interface PackageQuestionChoiceRepositoryInterface
 {
 
     /**
-     * @param int $packageId
+     * @param int $questionId
      * @return mixed
      */
-    public function getByQuestionId(int $packageId);
+    public function getByQuestionId(int $questionId);
 
     /**
      * @param int $id
@@ -31,7 +31,7 @@ interface PackageQuestionChoiceRepositoryInterface
      * @param int $questionId
      * @return mixed
      */
-    public function storeBulk(array $data, int $questionId);
+    public function updateBulk(array $data, int $questionId);
 
     /**
      * @param int $id

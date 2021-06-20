@@ -81,6 +81,7 @@ Route::group([
             // package question
             Route::get('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'getByPackageId'])->name('package.question.index');
             Route::post('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'store'])->name('package.question.store');
+            Route::post('/packages/{id}/questions/bulk', [Controllers\v1\PackageQuestionController::class, 'updateBulk'])->name('package.question.store.bulk');
             // question
             Route::get('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'show'])->name('package.question.show');
             Route::put('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'update'])->name('package.question.update');
@@ -89,7 +90,7 @@ Route::group([
             // question choice
             Route::get('/questions/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'getByQuestionId'])->name('package.question.choice.index');
             Route::post('/questions/{id}/choices', [Controllers\v1\PackageQuestionChoiceController::class, 'store'])->name('package.question.choice.store');
-            Route::post('/questions/{id}/choices/bulk', [Controllers\v1\PackageQuestionChoiceController::class, 'storeBulk'])->name('package.question.choice.store.bulk');
+            Route::post('/questions/{id}/choices/bulk', [Controllers\v1\PackageQuestionChoiceController::class, 'updateBulk'])->name('package.question.choice.store.bulk');
             // question
             Route::get('/choices/{id}', [Controllers\v1\PackageQuestionChoiceController::class, 'show'])->name('package.question.choice.show');
             Route::put('/choices/{id}', [Controllers\v1\PackageQuestionChoiceController::class, 'update'])->name('package.question.choice.update');

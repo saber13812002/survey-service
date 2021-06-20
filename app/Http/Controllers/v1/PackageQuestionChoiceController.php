@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ChoicesStoreRequest;
+use App\Http\Requests\ChoiceBulkStoreRequest;
 use App\Http\Resources\PackageQuestionChoiceResource;
 use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
@@ -54,12 +54,11 @@ class PackageQuestionChoiceController extends Controller
      *)
      * Display a listing of the resource.
      *
-     * @param Request $request
      * @param int $packageQuestionId
      * @return PackageQuestionChoiceResourceCollection
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function getByQuestionId(Request $request, int $packageQuestionId): PackageQuestionChoiceResourceCollection
+    public function getByQuestionId(int $packageQuestionId): PackageQuestionChoiceResourceCollection
     {
         return new PackageQuestionChoiceResourceCollection(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
             ->getByQuestionId($packageQuestionId)]);
@@ -157,7 +156,7 @@ class PackageQuestionChoiceController extends Controller
      *
      *   @OA\RequestBody(
      *       required=true,
-     *       @OA\JsonContent(ref="#/components/schemas/ChoicesStoreRequest")
+     *       @OA\JsonContent(ref="#/components/schemas/ChoiceBulkStoreRequest")
      *   ),
      *
      *   @OA\Response(
@@ -176,15 +175,15 @@ class PackageQuestionChoiceController extends Controller
      *
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ChoiceBulkStoreRequest $request
      * @param int $questionId
      * @return PackageQuestionChoiceResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function storeBulk(ChoicesStoreRequest $request, int $questionId): PackageQuestionChoiceResource
+    public function updateBulk(ChoiceBulkStoreRequest $request, int $questionId): PackageQuestionChoiceResource
     {
         return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->storeBulk($request->all(), $questionId)]);
+            ->updateBulk($request->all(), $questionId)]);
     }
 
     /**
@@ -235,7 +234,7 @@ class PackageQuestionChoiceController extends Controller
     * @return PackageQuestionChoiceResource
     * @throws \Illuminate\Contracts\Container\BindingResolutionException
     */
-    public function show(int $id)
+    public function show(int $id): PackageQuestionChoiceResource
     {
         return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
             ->show($id)]);
