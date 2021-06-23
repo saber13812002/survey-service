@@ -4,9 +4,11 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\CategoryFilter;
+
 interface CategoryRepositoryInterface
 {
-    public function index();
+    public function index(CategoryFilter $filters);
 
     public function show(int $id);
 
