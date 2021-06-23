@@ -51,9 +51,6 @@ class TagController extends Controller
         list($items, $count) = app()->make(TagRepositoryInterface::class)
             ->index($filters);
         return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
-
-//        return new TagResource(["data" => app()->make(TagRepositoryInterface::class)
-//            ->index()]);
     }
 
     /**
