@@ -61,7 +61,7 @@ class QuestionBulkStoreRequest extends BasicRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -71,7 +71,7 @@ class QuestionBulkStoreRequest extends BasicRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'create' => 'array|required',

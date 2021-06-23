@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Categorizable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -22,7 +23,7 @@ class CategoryTest extends TestCase
 
     public function testCategory()
     {
-        \App\Models\Categorizable::factory(1)->create();
+        Categorizable::factory(1)->create();
         $this->assertDatabaseHas('categorizables', [
             'categorizable_type' => 'App\Models\Package'
         ]);
