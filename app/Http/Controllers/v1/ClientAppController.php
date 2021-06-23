@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\ClientAppFilter;
 use App\Http\Resources\ClientAppResource;
-use App\Http\Resources\ClientAppResourceCollection;
 use App\Interfaces\Repositories\ClientAppRepositoryInterface;
-use App\Models\ClientApp;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class ClientAppController extends Controller
@@ -42,12 +42,14 @@ class ClientAppController extends Controller
      *)
      * Display a listing of the resource.
      *
-     * @return ClientAppResourceCollection
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(ClientAppFilter $filters)
     {
-        return new ClientAppResourceCollection(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->index()]);
+        list($items, $count) = app()->make(ClientAppRepositoryInterface::class)
+            ->index($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**
@@ -92,7 +94,7 @@ class ClientAppController extends Controller
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function store(Request $request)
+    public function store(Request $request): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
             ->store($request->all())]);
@@ -210,7 +212,7 @@ class ClientAppController extends Controller
     public function update(Request $request, int $id): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->update($id,$request->all())]);
+            ->update($id, $request->all())]);
     }
 
     /**

@@ -4,9 +4,11 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\ClientAppFilter;
+
 interface ClientAppRepositoryInterface
 {
-    public function index();
+    public function index(ClientAppFilter $filters);
 
     public function show(int $id);
 
