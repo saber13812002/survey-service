@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AnswerTypeResource;
 use App\Models\AnswerType;
+use Behamin\BResources\Resources\BasicResourceCollection;
+use BFilters\Filter;
 
 class AnswerTypeController extends Controller
 {
