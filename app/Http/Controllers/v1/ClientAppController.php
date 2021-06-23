@@ -90,7 +90,7 @@ class ClientAppController extends Controller
      *
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
@@ -204,7 +204,7 @@ class ClientAppController extends Controller
      *
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
