@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,6 +14,7 @@ class Package extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
     /**
      * The attributes that are mass assignable.
