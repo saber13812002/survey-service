@@ -16,7 +16,7 @@ class PackageQuestionReportResource extends BasicResource
     public function getArray($resource)
     {
         $choicesStatistics = app()->make(PackageAnswerRepositoryInterface::class)
-            ->getbyPackageIdAndQuestionId($resource->package_id, $resource->id);
+            ->getByPackageIdAndQuestionId($resource->package_id, $resource->id);
 
         $choices = app()->make(PackageQuestionChoiceRepositoryInterface::class)
             ->getByQuestionId($resource->id);
