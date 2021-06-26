@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\PackageQuestionFilter;
 use App\Http\Requests\PackageQuestionRequest;
 use App\Http\Requests\QuestionBulkStoreRequest;
 use App\Http\Resources\PackageQuestionResource;
-use App\Http\Resources\PackageQuestionResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
+use Behamin\BResources\Resources\BasicResourceCollection;
 
 class PackageQuestionController extends Controller
 {
@@ -54,13 +55,14 @@ class PackageQuestionController extends Controller
      *)
      * Display a listing of the resource.
      *
-     * @return PackageQuestionResource
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function getByPackageId(int $packageId)
+    public function getByPackageId(PackageQuestionFilter $filters, int $packageId)
     {
-        return new PackageQuestionResourceCollection(["data" => app()->make(PackageQuestionRepositoryInterface::class)
-            ->getByPackageId($packageId)]);
+        list($items, $count) = app()->make(PackageQuestionRepositoryInterface::class)
+            ->getByPackageId($filters, $packageId);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**
@@ -301,53 +303,53 @@ class PackageQuestionController extends Controller
     }
 
     /**
-    * @OA\Delete(
-    *  path="/api/v1/questions/{questionId}",
-    *  operationId="removeAnItemById",
-    *  summary="remove and app by id",
-    *  tags={"Questions"},
-    *
-    *  @OA\Parameter(
-    *       name="X-Proxy-Token",
-    *       required=true,
-    *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
-    *       @OA\Schema(
-    *           type="string"
-    *       )
-    *   ),
-    *
-    *  @OA\Parameter(
-    *       description="ID of question",
-    *       name="questionId",
-    *       required=true,
-    *       in="path",
-    *       example="1",
-    *       @OA\Schema(
-    *           type="integer",
-    *           format="int64"
-    *       )
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=200,
-    *       description="Success",
-    *      @OA\MediaType(
-    *           mediaType="application/json",
-    *      )
-    *   ),
-    *   @OA\Response(
-    *      response=404,
-    *      description="not found"
-    *   ),
-    *)
-    *
-    * Remove the specified resource from storage.
-    *
-    * @param int $id
-    * @return PackageQuestionResource
-    * @throws \Illuminate\Contracts\Container\BindingResolutionException
-    */
+     * @OA\Delete(
+     *  path="/api/v1/questions/{questionId}",
+     *  operationId="removeAnItemById",
+     *  summary="remove and app by id",
+     *  tags={"Questions"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of question",
+     *       name="questionId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return PackageQuestionResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function destroy(int $id): PackageQuestionResource
     {
         return new PackageQuestionResource(["data" => app()->make(PackageQuestionRepositoryInterface::class)
