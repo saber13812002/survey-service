@@ -4,8 +4,16 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\PackageQuestionChoiceFilter;
+
 interface PackageQuestionChoiceRepositoryInterface
 {
+
+    /**
+     * @param int $questionId
+     * @return mixed
+     */
+    public function index(PackageQuestionChoiceFilter $filters, int $questionId);
 
     /**
      * @param int $questionId

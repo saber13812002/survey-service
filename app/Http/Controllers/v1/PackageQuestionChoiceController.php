@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\PackageQuestionChoiceFilter;
 use App\Http\Requests\ChoiceBulkStoreRequest;
 use App\Http\Resources\PackageQuestionChoiceResource;
 use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class PackageQuestionChoiceController extends Controller
@@ -55,13 +57,14 @@ class PackageQuestionChoiceController extends Controller
      * Display a listing of the resource.
      *
      * @param int $packageQuestionId
-     * @return PackageQuestionChoiceResourceCollection
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function getByQuestionId(int $packageQuestionId): PackageQuestionChoiceResourceCollection
-    {
-        return new PackageQuestionChoiceResourceCollection(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->getByQuestionId($packageQuestionId)]);
+    public function index(PackageQuestionChoiceFilter $filters, int $packageQuestionId)
+    {        list($items, $count) = app()->make(PackageQuestionChoiceRepositoryInterface::class)
+        ->index($filters, $packageQuestionId);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
+
     }
 
     /**
