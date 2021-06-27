@@ -21,6 +21,7 @@ class PackageQuestionChoice extends Model
     protected $fillable = [
         'title',
         'description',
+
         'question_id',
         'order',
         'weight',

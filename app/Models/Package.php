@@ -26,6 +26,7 @@ class Package extends Model
         'description',
 
         'client_app_id',
+        'parent_id',
 
         'packable_id',
         'packable_type',

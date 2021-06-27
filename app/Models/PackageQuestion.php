@@ -30,6 +30,9 @@ class PackageQuestion extends Model
         'order',
         'weight',
         'is_active',
+
+        'source_id',
+        'event_ids',
     ];
 
 

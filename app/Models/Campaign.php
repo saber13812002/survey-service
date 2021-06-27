@@ -19,7 +19,16 @@ class Campaign extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'client_app_id'
+        'title',
+        'description',
+
+        'client_app_id',
+        'parent_id',
+
+        'started_at',
+        'finished_at',
+
+        'is_active',
     ];
 
     /**
