@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class Tag extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +19,8 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description'
+        'title',
+        'description',
     ];
 
     /**

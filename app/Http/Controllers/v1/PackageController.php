@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\PackageFilter;
 use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
+use Behamin\BResources\Resources\BasicResourceCollection;
 
 class PackageController extends Controller
 {
@@ -39,10 +41,11 @@ class PackageController extends Controller
      *   ),
      *)
      */
-    public function index(): PackageResource
+    public function index(PackageFilter $filters)
     {
-        return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->index()]);
+        list($items, $count) = app()->make(PackageRepositoryInterface::class)
+            ->index($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**
@@ -104,47 +107,47 @@ class PackageController extends Controller
     }
 
     /**
-         * @OA\Get(
-         *  path="/api/v1/packages/{packageId}",
-         *  operationId="getPackageItemById",
-         *  summary="get package item by id",
-         *  tags={"Packages"},
-         *
-         *  @OA\Parameter(
-         *       name="X-Proxy-Token",
-         *       required=true,
-         *       in="header",
-         *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
-         *       @OA\Schema(
-         *           type="string"
-         *       )
-         *   ),
-         *
-         *  @OA\Parameter(
-         *       description="ID of package",
-         *       name="packageId",
-         *       required=true,
-         *       in="path",
-         *       example="1",
-         *       @OA\Schema(
-         *           type="integer",
-         *           format="int64"
-         *       )
-         *   ),
-         *
-         *   @OA\Response(
-         *      response=200,
-         *       description="Success",
-         *      @OA\MediaType(
-         *           mediaType="application/json",
-         *      )
-         *   ),
-         *   @OA\Response(
-         *      response=404,
-         *      description="not found"
-         *   ),
-         *)
-         *
+     * @OA\Get(
+     *  path="/api/v1/packages/{packageId}",
+     *  operationId="getPackageItemById",
+     *  summary="get package item by id",
+     *  tags={"Packages"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
      * Display the specified resource.
      *
      * @param int $id
@@ -158,60 +161,60 @@ class PackageController extends Controller
     }
 
     /**
-    * @OA\Put(
-    *  path="/api/v1/packages/{packageId}",
-    *  operationId="updatepackageItemById",
-    *  summary="update package item by id",
-    *  tags={"Packages"},
-    *
-    *  @OA\Parameter(
-    *       name="X-Proxy-Token",
-    *       required=true,
-    *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
-    *       @OA\Schema(
-    *           type="string"
-    *       )
-    *   ),
-    *
-    *  @OA\Parameter(
-    *       description="ID of package",
-    *       name="packageId",
-    *       required=true,
-    *       in="path",
-    *       example="1",
-    *       @OA\Schema(
-    *           type="integer",
-    *           format="int64"
-    *       )
-    *   ),
-    *
-    *   @OA\RequestBody(
-    *       required=true,
-    *       @OA\JsonContent(ref="#/components/schemas/PackageRequest")
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=200,
-    *       description="Success",
-    *      @OA\MediaType(
-    *           mediaType="application/json",
-    *      )
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=404,
-    *      description="not found"
-    *   ),
-    *)
-    *
-    * Update the specified resource in storage.
-    *
-    * @param PackageRequest $request
-    * @param int $id
-    * @return PackageResource
-    * @throws \Illuminate\Contracts\Container\BindingResolutionException
-    */
+     * @OA\Put(
+     *  path="/api/v1/packages/{packageId}",
+     *  operationId="updatepackageItemById",
+     *  summary="update package item by id",
+     *  tags={"Packages"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/PackageRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Update the specified resource in storage.
+     *
+     * @param PackageRequest $request
+     * @param int $id
+     * @return PackageResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function update(PackageRequest $request, int $id): PackageResource
     {
         return new PackageResource(["data" => app()->make(PackageRepositoryInterface::class)
@@ -219,47 +222,47 @@ class PackageController extends Controller
     }
 
     /**
-         * @OA\Delete(
-         *  path="/api/v1/packages/{packageId}",
-         *  operationId="removeAnItemById",
-         *  summary="remove and app by id",
-         *  tags={"Packages"},
-         *
-         *  @OA\Parameter(
-         *       name="X-Proxy-Token",
-         *       required=true,
-         *       in="header",
-         *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
-         *       @OA\Schema(
-         *           type="string"
-         *       )
-         *   ),
-         *
-         *  @OA\Parameter(
-         *       description="ID of package",
-         *       name="packageId",
-         *       required=true,
-         *       in="path",
-         *       example="1",
-         *       @OA\Schema(
-         *           type="integer",
-         *           format="int64"
-         *       )
-         *   ),
-         *
-         *   @OA\Response(
-         *      response=200,
-         *       description="Success",
-         *      @OA\MediaType(
-         *           mediaType="application/json",
-         *      )
-         *   ),
-         *   @OA\Response(
-         *      response=404,
-         *      description="not found"
-         *   ),
-         *)
-         *
+     * @OA\Delete(
+     *  path="/api/v1/packages/{packageId}",
+     *  operationId="removeAnItemById",
+     *  summary="remove and app by id",
+     *  tags={"Packages"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
      * Remove the specified resource from storage.
      *
      * @param int $id

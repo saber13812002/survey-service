@@ -4,16 +4,18 @@
 namespace App\Repositories;
 
 
+use App\Http\Filters\PackageFilter;
 use App\Models\Package;
 use App\Models\PackageType;
+use BFilters\Filter;
 use Illuminate\Http\Request;
 
 class PackageRepository implements \App\Interfaces\Repositories\PackageRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function index(PackageFilter $filters)
     {
-        return Package::query()->simplePaginate();
+        return Package::filter($filters);
     }
 
     public function show(int $id)

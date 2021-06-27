@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class PackageQuestionChoice extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +21,7 @@ class PackageQuestionChoice extends Model
     protected $fillable = [
         'title',
         'description',
+
         'question_id',
         'order',
         'weight',

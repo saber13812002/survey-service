@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\TagFilter;
 use App\Http\Resources\TagResource;
 use App\Interfaces\Repositories\TagRepositoryInterface;
 use App\Models\Tag;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -41,13 +43,14 @@ class TagController extends Controller
     *)
     * Display a listing of the resource.
     *
-    * @return TagResource
+    * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
     * @throws \Illuminate\Contracts\Container\BindingResolutionException
     */
-    public function index(): TagResource
+    public function index(TagFilter $filters)
     {
-        return new TagResource(["data" => app()->make(TagRepositoryInterface::class)
-            ->index()]);
+        list($items, $count) = app()->make(TagRepositoryInterface::class)
+            ->index($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**

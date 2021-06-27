@@ -4,6 +4,8 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\PackageQuestionFilter;
+
 interface PackageQuestionRepositoryInterface
 {
 
@@ -11,7 +13,7 @@ interface PackageQuestionRepositoryInterface
      * @param int $packageId
      * @return mixed
      */
-    public function getByPackageId(int $packageId);
+    public function getByPackageId(PackageQuestionFilter $filters, int $packageId);
 
     /**
      * @param int $packageId

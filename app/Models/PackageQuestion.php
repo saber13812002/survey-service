@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class PackageQuestion extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +30,9 @@ class PackageQuestion extends Model
         'order',
         'weight',
         'is_active',
+
+        'source_id',
+        'event_ids',
     ];
 
 

@@ -4,14 +4,14 @@
 namespace App\Interfaces\Repositories;
 
 
-use Illuminate\Http\Request;
+use App\Http\Filters\PackageFilter;
 
 interface PackageRepositoryInterface
 {
     /**
      * @return mixed
      */
-    public function index();
+    public function index(PackageFilter $filters);
 
     /**
      * @param int $id

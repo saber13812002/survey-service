@@ -5,17 +5,20 @@ namespace App\Repositories;
 
 
 use App\Helpers\BulkActions\PackageQuestionHelper;
+use App\Http\Filters\PackageQuestionFilter;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
 use App\Models\Package;
 use App\Models\PackageQuestion;
-use \Illuminate\Contracts\Pagination\Paginator;
 
 class PackageQuestionRepository implements PackageQuestionRepositoryInterface
 {
 
-    public function getByPackageId(int $packageId): Paginator
+    public function getByPackageId(PackageQuestionFilter $filters, int $packageId)
     {
-        return PackageQuestion::query()->where('package_id', $packageId)->orderBy('order')->simplePaginate();
+        return PackageQuestion::query()
+            ->where('package_id', $packageId)
+            ->orderBy('order')
+            ->filter($filters);
     }
 
     public function getReportByPackageId(int $packageId)

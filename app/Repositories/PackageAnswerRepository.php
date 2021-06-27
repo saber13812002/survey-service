@@ -4,16 +4,18 @@
 namespace App\Repositories;
 
 
+use App\Http\Filters\PackageAnswerFilter;
 use App\Models\PackageAnswer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAnswerRepositoryInterface
 {
 
-    public function index(Request $request, int $packageId): \Illuminate\Contracts\Pagination\Paginator
+    public function index(PackageAnswerFilter $filters, int $packageId)
     {
-        return PackageAnswer::query()->where('package_id', $packageId)->simplePaginate();
+        return PackageAnswer::query()
+            ->where('package_id', $packageId)
+            ->filter($filters);
     }
 
     public function show(int $id)
@@ -23,7 +25,9 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
 
     public function getByQuestionId(int $questionId): \Illuminate\Contracts\Pagination\Paginator
     {
-        return PackageAnswer::query()->where('question_id', $questionId)->simplePaginate();
+        return PackageAnswer::query()
+            ->where('question_id', $questionId)
+            ->simplePaginate();
     }
 
     public function store(array $data): PackageAnswer
@@ -49,7 +53,7 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
     }
 
 
-    public function getbyPackageIdAndQuestionId(int $packageId, int $questionId)
+    public function getByPackageIdAndQuestionId(int $packageId, int $questionId)
     {
         return PackageAnswer::query()
             ->where('package_id', $packageId)

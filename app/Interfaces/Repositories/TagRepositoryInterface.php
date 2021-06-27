@@ -4,9 +4,11 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\TagFilter;
+
 interface TagRepositoryInterface
 {
-    public function index();
+    public function index(TagFilter $filters);
 
     public function show(int $id);
 

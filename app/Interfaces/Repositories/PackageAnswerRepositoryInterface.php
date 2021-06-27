@@ -4,11 +4,11 @@
 namespace App\Interfaces\Repositories;
 
 
-use Illuminate\Http\Request;
+use App\Http\Filters\PackageAnswerFilter;
 
 interface PackageAnswerRepositoryInterface
 {
-    public function index(Request $request, int $packageId);
+    public function index(PackageAnswerFilter $filters, int $packageId);
 
     public function show(int $id);
 
@@ -20,5 +20,5 @@ interface PackageAnswerRepositoryInterface
 
     public function destroy(int $id);
 
-    public function getbyPackageIdAndQuestionId(int $packageId, int $questionId);
+    public function getByPackageIdAndQuestionId(int $packageId, int $questionId);
 }

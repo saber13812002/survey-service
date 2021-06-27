@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Helpers\BulkActions\PackageQuestionChoiceHelper;
+use App\Http\Filters\PackageQuestionChoiceFilter;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
 use App\Models\PackageQuestion;
 use App\Models\PackageQuestionChoice;
@@ -15,9 +16,24 @@ class PackageQuestionChoiceRepository implements PackageQuestionChoiceRepository
     /**
      * @inheritDoc
      */
+    public function index(PackageQuestionChoiceFilter $filters, int $questionId)
+    {
+        return PackageQuestionChoice::query()
+            ->where('question_id', $questionId)
+            ->orderBy('order')
+            ->filter($filters);
+    }
+
+
+    /**
+     * @inheritDoc
+     */
     public function getByQuestionId(int $questionId)
     {
-        return PackageQuestionChoice::query()->where('question_id', $questionId)->orderBy('order')->simplePaginate();
+        return PackageQuestionChoice::query()
+            ->where('question_id', $questionId)
+            ->orderBy('order')
+            ->simplePaginate();
     }
 
     /**

@@ -4,14 +4,16 @@
 namespace App\Repositories;
 
 
+use App\Http\Filters\ClientAppFilter;
 use App\Models\ClientApp;
+use BFilters\Filter;
 
 class ClientAppRepository implements \App\Interfaces\Repositories\ClientAppRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function index(ClientAppFilter $filters)
     {
-        return ClientApp::query()->simplePaginate();
+        return ClientApp::filter($filters);
     }
 
     public function show(int $id)

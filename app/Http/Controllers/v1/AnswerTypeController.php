@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AnswerTypeResource;
 use App\Models\AnswerType;
+use Behamin\BResources\Resources\BasicResourceCollection;
+use BFilters\Filter;
 
 class AnswerTypeController extends Controller
 {
@@ -39,11 +40,12 @@ class AnswerTypeController extends Controller
      *)
      * Display a listing of the answer type resource.
      *
-     * @return AnswerTypeResource
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Filter $filters)
     {
-        return new AnswerTypeResource(["data" => AnswerType::query()->get()]);
+        list($items, $count) = AnswerType::filter($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
 }
