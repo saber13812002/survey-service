@@ -23,9 +23,9 @@ class Campaign extends Model
     ];
 
     /**
-     * Get all of the packages that are assigned this tag.
+     * Get all of the packages that are assigned this campaign.
      */
-    public function campaigns(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    public function packages(): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
         return $this->morphedByMany(Package::class, 'campanile');
     }
