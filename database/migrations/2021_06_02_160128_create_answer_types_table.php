@@ -17,6 +17,8 @@ class CreateAnswerTypesTable extends Migration
             $table->id();
 
             $table->string('title');
+            $table->string('alias');
+            $table->boolean('is_active')->default(0);
 
             $table->timestamps();
         });

@@ -44,7 +44,7 @@ class AnswerTypeController extends Controller
      */
     public function index(Filter $filters)
     {
-        list($items, $count) = AnswerType::filter($filters);
+        list($items, $count) = AnswerType::where('is_active', 1)->filter($filters);
         return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
