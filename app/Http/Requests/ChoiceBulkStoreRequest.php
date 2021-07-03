@@ -74,8 +74,8 @@ class ChoiceBulkStoreRequest extends BasicRequest
     public function rules(): array
     {
         return [
-            'create' => 'array|required',
-            'create.*.title' => 'string|required',
+            'create' => 'array',
+            'create.*.title' => 'string',
         ];
     }
 }
