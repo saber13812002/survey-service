@@ -78,7 +78,7 @@ class QuestionBulkStoreRequest extends BasicRequest
             'create.*.title' => 'string',
 
             'update' => 'array',
-            'update.*.id' => 'string',
+            'update.*.id' => 'numeric',
         ];
     }
 }
