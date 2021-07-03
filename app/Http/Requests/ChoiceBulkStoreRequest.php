@@ -76,6 +76,9 @@ class ChoiceBulkStoreRequest extends BasicRequest
         return [
             'create' => 'array',
             'create.*.title' => 'string',
+
+            'update' => 'array',
+            'update.*.id' => 'string',
         ];
     }
 }
