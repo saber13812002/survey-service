@@ -28,12 +28,12 @@ class PackageQuestionChoiceRepository implements PackageQuestionChoiceRepository
     /**
      * @inheritDoc
      */
-    public function getByQuestionId(int $questionId)
+    public function getByQuestionId(PackageQuestionChoiceFilter $filters, int $questionId)
     {
         return PackageQuestionChoice::query()
             ->where('question_id', $questionId)
             ->orderBy('order')
-            ->simplePaginate();
+            ->filter($filters);
     }
 
     /**

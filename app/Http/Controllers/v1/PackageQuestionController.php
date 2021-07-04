@@ -62,7 +62,7 @@ class PackageQuestionController extends Controller
     {
         list($items, $count) = app()->make(PackageQuestionRepositoryInterface::class)
             ->getByPackageId($filters, $packageId);
-        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
+        return response(new PackageQuestionReportResource(['data' => $items->get(), 'count' => $count]));
     }
 
     /**

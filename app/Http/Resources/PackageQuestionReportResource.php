@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Filters\PackageQuestionChoiceFilter;
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
 use Behamin\BResources\Resources\BasicResource;
+use Illuminate\Http\Request;
 
 class PackageQuestionReportResource extends BasicResource
 {
@@ -13,13 +15,19 @@ class PackageQuestionReportResource extends BasicResource
         parent::__construct($resource, $transform);
     }
 
+    /**
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \JsonException
+     */
     public function getArray($resource)
     {
         $choicesStatistics = app()->make(PackageAnswerRepositoryInterface::class)
             ->getByPackageIdAndQuestionId($resource->package_id, $resource->id);
 
-        $choices = app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->getByQuestionId($resource->id);
+        list($items, $count) = app()->make(PackageQuestionChoiceRepositoryInterface::class)
+            ->getByQuestionId(new PackageQuestionChoiceFilter(new Request()), $resource->id);
+
+        $choices = new PackageQuestionChoiceResourceCollection(["data" => $items->get(), 'count' => $count]);
 
         return [
             'id' => $resource->id,

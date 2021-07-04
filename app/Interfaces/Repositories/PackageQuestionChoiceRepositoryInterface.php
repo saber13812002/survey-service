@@ -19,7 +19,7 @@ interface PackageQuestionChoiceRepositoryInterface
      * @param int $questionId
      * @return mixed
      */
-    public function getByQuestionId(int $questionId);
+    public function getByQuestionId(PackageQuestionChoiceFilter $filters, int $questionId);
 
     /**
      * @param int $id
