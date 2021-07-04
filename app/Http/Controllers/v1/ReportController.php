@@ -80,12 +80,14 @@ class ReportController extends Controller
 
         $created_at_max = PackageAnswer::query()
             ->where('package_id', $packageId)
+            ->whereNotNull('created_at')
             ->select('created_at')
             ->orderBy('created_at', 'desc')
             ->first()['created_at'];
 
         $created_at_min = PackageAnswer::query()
             ->where('package_id', $packageId)
+            ->whereNotNull('created_at')
             ->select('created_at')
             ->orderBy('created_at')
             ->first()['created_at'];
