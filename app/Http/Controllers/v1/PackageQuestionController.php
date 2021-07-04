@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageQuestionFilter;
 use App\Http\Requests\PackageQuestionRequest;
 use App\Http\Requests\QuestionBulkStoreRequest;
+use App\Http\Resources\PackageQuestionReportResource;
 use App\Http\Resources\PackageQuestionResource;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
-use Behamin\BResources\Resources\BasicResourceCollection;
 
 class PackageQuestionController extends Controller
 {
