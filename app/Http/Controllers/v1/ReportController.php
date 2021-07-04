@@ -93,8 +93,8 @@ class ReportController extends Controller
         $data['min_answer_per_user'] = $total_count_member->pluck('total_answers_for_this_user')->min();
         $data['max_answer_per_user'] = $total_count_member->pluck('total_answers_for_this_user')->max();
 
-        $data['created_at_min'] = $created_at_min->toDateTimeString();
-        $data['created_at_max'] = $created_at_max->toDateTimeString();
+        $data['created_at_min'] = $created_at_min ?? $created_at_min->toDateTimeString();
+        $data['created_at_max'] = $created_at_max ?? $created_at_max->toDateTimeString();
 
         $data['question'] = $packageQuestion;
 
