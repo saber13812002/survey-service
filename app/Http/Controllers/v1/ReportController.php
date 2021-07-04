@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Helpers\ReportHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PackageQuestionReportResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
+
     /**
      * @OA\Get(
      *  path="/api/v1/packages/{packageId}/reports",
@@ -57,7 +59,7 @@ class ReportController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function byPackageId(int $packageId)
+    public function byPackageId(int $packageId): \Illuminate\Http\JsonResponse
     {
         //get all users that answered to question related to this package id
 
@@ -78,19 +80,9 @@ class ReportController extends Controller
 
         $total_count_member = $report->get();
 
-        $created_at_max = PackageAnswer::query()
-            ->where('package_id', $packageId)
-            ->whereNotNull('created_at')
-            ->select('created_at')
-            ->orderBy('created_at', 'desc')
-            ->first()['created_at'];
+        $created_at_max = ReportHelper::getPackageAnswerByCreatedAt($packageId, 'desc');
 
-        $created_at_min = PackageAnswer::query()
-            ->where('package_id', $packageId)
-            ->whereNotNull('created_at')
-            ->select('created_at')
-            ->orderBy('created_at')
-            ->first()['created_at'];
+        $created_at_min = ReportHelper::getPackageAnswerByCreatedAt($packageId, 'asc');
 
         $data['id'] = $package->id;
         $data['name'] = $package->title;
@@ -109,4 +101,5 @@ class ReportController extends Controller
 
         return response()->json($data);
     }
+
 }
