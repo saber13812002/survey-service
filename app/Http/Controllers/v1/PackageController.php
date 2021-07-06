@@ -28,6 +28,18 @@ class PackageController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="ID of app",
+     *       name="appId",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -43,6 +55,7 @@ class PackageController extends Controller
      */
     public function index(PackageFilter $filters)
     {
+//        dd(request()->app_id);
         list($items, $count) = app()->make(PackageRepositoryInterface::class)
             ->index($filters);
         return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));

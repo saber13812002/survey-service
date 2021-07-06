@@ -15,7 +15,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function index(PackageFilter $filters)
     {
-        return Package::filter($filters);
+        return Package::appId()->filter($filters);
     }
 
     public function show(int $id)

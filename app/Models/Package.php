@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\AppFilter;
 use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -55,6 +56,22 @@ class Package extends Model
     public $packable_type;
 
     /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            $query->client_app_id = request()->app_id;
+        });
+    }
+
+
+    /**
      * Get all of the owning packable models.
      */
     public function packable(): MorphTo
@@ -94,4 +111,8 @@ class Package extends Model
         return $this->hasMany(PackageQuestion::class, 'package_id');
     }
 
+    public function scopeAppId($query)
+    {
+        return $query->where('client_app_id', request()->app_id);
+    }
 }

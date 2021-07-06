@@ -18,6 +18,10 @@ class AccessTokenGuard implements Guard
     private $request;
     private $validApp;
     private $token;
+    /**
+     * @var array|string|null
+     */
+    private $app_id;
 
     public function __construct(UserProvider $provider, Request $request, $configuration)
     {
@@ -29,13 +33,16 @@ class AccessTokenGuard implements Guard
         $this->storageKey = $configuration['storage_key'] ?? 'X-Proxy-Token';
 
         $this->token = $this->request->header($this->inputKey);
+        $this->app_id = $this->request->header('App-Id');
+
         $this->checkAppToken();
 
-
         $request->request->add(['created_by_app' => $this->validApp]);
+        $request->request->add(['app_id' => $this->app_id]);
+
     }
 
-    public function check()
+    public function check(): bool
     {
         return $this->validApp;
     }

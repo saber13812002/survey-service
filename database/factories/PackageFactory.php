@@ -38,7 +38,7 @@ class PackageFactory extends Factory
 
             'description' => $this->faker->paragraph,
             'client_app_id' => function () {
-                return 1;
+                return 0;
             },
             'packable_id' => function () use ($survey) {
                 return $survey->id;

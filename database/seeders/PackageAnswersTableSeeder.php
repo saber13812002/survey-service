@@ -20,7 +20,7 @@ class PackageAnswersTableSeeder extends Seeder
         \DB::table('package_answers')->insert(array (
             0 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 61,
                 'user_id' => 1,
@@ -32,7 +32,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             1 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 65,
                 'user_id' => 3,
@@ -44,7 +44,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             2 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 61,
                 'user_id' => 2,
@@ -56,7 +56,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             3 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 65,
                 'user_id' => 4,
@@ -68,7 +68,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             4 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 61,
                 'user_id' => 3,
@@ -80,7 +80,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             5 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 65,
                 'user_id' => 5,
@@ -92,7 +92,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             6 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 61,
                 'user_id' => 4,
@@ -104,7 +104,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             7 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 66,
                 'user_id' => 1,
@@ -116,7 +116,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             8 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 61,
                 'user_id' => 5,
@@ -128,7 +128,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             9 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 66,
                 'user_id' => 2,
@@ -140,7 +140,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             10 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 66,
                 'user_id' => 3,
@@ -152,7 +152,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             11 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 65,
                 'user_id' => 1,
@@ -164,7 +164,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             12 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 66,
                 'user_id' => 4,
@@ -176,7 +176,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             13 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 65,
                 'user_id' => 2,
@@ -188,7 +188,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             14 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 66,
                 'user_id' => 5,
@@ -200,7 +200,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             15 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 64,
                 'user_id' => 1,
@@ -212,7 +212,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             16 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 64,
                 'user_id' => 2,
@@ -224,7 +224,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             17 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 64,
                 'user_id' => 3,
@@ -236,7 +236,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             18 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 64,
                 'user_id' => 4,
@@ -248,7 +248,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             19 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 64,
                 'user_id' => 5,
@@ -260,7 +260,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             20 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 63,
                 'user_id' => 1,
@@ -272,7 +272,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             21 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 63,
                 'user_id' => 2,
@@ -284,7 +284,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             22 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 63,
                 'user_id' => 3,
@@ -296,7 +296,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             23 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 63,
                 'user_id' => 4,
@@ -308,7 +308,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             24 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 63,
                 'user_id' => 5,
@@ -320,7 +320,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             25 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 62,
                 'user_id' => 1,
@@ -332,7 +332,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             26 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 62,
                 'user_id' => 2,
@@ -344,7 +344,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             27 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 62,
                 'user_id' => 3,
@@ -356,7 +356,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             28 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 62,
                 'user_id' => 4,
@@ -368,7 +368,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             29 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 161,
                 'question_id' => 62,
                 'user_id' => 5,
@@ -380,7 +380,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             30 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 162,
                 'question_id' => 67,
                 'user_id' => 1,
@@ -392,7 +392,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             31 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 162,
                 'question_id' => 67,
                 'user_id' => 2,
@@ -404,7 +404,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             32 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 162,
                 'question_id' => 67,
                 'user_id' => 3,
@@ -416,7 +416,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             33 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 162,
                 'question_id' => 67,
                 'user_id' => 4,
@@ -428,7 +428,7 @@ class PackageAnswersTableSeeder extends Seeder
             ),
             34 =>
             array (
-                'client_app_id' => 1,
+                'client_app_id' => 0,
                 'package_id' => 162,
                 'question_id' => 67,
                 'user_id' => 5,
