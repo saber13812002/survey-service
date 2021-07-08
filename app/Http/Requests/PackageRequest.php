@@ -52,13 +52,10 @@ class PackageRequest extends BasicRequest
         return [
             'title' => 'required|string',
             'description' => 'nullable|string',
-//            'client_app_id' => 'required',    //TODO: client app id is required or not
             'package_type_id' => 'required|exists:package_types,id',
             'tags.connect' => 'nullable|exists_va:tags,id',
             'categories.connect' => 'nullable|exists_va:categories,id',
             'campaigns.connect' => 'nullable|exists_va:categories,id',
-
-            'client_app_id' => 'required',
 
             'started_at' => [
                 'nullable', 'date'
