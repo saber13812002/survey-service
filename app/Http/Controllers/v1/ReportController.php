@@ -4,11 +4,12 @@ namespace App\Http\Controllers\v1;
 
 use App\Helpers\ReportHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Filters\PackageFilter;
 use App\Http\Resources\PackageQuestionReportResourceCollection;
+use App\Http\Resources\ParticipantResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use App\Interfaces\Services\ReportServiceInterface;
-use App\Models\PackageAnswer;
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
@@ -100,6 +101,64 @@ class ReportController extends Controller
 
 
         return response()->json($data);
+    }
+
+
+    /**
+     * @OA\Get(
+     *  path="/api/v1/packages/{packageId}/participants",
+     *  operationId="getParticipantsByPackageId",
+     *  summary="get participants reports by package id",
+     *  tags={"Reports"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="161",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * @param PackageFilter $filters
+     * @param int $packageId
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function participantsByPackageId(PackageFilter $filters, int $packageId)
+    {
+        list($items, $count) = app()
+            ->make(PackageRepositoryInterface::class)
+            ->participants($filters, $packageId);
+
+        $data = $items->get();
+
+        return response(new ParticipantResourceCollection(['data' => $data, 'count' => $count], true));
     }
 
 }

@@ -14,6 +14,11 @@ interface PackageRepositoryInterface
     public function index(PackageFilter $filters);
 
     /**
+     * @return mixed
+     */
+    public function participants(PackageFilter $filters, int $id);
+
+    /**
      * @param int $id
      * @return mixed
      */

@@ -6,9 +6,8 @@ namespace App\Repositories;
 
 use App\Http\Filters\PackageFilter;
 use App\Models\Package;
+use App\Models\PackageAnswer;
 use App\Models\PackageType;
-use BFilters\Filter;
-use Illuminate\Http\Request;
 
 class PackageRepository implements \App\Interfaces\Repositories\PackageRepositoryInterface
 {
@@ -18,9 +17,25 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
         return Package::appId()->filter($filters);
     }
 
+    public function participants(PackageFilter $filters, int $id)
+    {
+        return PackageAnswer
+//            ::with('user')
+        ::query()
+            ->where('package_id', $id)
+            ->select(['user_id'])
+            ->filter($filters);
+    }
+
     public function show(int $id)
     {
-        return Package::with(['campaigns', 'categories', 'tags'])->findOrFail($id);
+        return Package::with(
+            [
+                'campaigns',
+                'categories',
+                'tags'
+            ]
+        )->findOrFail($id);
     }
 
     public function store(array $data): Package
