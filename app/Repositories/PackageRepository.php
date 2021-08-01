@@ -20,10 +20,10 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     public function participants(PackageFilter $filters, int $id)
     {
         return PackageAnswer
-//            ::with('user')
         ::query()
             ->where('package_id', $id)
             ->select(['user_id'])
+            ->distinct()
             ->filter($filters);
     }
 
