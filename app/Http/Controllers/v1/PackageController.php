@@ -55,7 +55,6 @@ class PackageController extends Controller
      */
     public function index(PackageFilter $filters)
     {
-//        dd(request()->app_id);
         list($items, $count) = app()->make(PackageRepositoryInterface::class)
             ->index($filters);
         return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));

@@ -1150,6 +1150,17 @@
                             "type": "string"
                         },
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "header",
+                        "description": "ID of app",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1935,6 +1946,48 @@
                 ],
                 "summary": "get reports by package id",
                 "operationId": "getReportByPackageId",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/participants": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get participants reports by package id",
+                "operationId": "getParticipantsByPackageId",
                 "parameters": [
                     {
                         "name": "X-Proxy-Token",
