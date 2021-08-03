@@ -21,4 +21,6 @@ interface PackageAnswerRepositoryInterface
     public function destroy(int $id);
 
     public function getByPackageIdAndQuestionId(int $packageId, int $questionId);
+
+    public function getByPackageIdAndUserId(PackageAnswerFilter $filters, int $packageId, int $userId);
 }

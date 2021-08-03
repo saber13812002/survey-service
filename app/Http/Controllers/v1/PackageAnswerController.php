@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageAnswerFilter;
 use App\Http\Resources\PackageAnswerResource;
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
+use App\Interfaces\Repositories\PackageRepositoryInterface;
 use App\Models\PackageAnswer;
 use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
@@ -64,6 +65,98 @@ class PackageAnswerController extends Controller
         list($items, $count) = app()->make(PackageAnswerRepositoryInterface::class)
             ->index($filters, $packageId);
         return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
+    }
+
+
+    /**
+     * @OA\Get(
+     *  path="/api/v1/packages/{packageId}/participants/{userId}",
+     *  operationId="getListOfAllAnswerItemsForPackageForUser",
+     *  summary="get list of all asnwer items for this package for specific user ",
+     *  tags={"Reports"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="161",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of user",
+     *       name="userId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     * Display a listing of the resource.
+     *
+     * @param PackageAnswerFilter $filters
+     * @param int $packageId
+     * @param int $userId
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Contracts\Support\Responsable|\Illuminate\Http\Response|void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function answersByPackageIdByUserId(PackageAnswerFilter $filters, int $packageId, int $userId)
+    {
+        list($items, $count) = app()->make(PackageAnswerRepositoryInterface::class)
+            ->getByPackageIdAndUserId($filters, $packageId, $userId);
+
+
+        $PackageItem = app()->make(PackageRepositoryInterface::class)
+            ->show($packageId);
+
+        if (!$PackageItem) {
+            return abort(403, 'شما دسترسی به این نظرسنجی ندارید');
+        }
+
+        $data = $items->get();
+        $data['package'] = $PackageItem;
+
+        return response(new BasicResourceCollection(['data' => $data, 'count' => $count]));
     }
 
     /**

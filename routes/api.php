@@ -109,6 +109,8 @@ Route::group([
             // report package
             Route::get('/packages/{id}/reports', [Controllers\v1\ReportController::class, 'byPackageId'])->name('report.by.package.id');
             Route::get('/packages/{id}/participants', [Controllers\v1\ReportController::class, 'participantsByPackageId'])->name('report.participants.by.package.id');
+            Route::get('/packages/{package_id}/participants/{user_id}', [Controllers\v1\PackageAnswerController::class, 'answersByPackageIdByUserId'])->name('report.participants.answers.by.package.id');
+
 
             //test
             Route::get('/test', [Controllers\TestController::class, 'test']);

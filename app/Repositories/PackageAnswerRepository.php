@@ -62,4 +62,14 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
             ->select('choice_id', DB::raw('count(*) as total'))
             ->get();
     }
+
+
+    public function getByPackageIdAndUserId(PackageAnswerFilter $filters, int $packageId, int $userId)
+    {
+        return PackageAnswer::with(['question'])
+            ->where('package_id', $packageId)
+            ->where('user_id', $userId)
+            ->select('id', 'question_id', 'choice_id')
+            ->filter($filters);
+    }
 }

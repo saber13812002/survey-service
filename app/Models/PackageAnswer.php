@@ -32,4 +32,14 @@ class PackageAnswer extends Model
     {
         return $this->hasOne(PackageQuestionChoice::class, 'id');
     }
+
+    public function package(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Package::class, 'id');
+    }
+
+    public function question(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(PackageQuestion::class, 'id');
+    }
 }
