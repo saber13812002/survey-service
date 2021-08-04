@@ -18,7 +18,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *           "user_id": 1,
  *           "choice_id": 2,
  *           "choice_ids": {1,2,3},
- *           "client_app_id": 1,
  *     }
  * )
  */

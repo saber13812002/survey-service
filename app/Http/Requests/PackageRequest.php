@@ -13,7 +13,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *      example={
  *          "title": "نام پکیج",
  *          "package_type_id": 1,
- *          "client_app_id": 1,
  *          "parent_id": null,
  *          "description": "description",
  *          "first_text": "first_text",
