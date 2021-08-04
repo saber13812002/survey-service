@@ -25,9 +25,7 @@ class CampaignFactory extends Factory
         return [
             'title' => 'Campaign ' . $this->faker->name,
             'description' => $this->faker->paragraph,
-            'client_app_id' => function () {
-                return ClientApp::factory()->create()->id;
-            },
+            'client_app_id' => 0,
         ];
     }
 }

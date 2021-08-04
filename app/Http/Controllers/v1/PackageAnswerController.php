@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageAnswerFilter;
 use App\Http\Resources\PackageAnswerResource;
+use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use App\Models\PackageAnswer;
@@ -27,6 +28,18 @@ class PackageAnswerController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -82,6 +95,18 @@ class PackageAnswerController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -188,6 +213,18 @@ class PackageAnswerController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\RequestBody(
      *       required=true,
      *       @OA\JsonContent(ref="#/components/schemas/AnswerStoreRequest")
@@ -216,7 +253,7 @@ class PackageAnswerController extends Controller
      */
     public function store(Request $request, int $questionId): PackageAnswerResource
     {
-        $item = PackageAnswer::query()
+        $item = PackageAnswer::appId()
             ->where('question_id', $questionId)
             ->where('user_id', $request->user_id)
             ->first();
@@ -255,6 +292,18 @@ class PackageAnswerController extends Controller
      *       required=true,
      *       in="path",
      *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -315,6 +364,18 @@ class PackageAnswerController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -363,6 +424,18 @@ class PackageAnswerController extends Controller
      *       required=true,
      *       in="path",
      *       example="61",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -424,6 +497,18 @@ class PackageAnswerController extends Controller
      *       required=true,
      *       in="path",
      *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"

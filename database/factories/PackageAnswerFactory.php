@@ -35,9 +35,7 @@ class PackageAnswerFactory extends Factory
             },
             'title' => 'Answer ' . $this->faker->name,
             'description' => $this->faker->paragraph,
-            'client_app_id' => function () {
-                return 0;
-            },
+            'client_app_id' => 0,
             'user_id' => function () {
                 return 1;
             },

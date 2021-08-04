@@ -119,7 +119,7 @@ class ClientAppController extends Controller
      *
      *  @OA\Parameter(
      *       description="ID of app",
-     *       name="appId",
+     *       name="app_id",
      *       required=true,
      *       in="path",
      *       example="1",
@@ -173,7 +173,7 @@ class ClientAppController extends Controller
      *
      *  @OA\Parameter(
      *       description="ID of app",
-     *       name="appId",
+     *       name="app_id",
      *       required=true,
      *       in="path",
      *       example="1",
@@ -234,7 +234,7 @@ class ClientAppController extends Controller
      *
      *  @OA\Parameter(
      *       description="ID of app",
-     *       name="appId",
+     *       name="app_id",
      *       required=true,
      *       in="path",
      *       example="1",
