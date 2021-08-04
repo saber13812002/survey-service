@@ -42,4 +42,9 @@ class PackageAnswer extends Model
     {
         return $this->hasOne(PackageQuestion::class, 'id');
     }
+
+    public function scopeAppId($query)
+    {
+        return $query->where('client_app_id', request()->app_id);
+    }
 }
