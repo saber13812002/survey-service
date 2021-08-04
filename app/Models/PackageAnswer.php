@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\CustomSeeder\Seeder;
 use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +28,23 @@ class PackageAnswer extends Model
         'user_id',
         'choice_id',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            if (!(new Seeder())->isRunning()) {
+                $query->client_app_id = request()->app_id;
+            }
+        });
+    }
 
     public function choice(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
