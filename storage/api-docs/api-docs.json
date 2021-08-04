@@ -789,6 +789,46 @@
                         "description": "not found"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "remove and app",
+                "operationId": "removeAnApp",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
             }
         },
         "/api/v1/apps/{appId}": {
@@ -809,15 +849,37 @@
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
                     },
                     {
-                        "name": "app_id",
-                        "in": "path",
-                        "description": "ID of app",
+                        "name": "appId",
+                        "in": "header",
+                        "description": "fake",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -849,15 +911,26 @@
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
                     },
                     {
-                        "name": "app_id",
-                        "in": "path",
-                        "description": "ID of app",
+                        "name": "appId",
+                        "in": "header",
+                        "description": "fake",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -870,46 +943,6 @@
                         }
                     }
                 },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "404": {
-                        "description": "not found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Apps"
-                ],
-                "summary": "remove and app",
-                "operationId": "removeAnApp",
-                "parameters": [
-                    {
-                        "name": "X-Proxy-Token",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
-                    },
-                    {
-                        "name": "app_id",
-                        "in": "path",
-                        "description": "ID of app",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        },
-                        "example": "1"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Success",

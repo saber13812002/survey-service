@@ -102,7 +102,7 @@ class ClientAppController extends Controller
 
     /**
      * @OA\Get(
-     *  path="/api/v1/apps",
+     *  path="/api/v1/apps/{appId}",
      *  operationId="getAppItemById",
      *  summary="get app item by id",
      *  tags={"Apps"},
@@ -114,6 +114,18 @@ class ClientAppController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="appId",
+     *       description="fake",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -163,12 +175,12 @@ class ClientAppController extends Controller
     public function show(int $id)
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->show($id)]);
+            ->show()]);
     }
 
     /**
      * @OA\Put(
-     *  path="/api/v1/apps",
+     *  path="/api/v1/apps/{appId}",
      *  operationId="updateANewApp",
      *  summary="update a new app item",
      *  tags={"Apps"},
@@ -180,6 +192,18 @@ class ClientAppController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="appId",
+     *       description="fake",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -224,7 +248,7 @@ class ClientAppController extends Controller
     public function update(Request $request, int $id): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->update($id, $request->all())]);
+            ->update($request->all())]);
     }
 
     /**
@@ -275,9 +299,9 @@ class ClientAppController extends Controller
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function destroy(int $id): ClientAppResource
+    public function destroy(): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->destroy($id)]);
+            ->destroy()]);
     }
 }

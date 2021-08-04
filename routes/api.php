@@ -30,7 +30,7 @@ Route::group([
             Route::get('/apps/{id}', [Controllers\v1\ClientAppController::class, 'show'])->name('client.app.show');
             Route::post('/apps', [Controllers\v1\ClientAppController::class, 'store'])->name('client.app.store');
             Route::put('/apps/{id}', [Controllers\v1\ClientAppController::class, 'update'])->name('client.app.update');
-            Route::delete('/apps/{id}', [Controllers\v1\ClientAppController::class, 'destroy'])->name('client.app.destroy');
+            Route::delete('/apps', [Controllers\v1\ClientAppController::class, 'destroy'])->name('client.app.destroy');
 
             //category
             Route::get('/categories', [Controllers\v1\CategoryController::class, 'index'])->name('category.index');
