@@ -102,7 +102,7 @@ class ClientAppController extends Controller
 
     /**
      * @OA\Get(
-     *  path="/api/v1/apps/{appId}",
+     *  path="/api/v1/apps",
      *  operationId="getAppItemById",
      *  summary="get app item by id",
      *  tags={"Apps"},
@@ -118,11 +118,23 @@ class ClientAppController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -156,7 +168,7 @@ class ClientAppController extends Controller
 
     /**
      * @OA\Put(
-     *  path="/api/v1/apps/{appId}",
+     *  path="/api/v1/apps",
      *  operationId="updateANewApp",
      *  summary="update a new app item",
      *  tags={"Apps"},
@@ -172,11 +184,11 @@ class ClientAppController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -217,7 +229,7 @@ class ClientAppController extends Controller
 
     /**
      * @OA\Delete(
-     *  path="/api/v1/apps/{appId}",
+     *  path="/api/v1/apps",
      *  operationId="removeAnApp",
      *  summary="remove and app",
      *  tags={"Apps"},
@@ -233,11 +245,11 @@ class ClientAppController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
