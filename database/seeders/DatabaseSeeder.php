@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // when boot() method in package check request()->app_id
+        (new \App\Helpers\CustomSeeder\Seeder)->start();
+
         // \App\Models\User::factory(10)->create();
         \App\Models\ClientApp::factory(10)->create();
 
