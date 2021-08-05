@@ -111,17 +111,6 @@ class PackageAnswerController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       name="app_id",
-     *       description=" default 0 for env=prod,stage,.. and 1 for local",
-     *       required=true,
-     *       in="header",
-     *       example="0",
-     *       @OA\Schema(
-     *           type="string"
-     *       )
-     *   ),
-     *
-     *  @OA\Parameter(
      *       description="ID of package",
      *       name="packageId",
      *       required=true,
