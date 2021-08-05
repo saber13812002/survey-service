@@ -273,7 +273,7 @@ class PackageController extends Controller
      * @OA\Delete(
      *  path="/api/v1/packages/{packageId}",
      *  operationId="removeAnItemById",
-     *  summary="remove and app by id",
+     *  summary="remove package by id",
      *  tags={"Packages"},
      *
      *  @OA\Parameter(

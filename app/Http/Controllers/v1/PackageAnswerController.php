@@ -170,7 +170,6 @@ class PackageAnswerController extends Controller
         list($items, $count) = app()->make(PackageAnswerRepositoryInterface::class)
             ->getByPackageIdAndUserId($filters, $packageId, $userId);
 
-
         $PackageItem = app()->make(PackageRepositoryInterface::class)
             ->show($packageId);
 
@@ -478,7 +477,7 @@ class PackageAnswerController extends Controller
      * @OA\Delete(
      *  path="/api/v1/answers/{answerId}",
      *  operationId="removeAnItemById",
-     *  summary="remove and app by id",
+     *  summary="remove asnwer by id",
      *  tags={"Answers"},
      *
      *  @OA\Parameter(

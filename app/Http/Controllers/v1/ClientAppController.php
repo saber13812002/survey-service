@@ -255,7 +255,7 @@ class ClientAppController extends Controller
      * @OA\Delete(
      *  path="/api/v1/apps",
      *  operationId="removeAnApp",
-     *  summary="remove and app",
+     *  summary="remove an app by id",
      *  tags={"Apps"},
      *
      *  @OA\Parameter(

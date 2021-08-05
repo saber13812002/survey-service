@@ -308,7 +308,7 @@ class PackageQuestionChoiceController extends Controller
     * @OA\Delete(
     *  path="/api/v1/choices/{choiceId}",
     *  operationId="removeAnItemById",
-    *  summary="remove and app by id",
+    *  summary="remove choice by id",
     *  tags={"Choices"},
     *
     *  @OA\Parameter(
