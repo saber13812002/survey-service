@@ -20,7 +20,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     public function participants(PackageFilter $filters, int $id)
     {
         return PackageAnswer
-        ::query()
+            ::query()
             ->where('package_id', $id)
             ->select(['user_id'])
             ->distinct()
@@ -35,7 +35,9 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
                 'categories',
                 'tags'
             ]
-        )->findOrFail($id);
+        )
+            ->appId()
+            ->findOrFail($id);
     }
 
     public function store(array $data): Package

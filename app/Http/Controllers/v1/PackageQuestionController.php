@@ -144,7 +144,7 @@ class PackageQuestionController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of item",
+     *       description="ID of package",
      *       name="packageId",
      *       required=true,
      *       in="path",
@@ -306,7 +306,7 @@ class PackageQuestionController extends Controller
      * @OA\Delete(
      *  path="/api/v1/questions/{questionId}",
      *  operationId="removeAnItemById",
-     *  summary="remove and app by id",
+     *  summary="remove question by id",
      *  tags={"Questions"},
      *
      *  @OA\Parameter(

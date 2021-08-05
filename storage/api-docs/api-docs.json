@@ -74,6 +74,17 @@
                             "type": "string"
                         },
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -103,6 +114,17 @@
                             "type": "string"
                         },
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -155,6 +177,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -195,6 +228,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -234,6 +278,17 @@
                             "type": "string"
                         },
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "campaignId",
@@ -734,6 +789,46 @@
                         "description": "not found"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "remove and app",
+                "operationId": "removeAnApp",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
             }
         },
         "/api/v1/apps/{appId}": {
@@ -755,14 +850,36 @@
                     },
                     {
                         "name": "appId",
-                        "in": "path",
-                        "description": "ID of app",
+                        "in": "header",
+                        "description": "fake",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -795,14 +912,25 @@
                     },
                     {
                         "name": "appId",
-                        "in": "path",
-                        "description": "ID of app",
+                        "in": "header",
+                        "description": "fake",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -815,46 +943,6 @@
                         }
                     }
                 },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "404": {
-                        "description": "not found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Apps"
-                ],
-                "summary": "remove and app",
-                "operationId": "removeAnApp",
-                "parameters": [
-                    {
-                        "name": "X-Proxy-Token",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
-                    },
-                    {
-                        "name": "appId",
-                        "in": "path",
-                        "description": "ID of app",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        },
-                        "example": "1"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -886,9 +974,94 @@
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
                     },
                     {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
                         "name": "packageId",
                         "in": "path",
                         "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/participants/{userId}": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get list of all asnwer items for this package for specific user ",
+                "operationId": "getListOfAllAnswerItemsForPackageForUser",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "ID of user",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -937,6 +1110,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -977,6 +1161,17 @@
                             "format": "int64"
                         },
                         "example": "61"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1027,6 +1222,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1079,6 +1285,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1119,6 +1336,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1152,9 +1380,9 @@
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
                     },
                     {
-                        "name": "appId",
+                        "name": "app_id",
                         "in": "header",
-                        "description": "ID of app",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -1190,6 +1418,17 @@
                             "type": "string"
                         },
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "Content-Type",
@@ -1251,6 +1490,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1291,6 +1541,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1330,6 +1591,17 @@
                             "type": "string"
                         },
                         "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "packageId",
@@ -2350,8 +2622,7 @@
                         1,
                         2,
                         3
-                    ],
-                    "client_app_id": 1
+                    ]
                 }
             },
             "AppStoreRequest": {
@@ -2565,7 +2836,6 @@
                 "example": {
                     "title": "نام پکیج",
                     "package_type_id": 1,
-                    "client_app_id": 1,
                     "parent_id": null,
                     "description": "description",
                     "first_text": "first_text",

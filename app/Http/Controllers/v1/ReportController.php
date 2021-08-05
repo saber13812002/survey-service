@@ -158,7 +158,7 @@ class ReportController extends Controller
 
         $data = $items->get();
 
-        return response(new ParticipantResourceCollection(['data' => $data, 'count' => $count], true));
+        return response(new ParticipantResourceCollection(['data' => $data], true));
     }
 
 }

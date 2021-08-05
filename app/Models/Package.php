@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\CustomSeeder\Seeder;
 use App\Traits\AppFilter;
 use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -66,7 +67,9 @@ class Package extends Model
 
         // auto-sets values on creation
         static::creating(function ($query) {
-            $query->client_app_id = request()->app_id;
+            if (!(new Seeder())->isRunning()) {
+                $query->client_app_id = request()->app_id;
+            }
         });
     }
 

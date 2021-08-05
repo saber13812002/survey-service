@@ -220,7 +220,7 @@ class TagController extends Controller
     * @OA\Delete(
     *  path="/api/v1/tags/{tagId}",
     *  operationId="removeAnItemById",
-    *  summary="remove and app by id",
+    *  summary="remove tag by id",
     *  tags={"Tags"},
     *
     *  @OA\Parameter(

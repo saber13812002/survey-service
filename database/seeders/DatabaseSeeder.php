@@ -15,12 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\ClientApp::factory(10)->create();
+        // when boot() method in package check request()->app_id
+        (new \App\Helpers\CustomSeeder\Seeder)->start();
 
-        $this->call([
-            ClientAppSeeder::class,
-        ]);
+
+        $this->call(AppsTableSeeder::class);
+        // \App\Models\User::factory(10)->create();
+
 
         \App\Models\Campaign::factory(10)->create();
 

@@ -29,8 +29,8 @@ class PackageController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
-     *       name="appId",
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
      *       in="header",
      *       example="0",
@@ -74,6 +74,18 @@ class PackageController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -147,6 +159,18 @@ class PackageController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -201,6 +225,18 @@ class PackageController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\RequestBody(
      *       required=true,
      *       @OA\JsonContent(ref="#/components/schemas/PackageRequest")
@@ -237,7 +273,7 @@ class PackageController extends Controller
      * @OA\Delete(
      *  path="/api/v1/packages/{packageId}",
      *  operationId="removeAnItemById",
-     *  summary="remove and app by id",
+     *  summary="remove package by id",
      *  tags={"Packages"},
      *
      *  @OA\Parameter(
@@ -247,6 +283,18 @@ class PackageController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *

@@ -37,9 +37,7 @@ class PackageFactory extends Factory
             'finished_at' => Carbon::tomorrow('Europe/London')->addDay(20),
 
             'description' => $this->faker->paragraph,
-            'client_app_id' => function () {
-                return 0;
-            },
+            'client_app_id' => 0,
             'packable_id' => function () use ($survey) {
                 return $survey->id;
             },

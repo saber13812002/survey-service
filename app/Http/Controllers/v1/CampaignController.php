@@ -28,6 +28,18 @@ class CampaignController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -66,6 +78,18 @@ class CampaignController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -129,6 +153,18 @@ class CampaignController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -183,6 +219,18 @@ class CampaignController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\RequestBody(
      *       required=true,
      *       @OA\JsonContent(ref="#/components/schemas/CampaignStoreRequest")
@@ -230,6 +278,18 @@ class CampaignController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *

@@ -118,11 +118,35 @@ class ClientAppController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="appId",
+     *       description="fake",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -151,7 +175,7 @@ class ClientAppController extends Controller
     public function show(int $id)
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->show($id)]);
+            ->show()]);
     }
 
     /**
@@ -172,11 +196,23 @@ class ClientAppController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="appId",
+     *       description="fake",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -212,14 +248,14 @@ class ClientAppController extends Controller
     public function update(Request $request, int $id): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->update($id, $request->all())]);
+            ->update($request->all())]);
     }
 
     /**
      * @OA\Delete(
-     *  path="/api/v1/apps/{appId}",
+     *  path="/api/v1/apps",
      *  operationId="removeAnApp",
-     *  summary="remove and app",
+     *  summary="remove an app by id",
      *  tags={"Apps"},
      *
      *  @OA\Parameter(
@@ -233,11 +269,11 @@ class ClientAppController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
-     *       name="appId",
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -263,9 +299,9 @@ class ClientAppController extends Controller
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function destroy(int $id): ClientAppResource
+    public function destroy(): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->destroy($id)]);
+            ->destroy()]);
     }
 }

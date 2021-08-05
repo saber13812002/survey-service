@@ -30,7 +30,7 @@ Route::group([
             Route::get('/apps/{id}', [Controllers\v1\ClientAppController::class, 'show'])->name('client.app.show');
             Route::post('/apps', [Controllers\v1\ClientAppController::class, 'store'])->name('client.app.store');
             Route::put('/apps/{id}', [Controllers\v1\ClientAppController::class, 'update'])->name('client.app.update');
-            Route::delete('/apps/{id}', [Controllers\v1\ClientAppController::class, 'destroy'])->name('client.app.destroy');
+            Route::delete('/apps', [Controllers\v1\ClientAppController::class, 'destroy'])->name('client.app.destroy');
 
             //category
             Route::get('/categories', [Controllers\v1\CategoryController::class, 'index'])->name('category.index');
@@ -109,6 +109,8 @@ Route::group([
             // report package
             Route::get('/packages/{id}/reports', [Controllers\v1\ReportController::class, 'byPackageId'])->name('report.by.package.id');
             Route::get('/packages/{id}/participants', [Controllers\v1\ReportController::class, 'participantsByPackageId'])->name('report.participants.by.package.id');
+            Route::get('/packages/{package_id}/participants/{user_id}', [Controllers\v1\PackageAnswerController::class, 'answersByPackageIdByUserId'])->name('report.participants.answers.by.package.id');
+
 
             //test
             Route::get('/test', [Controllers\TestController::class, 'test']);
