@@ -27,6 +27,8 @@ interface PackageQuestionRepositoryInterface
      */
     public function show(int $id);
 
+    public function getQuestionItemWithChoicesById(int $id);
+
     /**
      * @param array $data
      * @param int $packageId

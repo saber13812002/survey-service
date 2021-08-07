@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageAnswerFilter;
 use App\Http\Resources\PackageAnswerResource;
+use App\Http\Resources\PackageAnswerResourceCollection;
 use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
@@ -159,17 +160,9 @@ class PackageAnswerController extends Controller
         list($items, $count) = app()->make(PackageAnswerRepositoryInterface::class)
             ->getByPackageIdAndUserId($filters, $packageId, $userId);
 
-        $PackageItem = app()->make(PackageRepositoryInterface::class)
-            ->show($packageId);
-
-        if (!$PackageItem) {
-            return abort(403, 'شما دسترسی به این نظرسنجی ندارید');
-        }
-
         $data = $items->get();
-        $data['package'] = $PackageItem;
 
-        return response(new BasicResourceCollection(['data' => $data, 'count' => $count]));
+        return response(new PackageAnswerResourceCollection(['data' => $data, 'count' => $count], true));
     }
 
     /**
