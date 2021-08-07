@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageQuestionChoiceFilter;
 use App\Http\Requests\ChoiceBulkStoreRequest;
 use App\Http\Resources\PackageQuestionChoiceResource;
-use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
 use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;

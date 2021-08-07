@@ -34,6 +34,11 @@ class PackageQuestionRepository implements PackageQuestionRepositoryInterface
         return PackageQuestion::query()->findOrFail($id);
     }
 
+    public function getQuestionItemWithChoicesById(int $id)
+    {
+        return PackageQuestion::with("choices")->find($id);
+    }
+
     public function store(array $data, int $packageId): PackageQuestion
     {
         $data['package_id'] = $packageId;

@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
+use App\Models\PackageQuestion;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackageQuestionChoiceResource extends BasicResource

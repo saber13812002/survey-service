@@ -20,8 +20,10 @@ class PackageQuestionResource extends BasicResource
      */
     public function getArray($resource)
     {
-        $choices = new PackageQuestionChoiceResourceCollection(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->getByQuestionId(new PackageQuestionChoiceFilter(new Request()), $resource->id)]);
+        list($items, $count) = app()->make(PackageQuestionChoiceRepositoryInterface::class)
+            ->getByQuestionId(new PackageQuestionChoiceFilter(new Request()), $resource->id);
+
+        $choices = new PackageQuestionChoiceResourceCollection(["data" => $items->get(), "count" => $count], true);
 
         return [
             'id' => $resource->id,
