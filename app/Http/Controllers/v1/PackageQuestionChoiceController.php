@@ -41,6 +41,18 @@ class PackageQuestionChoiceController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -89,6 +101,18 @@ class PackageQuestionChoiceController extends Controller
      *       required=true,
      *       in="path",
      *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -156,6 +180,18 @@ class PackageQuestionChoiceController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\RequestBody(
      *       required=true,
      *       @OA\JsonContent(ref="#/components/schemas/ChoiceBulkStoreRequest")
@@ -216,6 +252,18 @@ class PackageQuestionChoiceController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,

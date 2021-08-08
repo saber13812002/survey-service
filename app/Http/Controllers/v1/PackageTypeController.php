@@ -26,6 +26,18 @@ class PackageTypeController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",

@@ -28,6 +28,18 @@ class CategoryController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -67,6 +79,18 @@ class CategoryController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -129,6 +153,18 @@ class CategoryController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -177,6 +213,18 @@ class CategoryController extends Controller
      *       required=true,
      *       in="path",
      *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -238,6 +286,18 @@ class CategoryController extends Controller
      *       required=true,
      *       in="path",
      *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"

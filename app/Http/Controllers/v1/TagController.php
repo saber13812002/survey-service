@@ -28,6 +28,18 @@ class TagController extends Controller
     *           type="string"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,
@@ -69,6 +81,18 @@ class TagController extends Controller
     *           type="string"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\RequestBody(
     *       required=true,
@@ -129,6 +153,18 @@ class TagController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,
@@ -183,6 +219,18 @@ class TagController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\RequestBody(
     *       required=true,
@@ -244,6 +292,18 @@ class TagController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,

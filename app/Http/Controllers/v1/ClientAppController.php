@@ -28,6 +28,18 @@ class ClientAppController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -66,6 +78,18 @@ class ClientAppController extends Controller
      *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -120,18 +144,6 @@ class ClientAppController extends Controller
      *  @OA\Parameter(
      *       name="appId",
      *       description="fake",
-     *       required=true,
-     *       in="header",
-     *       example="0",
-     *       @OA\Schema(
-     *           type="integer",
-     *           format="int64"
-     *       )
-     *   ),
-     *
-     *  @OA\Parameter(
-     *       name="app_id",
-     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
      *       in="header",
      *       example="0",
