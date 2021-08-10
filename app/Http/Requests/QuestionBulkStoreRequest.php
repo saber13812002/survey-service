@@ -30,18 +30,21 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "id":18,
  *                      "title":"Question EXAMPLE ...",
  *                      "is_active": 1,
+ *                      "correct_choice_id": 1,
  *                      "order": 1
  *                  },
  *                  {
  *                      "id":19,
  *                      "title":"Question EXAMPLE ...",
  *                      "is_active": 1,
+ *                      "correct_choice_id": 1,
  *                      "order": 2
  *                  },
  *                  {
  *                      "id":20,
  *                      "title":"Question EXAMPLE ...",
  *                      "is_active": 1,
+ *                      "correct_choice_id": 1,
  *                      "order": 3
  *                  }
  *              },
