@@ -5,7 +5,6 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PackageTypeResource;
 use App\Models\PackageType;
-use Illuminate\Http\Request;
 
 class PackageTypeController extends Controller
 {
