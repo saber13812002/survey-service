@@ -70,6 +70,13 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            RepositoryInterfaces\ParticipantRepositoryInterface::class,
+            Repositories\ParticipantRepository::class
+        );
+
+        // Services:
+
+        $this->app->bind(
             ServiceInterfaces\ReportServiceInterface::class,
             Services\ReportService::class
         );

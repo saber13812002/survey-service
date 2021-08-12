@@ -48,17 +48,17 @@ class PackageAnswer extends Model
 
     public function choice(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(PackageQuestionChoice::class, 'id');
+        return $this->hasOne(PackageQuestionChoice::class, 'id', 'choice_id');
     }
 
     public function package(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Package::class, 'id');
+        return $this->hasOne(Package::class, 'id', 'package_id');
     }
 
     public function question(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(PackageQuestion::class, 'id');
+        return $this->hasOne(PackageQuestion::class, 'id', 'question_id');
     }
 
     public function scopeAppId($query)
