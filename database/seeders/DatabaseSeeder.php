@@ -65,11 +65,11 @@ class DatabaseSeeder extends Seeder
             CampanileSeeder::class,
         ]);
 
-        // PackageType
+        // PackageType moved to migrations folder in seeders
 
-        $this->call([
-            PackageTypeSeeder::class,
-        ]);
+//        $this->call([
+//            PackageTypeSeeder::class,
+//        ]);
 
         // AnswerType
 

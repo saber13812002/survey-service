@@ -66,7 +66,7 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
 
     public function getByPackageIdAndUserId(PackageAnswerFilter $filters, int $packageId, int $userId)
     {
-        return PackageAnswer::with(['question'])
+        return PackageAnswer::query()
             ->where('package_id', $packageId)
             ->where('user_id', $userId)
             ->select('id', 'question_id', 'choice_id')
