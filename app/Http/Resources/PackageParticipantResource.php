@@ -11,10 +11,8 @@ class PackageParticipantResource extends BasicResource
         parent::__construct($resource, $transform);
     }
 
-    protected function getArray($resource): array
+    protected function getArray($resource)
     {
-        return [
-            $resource->package
-        ];
+        return $resource->package;
     }
 }
