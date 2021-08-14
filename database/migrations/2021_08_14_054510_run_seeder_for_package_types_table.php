@@ -28,9 +28,7 @@ class RunSeederForPackageTypesTable extends Migration
     public function down()
     {
         Schema::table('package_types', function (Blueprint $table) {
-//            \App\Models\PackageType::query()->where('id','gt',1)->update(['active' => 0]);
             \App\Models\PackageType::query()->where('id','gt',1)->delete();
-
         });
     }
 }
