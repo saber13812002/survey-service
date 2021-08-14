@@ -55,7 +55,7 @@ class PackageTypeController extends Controller
      */
     public function index(): PackageTypeResource
     {
-        return new PackageTypeResource(["data" => PackageType::query()->get()]);
+        return new PackageTypeResource(["data" => PackageType::query()->where('is_active', 1)->get()]);
     }
 
 }
