@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackageTypesTable extends Migration
+class RunSeederForPackageTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,9 @@ class CreatePackageTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('package_types', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('title');
-            $table->string('model_name');
-
-            $table->timestamps();
-        });
-
         // Call seeder
         Artisan::call('db:seed', [
-            '--class' => 'Database\Seeders\Migrations\PackageTypeSeeder',
+            '--class' => 'Database\Seeders\Migrations\PackageTypeSeederSecond',
             '--force' => true
         ]);
     }
@@ -36,6 +27,10 @@ class CreatePackageTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package_types');
+        Schema::table('package_types', function (Blueprint $table) {
+//            \App\Models\PackageType::query()->where('id','gt',1)->update(['active' => 0]);
+            \App\Models\PackageType::query()->where('id','gt',1)->delete();
+
+        });
     }
 }
