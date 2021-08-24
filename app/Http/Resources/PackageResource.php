@@ -18,8 +18,10 @@ class PackageResource extends BasicResource
             "client_app_id" => $resource->client_app_id,
             "parent_id" => $resource->parent_id,
 
-            "packable_id" => $resource->packable_id,
-            "packable_type" => $resource->packable_type,
+            "packable_id" => $resource["packable_id"],
+            "packable_type" => $resource["packable_type"],
+
+            "package_type" => $resource->package_type,
 
             "title" => $resource->title,
             "description" => $resource->description,

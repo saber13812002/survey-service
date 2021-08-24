@@ -44,6 +44,10 @@ class Package extends Model
 
     ];
 
+    protected $appends = [
+        'package_type',
+    ];
+
     /**
      * @var \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|\Illuminate\Support\HigherOrderCollectionProxy|mixed
      */
@@ -117,5 +121,10 @@ class Package extends Model
     public function scopeAppId($query)
     {
         return $query->where('client_app_id', request()->app_id);
+    }
+
+    public function getPackageTypeAttribute(): PackageType
+    {
+        return PackageType::query()->whereModelName($this["packable_type"])->first();
     }
 }
