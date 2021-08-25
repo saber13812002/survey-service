@@ -21,6 +21,7 @@ class PackageQuestionChoiceResource extends BasicResource
             "description" => $resource->description,
 
             "question_id" => $resource->question_id,
+            "is_correct" => $resource->is_correct,
 
             "order" => $resource->order,
             "weight" => $resource->weight,

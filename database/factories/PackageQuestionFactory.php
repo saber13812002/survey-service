@@ -30,8 +30,7 @@ class PackageQuestionFactory extends Factory
             'package_id' => function () use ($package) {
                 return $package->id;
             },
-            'answer_type_id' => 1,
-            'correct_choice_id' => 1,
+            'answer_type_id' => 1
         ];
     }
 }

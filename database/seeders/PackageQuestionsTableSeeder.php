@@ -25,8 +25,7 @@ class PackageQuestionsTableSeeder extends Seeder
         \DB::table('package_questions')->where('id', 67)->update(['package_id' => 161]);
         \DB::table('package_questions')->where('id', 71)->update([
             'package_id' => 161,
-            'answer_type_id' => 2,
-            'correct_choice_id' => null
+            'answer_type_id' => 2
         ]);
     }
 }

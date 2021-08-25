@@ -25,7 +25,6 @@ class PackageQuestion extends Model
         'package_id',
 
         'answer_type_id',
-        'correct_choice_id',
 
         'order',
         'weight',
@@ -47,10 +46,5 @@ class PackageQuestion extends Model
     public function answerType(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(AnswerType::class, 'answer_type_id');
-    }
-
-    public function correctChoice(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(PackageQuestionChoice::class, 'correct_choice_id');
     }
 }

@@ -12,8 +12,7 @@ use Behamin\BResources\Requests\BasicRequest;
  *      required={"title"},
  *     example={
  *           "title": "YOUR TITLE OF ...",
- *           "answer_type_id": 1,
- *           "correct_choice_id": 1
+ *           "answer_type_id": 1
  *     }
  * )
  */

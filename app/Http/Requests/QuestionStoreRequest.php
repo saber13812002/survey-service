@@ -15,7 +15,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *          "package_id": 1,
  *          "weight": 2,
  *          "is_active": 1,
- *          "correct_choice_id": 1,
  *          "order": 1
  *     }
  * )

@@ -67,6 +67,7 @@ class PackageQuestionChoiceController extends Controller
      *)
      * Display a listing of the resource.
      *
+     * @param PackageQuestionChoiceFilter $filters
      * @param int $packageQuestionId
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
