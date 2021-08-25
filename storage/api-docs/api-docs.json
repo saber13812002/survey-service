@@ -3039,14 +3039,17 @@
                     "create": [
                         {
                             "title": "FOR EXAMPLE ...",
+                            "is_correct": 0,
                             "order": 1
                         },
                         {
                             "title": "FOR EXAMPLE ...",
+                            "is_correct": 0,
                             "order": 1
                         },
                         {
                             "title": "FOR EXAMPLE ...",
+                            "is_correct": 1,
                             "order": 1
                         }
                     ],
@@ -3055,18 +3058,21 @@
                             "id": 18,
                             "title": "FOR EXAMPLE ...",
                             "is_active": 1,
+                            "is_correct": 1,
                             "order": 1
                         },
                         {
                             "id": 19,
                             "title": "FOR EXAMPLE ...",
                             "is_active": 1,
+                            "is_correct": 0,
                             "order": 2
                         },
                         {
                             "id": 20,
                             "title": "FOR EXAMPLE ...",
                             "is_active": 1,
+                            "is_correct": 0,
                             "order": 3
                         }
                     ],
@@ -3195,8 +3201,7 @@
                 "type": "object",
                 "example": {
                     "title": "YOUR TITLE OF ...",
-                    "answer_type_id": 1,
-                    "correct_choice_id": 1
+                    "answer_type_id": 1
                 }
             },
             "PackageRequest": {
@@ -3243,21 +3248,18 @@
                             "id": 18,
                             "title": "Question EXAMPLE ...",
                             "is_active": 1,
-                            "correct_choice_id": 1,
                             "order": 1
                         },
                         {
                             "id": 19,
                             "title": "Question EXAMPLE ...",
                             "is_active": 1,
-                            "correct_choice_id": 1,
                             "order": 2
                         },
                         {
                             "id": 20,
                             "title": "Question EXAMPLE ...",
                             "is_active": 1,
-                            "correct_choice_id": 1,
                             "order": 3
                         }
                     ],
@@ -3280,7 +3282,6 @@
                     "package_id": 1,
                     "weight": 2,
                     "is_active": 1,
-                    "correct_choice_id": 1,
                     "order": 1
                 }
             },

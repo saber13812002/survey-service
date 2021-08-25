@@ -13,14 +13,17 @@ use Behamin\BResources\Requests\BasicRequest;
  *              "create": {
  *                  {
  *                      "title":"FOR EXAMPLE ...",
+ *                      "is_correct": 0,
  *                      "order": 1
  *                  },
  *                  {
  *                      "title":"FOR EXAMPLE ...",
+ *                      "is_correct": 0,
  *                      "order": 1
  *                  },
  *                  {
  *                      "title":"FOR EXAMPLE ...",
+ *                      "is_correct": 1,
  *                      "order": 1
  *                  }
  *              },
@@ -30,18 +33,21 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "id":18,
  *                      "title":"FOR EXAMPLE ...",
  *                      "is_active": 1,
+ *                      "is_correct": 1,
  *                      "order": 1
  *                  },
  *                  {
  *                      "id":19,
  *                      "title":"FOR EXAMPLE ...",
  *                      "is_active": 1,
+ *                      "is_correct": 0,
  *                      "order": 2
  *                  },
  *                  {
  *                      "id":20,
  *                      "title":"FOR EXAMPLE ...",
  *                      "is_active": 1,
+ *                      "is_correct": 0,
  *                      "order": 3
  *                  }
  *              },

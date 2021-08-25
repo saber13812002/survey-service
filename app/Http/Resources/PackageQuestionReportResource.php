@@ -35,7 +35,6 @@ class PackageQuestionReportResource extends BasicResource
             "description" => $resource->description,
 
             "answer_type_id" => $resource->answer_type_id,
-            "correct_choice_id" => $resource->correct_choice_id,
 
             "order" => $resource->order,
             "weight" => $resource->weight,
