@@ -100,6 +100,7 @@ class ReportController extends Controller
 
         $data['id'] = $package->id;
         $data['name'] = $package->title;
+        $data['package'] = $package;
         $data['total_unique_answers'] = $answerQuery->count();
         $data['total_unique_users'] = $total_count_member->count();
 
