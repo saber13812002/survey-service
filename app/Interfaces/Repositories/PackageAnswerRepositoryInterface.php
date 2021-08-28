@@ -18,6 +18,8 @@ interface PackageAnswerRepositoryInterface
 
     public function update(int $questionId, array $data);
 
+    public function storeUpdateBulk(array $data, int $packageId);
+
     public function destroy(int $id);
 
     public function getByPackageIdAndQuestionId(int $packageId, int $questionId);

@@ -4,10 +4,10 @@
 namespace App\Helpers\BulkActions;
 
 
-use App\Models\PackageQuestion;
+use App\Models\PackageAnswer;
 use Illuminate\Support\Arr;
 
-class PackageQuestionHelper
+class PackageAnswerHelper
 {
     public static function manage($data, $model): void
     {
@@ -27,16 +27,16 @@ class PackageQuestionHelper
         $data = Arr::get($data, 'create', []);
         $dataModels = [];
         foreach ($data as $key => $dataItem) {
-            $dataModels[$key] = new PackageQuestion($dataItem);
+            $dataModels[$key] = new PackageAnswer($dataItem);
         }
-        $model->questions()->saveMany($dataModels);
+        $model->answers()->saveMany($dataModels);
     }
 
     private static function bulkUpdate($data, $model): void
     {
         $data = Arr::get($data, 'update', []);
         $dataIds = Arr::pluck($data, 'id');
-        $dataModels = $model->questions()->find($dataIds);
+        $dataModels = $model->answers()->find($dataIds);
         foreach ($dataModels as $key => $dataModel) {
             $dataModel->fill($data[$key])->save();
         }
@@ -46,7 +46,7 @@ class PackageQuestionHelper
     {
         $data = Arr::get($data, 'delete', []);
         if (!empty($data)) {
-            $model->questions()->whereIn('id', $data)->delete();
+            $model->answers()->whereIn('id', $data)->delete();
         }
     }
 }

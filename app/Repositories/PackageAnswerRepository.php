@@ -4,7 +4,9 @@
 namespace App\Repositories;
 
 
+use App\Helpers\BulkActions\PackageAnswerHelper;
 use App\Http\Filters\PackageAnswerFilter;
+use App\Models\Package;
 use App\Models\PackageAnswer;
 use Illuminate\Support\Facades\DB;
 
@@ -34,7 +36,6 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
     {
         $item = new PackageAnswer($data);
         $item->save();
-
         return $item;
     }
 
@@ -44,6 +45,13 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
         $item->fill($data);
         $item->save();
         return $item;
+    }
+
+    public function storeUpdateBulk(array $data, int $packageId)
+    {
+        $packageItem = Package::query()->findOrFail($packageId);
+        PackageAnswerHelper::manage($data, $packageItem);
+        return $packageItem->load('answers');
     }
 
     public function destroy(int $id)

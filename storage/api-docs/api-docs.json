@@ -1473,6 +1473,69 @@
                 }
             }
         },
+        "/api/v1/packages/{packageId}/answers/bulk": {
+            "post": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "post all answers by package id for create update or delete",
+                "operationId": "postArrayOfAnswersByPackageIdToUpdateDeleteOrCreate",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuestionAnswerBulkStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/packages": {
             "get": {
                 "tags": [
@@ -3222,6 +3285,72 @@
                     "finished_at": "2021-06-02T14:48:37",
                     "is_active": 1,
                     "is_deletable": 1
+                }
+            },
+            "QuestionAnswerBulkStoreRequest": {
+                "title": "QuestionAnswerBulkStoreRequest",
+                "description": "Answer Store Update Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "Question Example 1 ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 2 ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 3 ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 19,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 20,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
                 }
             },
             "QuestionBulkStoreRequest": {
