@@ -100,7 +100,7 @@ Route::group([
             Route::get('/packages/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'index'])->name('package.question.answer.index');
             Route::get('/questions/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'getByQuestionId'])->name('package.question.answer.show.by.question.id');
             Route::post('/questions/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'store'])->name('package.question.answer.store');
-            Route::post('/questions/{id}/answers/bulk', [Controllers\v1\PackageAnswerController::class, 'storeUpdateBulk'])->name('package.question.answer.store.update.bulk');
+            Route::post('/packages/{id}/answers/bulk', [Controllers\v1\PackageAnswerController::class, 'storeUpdateBulk'])->name('package.question.answer.store.update.bulk');
             Route::put('/questions/{id}/answers', [Controllers\v1\PackageAnswerController::class, 'update'])->name('package.question.answer.update');
             // answer
             Route::get('/answers/{id}', [Controllers\v1\PackageAnswerController::class, 'show'])->name('package.question.answer.show');
