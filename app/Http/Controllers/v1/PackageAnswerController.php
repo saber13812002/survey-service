@@ -4,11 +4,10 @@ namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageAnswerFilter;
+use App\Http\Requests\QuestionAnswerBulkStoreRequest;
 use App\Http\Resources\PackageAnswerResource;
 use App\Http\Resources\PackageAnswerResourceCollection;
-use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
-use App\Interfaces\Repositories\PackageRepositoryInterface;
 use App\Models\PackageAnswer;
 use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
@@ -445,7 +444,7 @@ class PackageAnswerController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\PackageAnswer $packageAnswer
+     * @param int $questionId
      * @return PackageAnswerResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
@@ -519,5 +518,79 @@ class PackageAnswerController extends Controller
     {
         return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
             ->destroy($answerId)]);
+    }
+
+
+    /**
+     * @OA\Post(
+     *  path="/api/v1/packages/{packageId}/answers/bulk",
+     *  operationId="postArrayOfAnswersByPackageIdToUpdateDeleteOrCreate",
+     *  summary="post all answers by package id for create update or delete",
+     *  tags={"Answers"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/QuestionAnswerBulkStoreRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param QuestionAnswerBulkStoreRequest $request
+     * @param int $packageId
+     * @return PackageAnswerResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function storeUpdateBulk(QuestionAnswerBulkStoreRequest $request, int $packageId): PackageAnswerResource
+    {
+        return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
+            ->storeUpdateBulk($request->all(), $packageId)]);
     }
 }

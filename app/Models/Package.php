@@ -118,6 +118,14 @@ class Package extends Model
         return $this->hasMany(PackageQuestion::class, 'package_id');
     }
 
+    /**
+     * Get the answers
+     */
+    public function answers(): HasMany
+    {
+        return $this->hasMany(PackageAnswer::class, 'package_id');
+    }
+
     public function scopeAppId($query)
     {
         return $query->where('client_app_id', request()->app_id);
