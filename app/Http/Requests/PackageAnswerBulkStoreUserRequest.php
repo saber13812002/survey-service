@@ -6,7 +6,7 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="QuestionAnswerBulkStoreRequest",
+ *      title="PackageAnswerBulkStoreUserRequest",
  *      description="Answer Store Update Request body data",
  *      type="object",
  *     example={
@@ -16,7 +16,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "description": "asdfa22",
  *                      "package_id": 11,
  *                      "question_id": 10,
- *                      "user_id": 4,
  *                      "choice_id": 10
  *                  },
  *                  {
@@ -24,7 +23,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "description": "asdfa22",
  *                      "package_id": 11,
  *                      "question_id": 10,
- *                      "user_id": 4,
  *                      "choice_id": 10
  *                  },
  *                  {
@@ -32,7 +30,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "description": "asdfa22",
  *                      "package_id": 11,
  *                      "question_id": 10,
- *                      "user_id": 4,
  *                      "choice_id": 10
  *                  }
  *              },
@@ -44,7 +41,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "description": "asdfa22",
  *                      "package_id": 11,
  *                      "question_id": 10,
- *                      "user_id": 4,
  *                      "choice_id": 10
  *                  },
  *                  {
@@ -53,7 +49,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "description": "asdfa22",
  *                      "package_id": 11,
  *                      "question_id": 10,
- *                      "user_id": 4,
  *                      "choice_id": 10
  *                  },
  *                  {
@@ -62,7 +57,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "description": "asdfa22",
  *                      "package_id": 11,
  *                      "question_id": 10,
- *                      "user_id": 4,
  *                      "choice_id": 10
  *                  }
  *              },
@@ -75,7 +69,7 @@ use Behamin\BResources\Requests\BasicRequest;
  * )
  */
 
-class QuestionAnswerBulkStoreRequest extends BasicRequest
+class PackageAnswerBulkStoreUserRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.

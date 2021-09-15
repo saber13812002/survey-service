@@ -20,6 +20,8 @@ interface PackageAnswerRepositoryInterface
 
     public function storeUpdateBulk(array $data, int $packageId);
 
+    public function userStoreUpdateBulk(array $data, int $userId, int $packageId);
+
     public function destroy(int $id);
 
     public function getByPackageIdAndQuestionId(int $packageId, int $questionId);

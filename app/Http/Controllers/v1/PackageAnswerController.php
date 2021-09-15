@@ -4,7 +4,8 @@ namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageAnswerFilter;
-use App\Http\Requests\QuestionAnswerBulkStoreRequest;
+use App\Http\Requests\PackageAnswerBulkStoreRequest;
+use App\Http\Requests\PackageAnswerBulkStoreUserRequest;
 use App\Http\Resources\PackageAnswerResource;
 use App\Http\Resources\PackageAnswerResourceCollection;
 use App\Interfaces\Repositories\PackageAnswerRepositoryInterface;
@@ -564,7 +565,7 @@ class PackageAnswerController extends Controller
      *
      *   @OA\RequestBody(
      *       required=true,
-     *       @OA\JsonContent(ref="#/components/schemas/QuestionAnswerBulkStoreRequest")
+     *       @OA\JsonContent(ref="#/components/schemas/PackageAnswerBulkStoreRequest")
      *   ),
      *
      *   @OA\Response(
@@ -583,14 +584,101 @@ class PackageAnswerController extends Controller
      *
      * Store a newly created resource in storage.
      *
-     * @param QuestionAnswerBulkStoreRequest $request
+     * @param PackageAnswerBulkStoreRequest $request
      * @param int $packageId
      * @return PackageAnswerResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function storeUpdateBulk(QuestionAnswerBulkStoreRequest $request, int $packageId): PackageAnswerResource
+    public function storeUpdateBulk(PackageAnswerBulkStoreRequest $request, int $packageId): PackageAnswerResource
     {
         return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
             ->storeUpdateBulk($request->all(), $packageId)]);
+    }
+
+
+    /**
+     * @OA\Post(
+     *  path="/api/v1/users/{userId}/packages/{packageId}/answers/bulk",
+     *  operationId="postArrayOfAnswersByPackageIdToUpdateDeleteOrCreateForUser",
+     *  summary="post all answers by package id for create update or delete for specific user",
+     *  tags={"Answers"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of user",
+     *       name="userId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of package",
+     *       name="packageId",
+     *       required=true,
+     *       in="path",
+     *       example="161",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/PackageAnswerBulkStoreUserRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param PackageAnswerBulkStoreUserRequest $request
+     * @param int $userId
+     * @param int $packageId
+     * @return PackageAnswerResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function userStoreUpdateBulk(PackageAnswerBulkStoreUserRequest $request, int $userId, int $packageId): PackageAnswerResource
+    {
+        return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
+            ->userStoreUpdateBulk($request->all(), $userId, $packageId)]);
     }
 }

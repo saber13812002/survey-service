@@ -1518,7 +1518,81 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/QuestionAnswerBulkStoreRequest"
+                                "$ref": "#/components/schemas/PackageAnswerBulkStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{userId}/packages/{packageId}/answers/bulk": {
+            "post": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "post all answers by package id for create update or delete for specific user",
+                "operationId": "postArrayOfAnswersByPackageIdToUpdateDeleteOrCreateForUser",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "ID of user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PackageAnswerBulkStoreUserRequest"
                             }
                         }
                     }
@@ -3255,40 +3329,8 @@
                     }
                 }
             },
-            "PackageQuestionRequest": {
-                "title": "PackageQuestionRequest",
-                "description": "Package Question Store Request body data",
-                "required": [
-                    "title"
-                ],
-                "type": "object",
-                "example": {
-                    "title": "YOUR TITLE OF ...",
-                    "answer_type_id": 1
-                }
-            },
-            "PackageRequest": {
-                "title": "PackageRequest",
-                "description": "Package Request",
-                "required": [
-                    "title"
-                ],
-                "type": "object",
-                "example": {
-                    "title": "نام پکیج",
-                    "package_type_id": 1,
-                    "parent_id": null,
-                    "description": "description",
-                    "first_text": "first_text",
-                    "final_text": "final_text",
-                    "started_at": "2021-06-02T14:48:37",
-                    "finished_at": "2021-06-02T14:48:37",
-                    "is_active": 1,
-                    "is_deletable": 1
-                }
-            },
-            "QuestionAnswerBulkStoreRequest": {
-                "title": "QuestionAnswerBulkStoreRequest",
+            "PackageAnswerBulkStoreRequest": {
+                "title": "PackageAnswerBulkStoreRequest",
                 "description": "Answer Store Update Request body data",
                 "type": "object",
                 "example": {
@@ -3351,6 +3393,98 @@
                         13,
                         16
                     ]
+                }
+            },
+            "PackageAnswerBulkStoreUserRequest": {
+                "title": "PackageAnswerBulkStoreUserRequest",
+                "description": "Answer Store Update Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "Question Example 1 ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 2 ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 3 ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "choice_id": 10
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 19,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 20,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "package_id": 11,
+                            "question_id": 10,
+                            "choice_id": 10
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
+                }
+            },
+            "PackageQuestionRequest": {
+                "title": "PackageQuestionRequest",
+                "description": "Package Question Store Request body data",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "YOUR TITLE OF ...",
+                    "answer_type_id": 1
+                }
+            },
+            "PackageRequest": {
+                "title": "PackageRequest",
+                "description": "Package Request",
+                "required": [
+                    "title"
+                ],
+                "type": "object",
+                "example": {
+                    "title": "نام پکیج",
+                    "package_type_id": 1,
+                    "parent_id": null,
+                    "description": "description",
+                    "first_text": "first_text",
+                    "final_text": "final_text",
+                    "started_at": "2021-06-02T14:48:37",
+                    "finished_at": "2021-06-02T14:48:37",
+                    "is_active": 1,
+                    "is_deletable": 1
                 }
             },
             "QuestionBulkStoreRequest": {

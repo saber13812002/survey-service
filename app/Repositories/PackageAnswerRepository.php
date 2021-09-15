@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Helpers\BulkActions\PackageAnswerHelper;
+use App\Helpers\BulkActions\PackageAnswerUserHelper;
 use App\Http\Filters\PackageAnswerFilter;
 use App\Models\Package;
 use App\Models\PackageAnswer;
@@ -51,6 +52,13 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
     {
         $packageItem = Package::query()->findOrFail($packageId);
         PackageAnswerHelper::manage($data, $packageItem);
+        return $packageItem->load('answers');
+    }
+
+    public function userStoreUpdateBulk(array $data, int $userId, int $packageId)
+    {
+        $packageItem = Package::query()->findOrFail($packageId);
+        PackageAnswerUserHelper::manage($data, $packageItem, $userId);
         return $packageItem->load('answers');
     }
 
