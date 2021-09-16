@@ -12,11 +12,10 @@ class PackageAnswerUserHelper
     public static function manage($data, $model, $userId): void
     {
         if (Arr::has($data, 'update')) {
-//            dd($userId);
             static::bulkUpdate($data, $model, $userId);
         }
         if (Arr::has($data, 'delete')) {
-            static::bulkDelete($data, $model);
+            static::bulkDelete($data, $model, $userId);
         }
         if (Arr::has($data, 'create')) {
             static::bulkCreate($data, $model, $userId);
@@ -28,7 +27,8 @@ class PackageAnswerUserHelper
         $data = Arr::get($data, 'create', []);
         $dataModels = [];
         foreach ($data as $key => $dataItem) {
-            $data['user_id'] = $userId;
+            $dataItem['user_id'] = $userId;
+            $dataItem['package_id'] = $model->id;
             $dataModels[$key] = new PackageAnswer($dataItem);
         }
         $model->answers()->saveMany($dataModels);
@@ -40,17 +40,23 @@ class PackageAnswerUserHelper
         $dataIds = Arr::pluck($data, 'id');
         $dataModels = $model->answers()->find($dataIds);
         foreach ($dataModels as $key => $dataModel) {
-            dd($data);
-            $data['user_id'] = $userId;
-            $dataModel->fill($data[$key])->save();
+            $data[$key]['user_id'] = $userId;
+            $data[$key]['package_id'] = $model->id;
+            if ($dataModel->where('user_id', $userId)->where('package_id', $model->id)->first()) {
+                $dataModel->fill($data[$key])->save();
+            }
         }
     }
 
-    private static function bulkDelete($data, $model): void
+    private static function bulkDelete($data, $model, $userId): void
     {
         $data = Arr::get($data, 'delete', []);
         if (!empty($data)) {
-            $model->answers()->whereIn('id', $data)->delete();
+            // TODO:check id of the user
+            // TODO: check softdelete is better or not?
+            foreach ($data as $id) {
+                $model->answers()->where('id', $id)->where('user_id', $userId)->delete();
+            }
         }
     }
 }

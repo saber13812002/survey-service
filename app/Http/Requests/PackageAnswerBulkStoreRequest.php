@@ -14,7 +14,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                  {
  *                      "title": "Question Example 1 ...",
  *                      "description": "asdfa22",
- *                      "package_id": 11,
  *                      "question_id": 10,
  *                      "user_id": 4,
  *                      "choice_id": 10
@@ -22,7 +21,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                  {
  *                      "title":"Question Example 2 ...",
  *                      "description": "asdfa22",
- *                      "package_id": 11,
  *                      "question_id": 10,
  *                      "user_id": 4,
  *                      "choice_id": 10
@@ -30,7 +28,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                  {
  *                      "title":"Question Example 3 ...",
  *                      "description": "asdfa22",
- *                      "package_id": 11,
  *                      "question_id": 10,
  *                      "user_id": 4,
  *                      "choice_id": 10
@@ -42,7 +39,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "id":18,
  *                      "title":"Question EXAMPLE ...",
  *                      "description": "asdfa22",
- *                      "package_id": 11,
  *                      "question_id": 10,
  *                      "user_id": 4,
  *                      "choice_id": 10
@@ -51,7 +47,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "id":19,
  *                      "title":"Question EXAMPLE ...",
  *                      "description": "asdfa22",
- *                      "package_id": 11,
  *                      "question_id": 10,
  *                      "user_id": 4,
  *                      "choice_id": 10
@@ -60,7 +55,6 @@ use Behamin\BResources\Requests\BasicRequest;
  *                      "id":20,
  *                      "title":"Question EXAMPLE ...",
  *                      "description": "asdfa22",
- *                      "package_id": 11,
  *                      "question_id": 10,
  *                      "user_id": 4,
  *                      "choice_id": 10

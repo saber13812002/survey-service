@@ -59,7 +59,9 @@ class PackageAnswerRepository implements \App\Interfaces\Repositories\PackageAns
     {
         $packageItem = Package::query()->findOrFail($packageId);
         PackageAnswerUserHelper::manage($data, $packageItem, $userId);
-        return $packageItem->load('answers');
+        return $packageItem->load(['answers' => function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        }]);
     }
 
     public function destroy(int $id)
