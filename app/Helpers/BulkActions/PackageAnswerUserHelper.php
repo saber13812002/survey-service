@@ -42,9 +42,7 @@ class PackageAnswerUserHelper
         foreach ($dataModels as $key => $dataModel) {
             $data[$key]['user_id'] = $userId;
             $data[$key]['package_id'] = $model->id;
-            if ($dataModel->where('user_id', $userId)->where('package_id', $model->id)->where('question_id', $data[$key]['question_id'])->first()) {
-                $dataModel->fill($data[$key])->save();
-            }
+            $dataModel->fill($data[$key])->save();
         }
     }
 
