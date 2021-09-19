@@ -6,12 +6,12 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="DisconnectTagsIntoPackageRequest",
- *      description="Disconnect Tags Into Package Request",
+ *      title="DisconnectTemplatesIntoPackageRequest",
+ *      description="Disconnect Templates Into Package Request",
  *      type="object",
  *      required={"tags"},
  *     example={
- *     "tags": {
+ *     "templates": {
  *             "disconnect": {
  *                 12,
  *                 17
@@ -20,8 +20,7 @@ use Behamin\BResources\Requests\BasicRequest;
  *     }
  * )
  */
-
-class DisconnectTagsIntoPackageRequest extends BasicRequest
+class DisconnectTemplatesIntoPackageRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.

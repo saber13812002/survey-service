@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
-use App\Interfaces\Services\ReportServiceInterface;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackagesResource extends BasicResource
