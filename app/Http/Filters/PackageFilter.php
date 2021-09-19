@@ -10,7 +10,12 @@ class PackageFilter extends Filter
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->relations = [];
+
+        $this->relations = [
+            'categories' => [
+                'id' => 'category_id'
+            ]
+        ];
 
         //$this->sumField = null;
     }

@@ -16,6 +16,11 @@ interface PackageRepositoryInterface
     /**
      * @return mixed
      */
+    public function template(PackageFilter $filters);
+
+    /**
+     * @return mixed
+     */
     public function participants(PackageFilter $filters, int $id);
 
     /**

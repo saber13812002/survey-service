@@ -81,7 +81,7 @@ class ReportController extends Controller
             ->show($packageId);
 
         $packageQuestion = new PackageQuestionReportResourceCollection(["data" => app()->make(PackageQuestionRepositoryInterface::class)
-            ->getReportByPackageId($packageId)], true);
+            ->getItemsByPackageId($packageId)], true);
 
         $answerQuery = app()->make(ReportServiceInterface::class)
             ->getAllAnswerByPackageId($packageId);

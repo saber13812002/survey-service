@@ -61,6 +61,7 @@ Route::group([
 
             // package
             Route::get('/packages', [Controllers\v1\PackageController::class, 'index'])->name('package.index');
+            Route::get('/packages/templates', [Controllers\v1\PackageController::class, 'template'])->name('package.index.with.template');
             Route::get('/packages/{id}', [Controllers\v1\PackageController::class, 'show'])->name('package.show');
             Route::post('/packages', [Controllers\v1\PackageController::class, 'store'])->name('package.store');
             Route::put('/packages/{id}', [Controllers\v1\PackageController::class, 'update'])->name('package.update');
