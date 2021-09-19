@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
+use App\Interfaces\Services\ReportServiceInterface;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackagesResource extends BasicResource
@@ -16,10 +17,9 @@ class PackagesResource extends BasicResource
     {
         $packageQuestion = new PackageQuestionResourceCollection(["data" => app()->make(PackageQuestionRepositoryInterface::class)
             ->getItemsByPackageId($resource->id)], true);
-//        $packageQuestion = app()->make(PackageQuestionRepositoryInterface::class)
-//            ->getItemsByPackageId($resource->id);
-//        $answerQuery = app()->make(ReportServiceInterface::class)
-//            ->getAllAnswerByPackageId($resource->id);
+
+        $answerQuery = app()->make(ReportServiceInterface::class)
+            ->getAllAnswerByPackageId($resource->id);
 
         return [
             'id' => $resource->id,
@@ -51,7 +51,7 @@ class PackagesResource extends BasicResource
             'campaigns' => $resource->campaigns,
             'templates' => $resource->templates,
             'questions' => $packageQuestion,
-//            'answers' => $answerQuery,
+            'answers' => $answerQuery,
         ];
     }
 }
