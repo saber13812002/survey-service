@@ -41,7 +41,7 @@ class PackageAnswer extends Model
         // auto-sets values on creation
         static::creating(function ($query) {
             if (!(new Seeder())->isRunning()) {
-                $query->client_app_id = request()->app_id;
+                $query->client_app_id = request()->header("app_id");
             }
         });
     }
@@ -63,6 +63,6 @@ class PackageAnswer extends Model
 
     public function scopeAppId($query)
     {
-        return $query->where('client_app_id', request()->app_id);
+        return $query->where('client_app_id', request()->header("app_id"));
     }
 }
