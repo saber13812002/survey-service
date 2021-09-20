@@ -18,8 +18,8 @@ class PackagesResource extends BasicResource
         $packageQuestion = new PackageQuestionResourceCollection(["data" => app()->make(PackageQuestionRepositoryInterface::class)
             ->getItemsByPackageId($resource->id)], true);
 
-        $answerQuery = app()->make(ReportServiceInterface::class)
-            ->getAllAnswerByPackageId($resource->id);
+//        $answerQuery = app()->make(ReportServiceInterface::class)
+//            ->getAllAnswerByPackageId($resource->id);
 
         return [
             'id' => $resource->id,
@@ -51,7 +51,7 @@ class PackagesResource extends BasicResource
             'campaigns' => $resource->campaigns,
             'templates' => $resource->templates,
             'questions' => $packageQuestion,
-            'answers' => $answerQuery,
+//            'answers' => $answerQuery,
         ];
     }
 }
