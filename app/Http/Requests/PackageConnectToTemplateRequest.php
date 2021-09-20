@@ -4,19 +4,7 @@ namespace App\Http\Requests;
 
 use Behamin\BResources\Requests\BasicRequest;
 
-/**
- * @OA\Schema(
- *      title="ConnectTemplatesIntoPackageRequest",
- *      description="Connect Templates Into Package Request",
- *      type="object",
- *     example={
- *          "serviceable_type": "MEDYAR/TEMPLATE",
- *          "serviceable_id": 1024
- *     }
- * )
- */
-
-class ConnectTemplatesIntoPackageRequest extends BasicRequest
+class PackageConnectToTemplateRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +13,7 @@ class ConnectTemplatesIntoPackageRequest extends BasicRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -36,7 +24,8 @@ class ConnectTemplatesIntoPackageRequest extends BasicRequest
     public function rules()
     {
         return [
-            //
+            'serviceable_type' => 'required',
+            'serviceable_id' => 'required',
         ];
     }
 }

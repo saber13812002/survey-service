@@ -61,7 +61,7 @@ Route::group([
 
             // package
             Route::get('/packages', [Controllers\v1\PackageController::class, 'index'])->name('package.index');
-            Route::get('/packages/templates', [Controllers\v1\PackageController::class, 'template'])->name('package.index.with.template');
+            Route::get('/packages/templates', [Controllers\v1\PackageController::class, 'byTemplates'])->name('package.index.by.templates');
             Route::get('/packages/{id}', [Controllers\v1\PackageController::class, 'show'])->name('package.show');
             Route::post('/packages', [Controllers\v1\PackageController::class, 'store'])->name('package.store');
             Route::put('/packages/{id}', [Controllers\v1\PackageController::class, 'update'])->name('package.update');
@@ -78,6 +78,10 @@ Route::group([
             // tag to package
             Route::put('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'connect'])->name('connect.tags.to.package');
             Route::delete('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'disconnect'])->name('disconnect.tags.from.package');
+
+            // templates to package
+            Route::put('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'store'])->name('template.store.connect');
+            Route::delete('/templates/{id}', [Controllers\v1\ServiceableController::class, 'destroy'])->name('template.destroy');
 
             // package question
             Route::get('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'getByPackageId'])->name('package.question.index');

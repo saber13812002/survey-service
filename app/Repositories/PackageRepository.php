@@ -17,9 +17,11 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
         return Package::appId()->filter($filters);
     }
 
-    public function template(PackageFilter $filters)
+    public function byTemplates(PackageFilter $filters)
     {
-        return Package::with("templates")->appId()->filter($filters);
+        return Package::with("templates")
+            ->appId()
+            ->filter($filters);
     }
 
     public function participants(PackageFilter $filters, int $id)
@@ -121,24 +123,6 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     {
         $item = Package::query()->findOrFail($packageId);
         return $item->tags()->detach($tagIds, false);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function attachTemplate(array $templateIds, int $packageId)
-    {
-        $item = Package::query()->findOrFail($packageId);
-        return $item->templates()->sync($templateIds, false);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function detachTemplate(array $templateIds, int $packageId)
-    {
-        $item = Package::query()->findOrFail($packageId);
-        return $item->templates()->detach($templateIds, false);
     }
 
     /**

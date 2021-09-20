@@ -103,10 +103,10 @@ class PackageController extends Controller
      *   ),
      *)
      */
-    public function template(PackageFilter $filters)
+    public function byTemplates(PackageFilter $filters)
     {
         list($items, $count) = app()->make(PackageRepositoryInterface::class)
-            ->template($filters);
+            ->byTemplates($filters);
 
         return response(new PackagesResourceCollection(['data' => $items->get(), 'count' => $count], true));
     }

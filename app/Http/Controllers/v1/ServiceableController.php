@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PackageConnectToTemplateRequest;
 use App\Models\Serviceable;
-use Illuminate\Http\Request;
 
 class ServiceableController extends Controller
 {
@@ -50,7 +51,7 @@ class ServiceableController extends Controller
      *
      *   @OA\RequestBody(
      *       required=true,
-     *       @OA\JsonContent(ref="#/components/schemas/ConnectCampaignsIntoPackageRequest")
+     *       @OA\JsonContent(ref="#/components/schemas/ConnectTemplatesIntoPackageRequest")
      *   ),
      *
      *   @OA\Response(
@@ -69,26 +70,29 @@ class ServiceableController extends Controller
      *
      * Update the specified resource in storage.
      *
-     * @param PackageConnectToCampaignRequest $request
+     * @param PackageConnectToTemplateRequest $request
      * @param int $id
-     * @return CampanileResource
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function connect(PackageConnectToTemplateRequest $request, int $id): TemplateResource
+    public function store(PackageConnectToTemplateRequest $request, int $id)
     {
-        if (!$request->has('campaigns.connect')) {
-            throw new \Exception("failed to found campaigns connect");
+        $service = new Serviceable();
+        $service->package_id = $id;
+        $service->fill($request->all());
+        try {
+            $service->save();
+        } catch (\Exception $exception) {
+            return response(array(
+                "code"=> 409,
+                "error"=>"duplicate: " . $exception->getMessage()));
         }
-
-        $data = $request->only("serviceable_id", "serviceable_type");
-
-        return new TemplateResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->attachTemplate($data, $id)]);
+        return response($service);
     }
 
     /**
      * @OA\Delete(
-     *  path="/api/v1/packages/{packageId}/templates",
+     *  path="/api/v1/templates/{templateId}",
      *  operationId="disconnectTemplatesArrayIntoPackageById",
      *  summary="disconnect templates array into package by package id",
      *  tags={"Templates into Package"},
@@ -104,8 +108,8 @@ class ServiceableController extends Controller
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of package",
-     *       name="packageId",
+     *       description="templateId",
+     *       name="templateId",
      *       required=true,
      *       in="path",
      *       example="1",
@@ -127,11 +131,6 @@ class ServiceableController extends Controller
      *       )
      *   ),
      *
-     *   @OA\RequestBody(
-     *       required=true,
-     *       @OA\JsonContent(ref="#/components/schemas/DisconnectTemplatesIntoPackageRequest")
-     *   ),
-     *
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -149,15 +148,10 @@ class ServiceableController extends Controller
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Exception
      */
-    public function disconnect(Request $request, int $id): TemplatesResource
+    public function destroy(int $id)
     {
-        if (!$request->has('templates.disconnect')) {
-            throw new \Exception("failed to found templates disconnect");
-        }
-
-        $data = $request->input("templates.disconnect");
-
-        return new TemplatesResource(["data" => app()->make(PackageRepositoryInterface::class)
-            ->detachTemplates($data, $id)]);
+        $item = Serviceable::query()->findOrFail($id);
+        $item->delete();
+        return response($item);
     }
 }

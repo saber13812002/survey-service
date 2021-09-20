@@ -9,6 +9,9 @@ class Serviceable extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        "serviceable_type",
+        "serviceable_id"
+    ];
 
 }

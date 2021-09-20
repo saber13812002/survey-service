@@ -20,6 +20,8 @@ class CreateServiceablesTable extends Migration
             $table->integer("serviceable_id");
             $table->string("serviceable_type");
 
+            $table->unique(['serviceable_type', 'serviceable_id', 'package_id'], 'serviceable_unique');
+
             $table->timestamps();
         });
     }
@@ -31,6 +33,10 @@ class CreateServiceablesTable extends Migration
      */
     public function down()
     {
+        Schema::table('serviceables', function (Blueprint $table) {
+            $table->dropUnique('serviceable_unique');
+        });
+
         Schema::dropIfExists('serviceables');
     }
 }

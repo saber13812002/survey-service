@@ -16,7 +16,7 @@ interface PackageRepositoryInterface
     /**
      * @return mixed
      */
-    public function template(PackageFilter $filters);
+    public function byTemplates(PackageFilter $filters);
 
     /**
      * @return mixed
