@@ -9,5 +9,5 @@ use App\Http\Controllers\v2;
 */
 
 
-    // reports
-    Route::get('/packages/{id}/reports', [v2\ReportController::class, 'byPackageId'])->name('report.by.package.id');
+// reports
+Route::get('/packages/{id}/reports', [v2\ReportController::class, 'byPackageId'])->name('report.by.package.id');
