@@ -28,12 +28,23 @@ class PackageQuestionChoiceRepository implements PackageQuestionChoiceRepository
     /**
      * @inheritDoc
      */
-    public function getByQuestionId(PackageQuestionChoiceFilter $filters, int $questionId)
+    public function getByQuestionIdWithFilter(PackageQuestionChoiceFilter $filters, int $questionId)
     {
         return PackageQuestionChoice::query()
             ->where('question_id', $questionId)
             ->orderBy('order')
             ->filter($filters);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function byQuestionId(int $questionId)
+    {
+        return PackageQuestionChoice::query()
+            ->where('question_id', $questionId)
+            ->orderBy('order')
+            ->get();
     }
 
     /**

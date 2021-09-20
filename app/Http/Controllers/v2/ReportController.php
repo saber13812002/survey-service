@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageFilter;
 use App\Http\Resources\PackageQuestionReportResourceCollection;
 use App\Http\Resources\ParticipantResourceCollection;
+use App\Http\Resources\QuestionResource;
+use App\Http\Resources\QuestionResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use App\Interfaces\Services\ReportServiceInterface;
@@ -18,8 +20,8 @@ class ReportController extends Controller
     /**
      * @OA\Get(
      *  path="/api/v2/packages/{packageId}/reports",
-     *  operationId="getReportByPackageId",
-     *  summary="get reports by package id",
+     *  operationId="getReportByPackageIdv2",
+     *  summary="get reports by package id v2",
      *  tags={"Reports"},
      *
      *  @OA\Parameter(
@@ -80,8 +82,8 @@ class ReportController extends Controller
         $package = app()->make(PackageRepositoryInterface::class)
             ->show($packageId);
 
-        $packageQuestion = app()->make(PackageQuestionRepositoryInterface::class)
-            ->getItemsByPackageId($packageId);
+        $packageQuestion = QuestionResource::collection(app()->make(PackageQuestionRepositoryInterface::class)
+            ->getItemsByPackageId($packageId));
 
         $answerQuery = app()->make(ReportServiceInterface::class)
             ->getAllAnswerByPackageId($packageId);

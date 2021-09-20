@@ -25,7 +25,7 @@ class PackageQuestionReportResource extends BasicResource
             ->getByPackageIdAndQuestionId($resource->package_id, $resource->id);
 
         list($items, $count) = app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->getByQuestionId(new PackageQuestionChoiceFilter(new Request()), $resource->id);
+            ->getByQuestionIdWithFilter(new PackageQuestionChoiceFilter(new Request()), $resource->id);
 
         $choices = new PackageQuestionChoiceResourceCollection(["data" => $items->get(), 'count' => $count]);
 

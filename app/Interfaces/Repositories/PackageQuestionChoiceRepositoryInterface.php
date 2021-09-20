@@ -10,16 +10,25 @@ interface PackageQuestionChoiceRepositoryInterface
 {
 
     /**
+     * @param PackageQuestionChoiceFilter $filters
      * @param int $questionId
      * @return mixed
      */
     public function index(PackageQuestionChoiceFilter $filters, int $questionId);
 
     /**
+     * @param PackageQuestionChoiceFilter $filters
      * @param int $questionId
      * @return mixed
      */
-    public function getByQuestionId(PackageQuestionChoiceFilter $filters, int $questionId);
+    public function getByQuestionIdWithFilter(PackageQuestionChoiceFilter $filters, int $questionId);
+
+
+    /**
+     * @param int $questionId
+     * @return mixed
+     */
+    public function byQuestionId(int $questionId);
 
     /**
      * @param int $id
