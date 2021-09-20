@@ -19,7 +19,7 @@ interface PackageQuestionRepositoryInterface
      * @param int $packageId
      * @return mixed
      */
-    public function getReportByPackageId(int $packageId);
+    public function getItemsByPackageId(int $packageId);
 
     /**
      * @param int $id

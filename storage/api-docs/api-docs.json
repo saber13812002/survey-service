@@ -1711,6 +1711,48 @@
                 }
             }
         },
+        "/api/v1/packages/templates": {
+            "get": {
+                "tags": [
+                    "Packages"
+                ],
+                "summary": "get list of all packages with templates",
+                "operationId": "getListOfPackagesWithTemplates",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/packages/{packageId}": {
             "get": {
                 "tags": [
@@ -2728,6 +2770,122 @@
                 }
             }
         },
+        "/api/v1/packages/{packageId}/templates": {
+            "put": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "connect templates array into package by package id",
+                "operationId": "connectTemplatesArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectTemplatesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/templates/{templateId}": {
+            "delete": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "disconnect templates array into package by package id",
+                "operationId": "disconnectTemplatesArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k"
+                    },
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "description": "templateId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/tags": {
             "get": {
                 "tags": [
@@ -3281,6 +3439,15 @@
                     }
                 }
             },
+            "ConnectTemplatesIntoPackageRequest": {
+                "title": "ConnectTemplatesIntoPackageRequest",
+                "description": "Connect Templates Into Package Request",
+                "type": "object",
+                "example": {
+                    "serviceable_type": "MEDYAR/TEMPLATE",
+                    "serviceable_id": 1024
+                }
+            },
             "DisconnectCampaignsIntoPackageRequest": {
                 "title": "DisconnectCampaignsIntoPackageRequest",
                 "description": "Connect Campaigns Into Package Request",
@@ -3315,7 +3482,7 @@
             },
             "DisconnectTagsIntoPackageRequest": {
                 "title": "DisconnectTagsIntoPackageRequest",
-                "description": "Connect Tags Into Package Request",
+                "description": "Disconnect Tags Into Package Request",
                 "required": [
                     "tags"
                 ],
@@ -3338,7 +3505,6 @@
                         {
                             "title": "Question Example 1 ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "user_id": 4,
                             "choice_id": 10
@@ -3346,7 +3512,6 @@
                         {
                             "title": "Question Example 2 ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "user_id": 4,
                             "choice_id": 10
@@ -3354,7 +3519,6 @@
                         {
                             "title": "Question Example 3 ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "user_id": 4,
                             "choice_id": 10
@@ -3365,7 +3529,6 @@
                             "id": 18,
                             "title": "Question EXAMPLE ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "user_id": 4,
                             "choice_id": 10
@@ -3374,7 +3537,6 @@
                             "id": 19,
                             "title": "Question EXAMPLE ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "user_id": 4,
                             "choice_id": 10
@@ -3383,7 +3545,6 @@
                             "id": 20,
                             "title": "Question EXAMPLE ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "user_id": 4,
                             "choice_id": 10
@@ -3404,21 +3565,18 @@
                         {
                             "title": "Question Example 1 ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "choice_id": 10
                         },
                         {
                             "title": "Question Example 2 ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "choice_id": 10
                         },
                         {
                             "title": "Question Example 3 ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "choice_id": 10
                         }
@@ -3428,7 +3586,6 @@
                             "id": 18,
                             "title": "Question EXAMPLE ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "choice_id": 10
                         },
@@ -3436,7 +3593,6 @@
                             "id": 19,
                             "title": "Question EXAMPLE ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "choice_id": 10
                         },
@@ -3444,7 +3600,6 @@
                             "id": 20,
                             "title": "Question EXAMPLE ...",
                             "description": "asdfa22",
-                            "package_id": 11,
                             "question_id": 10,
                             "choice_id": 10
                         }

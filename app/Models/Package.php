@@ -111,6 +111,14 @@ class Package extends Model
     }
 
     /**
+     * Get all of the tags for the package.
+     */
+    public function templates(): HasMany
+    {
+        return $this->hasMany(Serviceable::class);
+    }
+
+    /**
      * Get the questions
      */
     public function questions(): HasMany

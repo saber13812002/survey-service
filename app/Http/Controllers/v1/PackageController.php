@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\PackageFilter;
 use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
+use App\Http\Resources\PackagesResourceCollection;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
 use Behamin\BResources\Resources\BasicResourceCollection;
 
@@ -58,6 +59,56 @@ class PackageController extends Controller
         list($items, $count) = app()->make(PackageRepositoryInterface::class)
             ->index($filters);
         return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
+    }
+
+    /**
+     * @OA\Get(
+     *  path="/api/v1/packages/templates",
+     *  operationId="getListOfPackagesWithTemplates",
+     *  summary="get list of all packages with templates",
+     *  tags={"Packages"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     */
+    public function byTemplates(PackageFilter $filters)
+    {
+        list($items, $count) = app()->make(PackageRepositoryInterface::class)
+            ->byTemplates($filters);
+
+        return response(new PackagesResourceCollection(['data' => $items->get(), 'count' => $count], true));
     }
 
     /**

@@ -21,7 +21,7 @@ class PackageQuestionRepository implements PackageQuestionRepositoryInterface
             ->filter($filters);
     }
 
-    public function getReportByPackageId(int $packageId)
+    public function getItemsByPackageId(int $packageId)
     {
         return PackageQuestion::query()
             ->where('package_id', $packageId)

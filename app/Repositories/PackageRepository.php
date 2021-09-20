@@ -17,6 +17,13 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
         return Package::appId()->filter($filters);
     }
 
+    public function byTemplates(PackageFilter $filters)
+    {
+        return Package::with("templates")
+            ->appId()
+            ->filter($filters);
+    }
+
     public function participants(PackageFilter $filters, int $id)
     {
         return PackageAnswer
@@ -33,7 +40,8 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
             [
                 'campaigns',
                 'categories',
-                'tags'
+                'tags',
+                'templates'
             ]
         )
             ->appId()
