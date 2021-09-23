@@ -234,16 +234,6 @@ class PackageAnswerController extends Controller
      */
     public function store(Request $request, int $questionId): PackageAnswerResource
     {
-        $item = PackageAnswer::appId()
-            ->where('question_id', $questionId)
-            ->where('user_id', $request->user_id)
-            ->first();
-
-        if ($item) {
-            return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
-                ->update($questionId, $request->all())]);
-        }
-
         $request->request->add(['question_id' => $questionId]);
 
         return new PackageAnswerResource(["data" => app()->make(PackageAnswerRepositoryInterface::class)
