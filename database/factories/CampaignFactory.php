@@ -23,7 +23,7 @@ class CampaignFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => 'Campaign ' . $this->faker->name,
+            'title' => 'کمپین ' . $this->faker->name,
             'description' => $this->faker->paragraph,
             'client_app_id' => 0,
         ];

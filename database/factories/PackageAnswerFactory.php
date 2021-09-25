@@ -33,7 +33,7 @@ class PackageAnswerFactory extends Factory
             'question_id' => function () {
                 return PackageQuestion::factory()->create()->id;
             },
-            'title' => 'Answer ' . $this->faker->name,
+            'title' => 'پاسخ ' . $this->faker->name,
             'description' => $this->faker->paragraph,
             'client_app_id' => 0,
             'user_id' => function () {
