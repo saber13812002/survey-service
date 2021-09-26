@@ -26,7 +26,7 @@ class PackageQuestionChoiceFactory extends Factory
 
         return [
             'title' => 'گزینه ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->realText(200),
             'question_id' => function () use ($packageQuestion) {
                 return $packageQuestion->id;
             },

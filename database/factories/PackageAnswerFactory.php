@@ -34,7 +34,7 @@ class PackageAnswerFactory extends Factory
                 return PackageQuestion::factory()->create()->id;
             },
             'title' => 'پاسخ ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->realText(200),
             'client_app_id' => 0,
             'user_id' => function () {
                 return 1;

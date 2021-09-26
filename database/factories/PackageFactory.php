@@ -28,10 +28,10 @@ class PackageFactory extends Factory
 
         return [
             'title' => 'پکیج ' . $this->faker->firstName,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->realText(200),
 
-            'first_text' => $this->faker->text,
-            'final_text' => $this->faker->text,
+            'first_text' => $this->faker->realText(200),
+            'final_text' => $this->faker->realText(200),
 
             'started_at' => Carbon::today('Europe/London'),
             'finished_at' => Carbon::tomorrow('Europe/London')->addDay(20),

@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
     {
         return [
             'title' => 'دسته ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->realText(200),
         ];
     }
 }
