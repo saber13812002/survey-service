@@ -27,16 +27,15 @@ class PackageFactory extends Factory
         $survey = Survey::factory()->create();
 
         return [
-            'title' => 'Package ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
+            'title' => 'پکیج ' . $this->faker->firstName,
+            'description' => $this->faker->realText(200),
 
-            'first_text' => $this->faker->text,
-            'final_text' => $this->faker->text,
+            'first_text' => $this->faker->realText(200),
+            'final_text' => $this->faker->realText(200),
 
             'started_at' => Carbon::today('Europe/London'),
             'finished_at' => Carbon::tomorrow('Europe/London')->addDay(20),
 
-            'description' => $this->faker->paragraph,
             'client_app_id' => 0,
             'packable_id' => function () use ($survey) {
                 return $survey->id;

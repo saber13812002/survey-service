@@ -25,8 +25,8 @@ class PackageQuestionFactory extends Factory
         $package = Package::factory()->create();
 
         return [
-            'title' => 'Question ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
+            'title' => 'سوال ' . $this->faker->name,
+            'description' => $this->faker->realText(200),
             'package_id' => function () use ($package) {
                 return $package->id;
             },
