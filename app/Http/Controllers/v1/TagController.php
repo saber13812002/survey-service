@@ -23,7 +23,7 @@ class TagController extends Controller
     *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -76,7 +76,7 @@ class TagController extends Controller
     *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -136,7 +136,7 @@ class TagController extends Controller
     *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -202,7 +202,7 @@ class TagController extends Controller
     *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -275,7 +275,7 @@ class TagController extends Controller
     *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2444nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
