@@ -97,8 +97,16 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PackageAnswersTableSeeder::class);
 
-        $this->call(PackageQuestionsTableSeeder::class);
 
-        $this->call(PackageChoicesTableSeeder::class);
+        $this->call(CategoriesTableSeederQuiz::class);
+
+        $this->call(PackagesTableSeederQuiz::class);
+
+        $this->call(CategorizablesTableSeederQuiz::class);
+
+        $this->call(PackageQuestionsTableSeederQuiz::class);
+
+        $this->call(PackageQuestionChoicesTableSeederQuiz::class);
+        $this->call(ServiceablesTableSeederQuiz::class);
     }
 }
