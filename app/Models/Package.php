@@ -113,9 +113,9 @@ class Package extends Model
     /**
      * Get all of the tags for the package.
      */
-    public function templates(): HasMany
+    public function template(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(Serviceable::class);
+        return $this->hasOne(Serviceable::class);
     }
 
     /**
