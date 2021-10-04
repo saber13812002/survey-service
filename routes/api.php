@@ -80,12 +80,14 @@ Route::group([
 
         // templates to package
         Route::put('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'store'])->name('template.store.connect');
+        Route::patch('/templates/{templateId}', [Controllers\v1\ServiceableController::class, 'update'])->name('template.update.connect');
         Route::delete('/templates/{id}', [Controllers\v1\ServiceableController::class, 'destroy'])->name('template.destroy');
 
         // package question
         Route::get('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'getByPackageId'])->name('package.question.index');
         Route::post('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'store'])->name('package.question.store');
         Route::post('/packages/{id}/questions/bulk', [Controllers\v1\PackageQuestionController::class, 'updateBulk'])->name('package.question.store.bulk');
+
         // question
         Route::get('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'show'])->name('package.question.show');
         Route::put('/questions/{id}', [Controllers\v1\PackageQuestionController::class, 'update'])->name('package.question.update');

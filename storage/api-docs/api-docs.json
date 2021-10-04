@@ -2884,6 +2884,67 @@
                         "description": "not found"
                     }
                 }
+            },
+            "patch": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "update templates",
+                "operationId": "updateTemplates",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "description": "Template Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectTemplatesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
             }
         },
         "/api/v1/tags": {
