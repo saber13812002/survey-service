@@ -80,6 +80,7 @@ Route::group([
 
         // templates to package
         Route::put('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'store'])->name('template.store.connect');
+        Route::patch('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'patch'])->name('template.patch.connect');
         Route::patch('/templates/{templateId}', [Controllers\v1\ServiceableController::class, 'update'])->name('template.update.connect');
         Route::delete('/templates/{id}', [Controllers\v1\ServiceableController::class, 'destroy'])->name('template.destroy');
 
