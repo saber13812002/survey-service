@@ -55,7 +55,6 @@ class PackageRequest extends BasicRequest
             'tags.connect' => 'nullable|exists_va:tags,id',
             'categories.connect' => 'nullable|exists_va:categories,id',
             'campaigns.connect' => 'nullable|exists_va:categories,id',
-
             'started_at' => [
                 'nullable', 'date'
             ],

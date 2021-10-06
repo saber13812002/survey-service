@@ -161,7 +161,10 @@ class ServiceableController extends Controller
      */
     public function patch(PackageConnectToTemplateRequest $request, int $id)
     {
-        $service = Serviceable::where('package_id', $id)->firstOrFail();
+        $service = Serviceable::where('package_id', $id)->first();
+        if (!$service) {
+            $service = new Serviceable();
+        }
         $service->fill($request->all());
         $service->save();
         return response($service);
