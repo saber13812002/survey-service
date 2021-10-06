@@ -62,7 +62,14 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     {
         $data = $this->setRequestedData($data);
 
-        $item = Package::query()->findOrFail($id);
+        $item = Package::with(
+            [
+                'campaigns',
+                'categories',
+                'tags',
+                'template'
+            ]
+        )->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;
