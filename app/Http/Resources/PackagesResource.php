@@ -49,7 +49,7 @@ class PackagesResource extends BasicResource
             'tags' => $resource->tags,
             'categories' => $resource->categories,
             'campaigns' => $resource->campaigns,
-            'templates' => $resource->templates,
+            'templates' => $resource->template,
             'questions' => $packageQuestion,
 //            'answers' => $answerQuery,
         ];

@@ -41,7 +41,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
                 'campaigns',
                 'categories',
                 'tags',
-                'templates'
+                'template'
             ]
         )
             ->appId()
