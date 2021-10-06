@@ -164,6 +164,7 @@ class ServiceableController extends Controller
         $service = Serviceable::where('package_id', $id)->first();
         if (!$service) {
             $service = new Serviceable();
+            $service->package_id = $id;
         }
         $service->fill($request->all());
         $service->save();
