@@ -41,7 +41,7 @@ class PackageResource extends BasicResource
             'tags' => $resource->tags,
             'categories' => $resource->categories,
             'campaigns' => $resource->campaigns,
-            'templates' => $resource->template,
+            'templates' => $resource->templates,
         ];
     }
 }

@@ -113,7 +113,7 @@ class Package extends Model
     /**
      * Get all of the tags for the package.
      */
-    public function template(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function templates(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Serviceable::class);
     }

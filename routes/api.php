@@ -79,10 +79,10 @@ Route::group([
         Route::delete('packages/{packageId}/tags', [Controllers\v1\TaggableController::class, 'disconnect'])->name('disconnect.tags.from.package');
 
         // templates to package
-        Route::put('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'store'])->name('template.store.connect');
-        Route::patch('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'patch'])->name('template.patch.connect');
-        Route::patch('/templates/{templateId}', [Controllers\v1\ServiceableController::class, 'update'])->name('template.update.connect');
-        Route::delete('/templates/{id}', [Controllers\v1\ServiceableController::class, 'destroy'])->name('template.destroy');
+        Route::put('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'store'])->name('templates.store.connect');
+        Route::patch('/packages/{packageId}/templates', [Controllers\v1\ServiceableController::class, 'patch'])->name('templates.patch.connect');
+        Route::patch('/templates/{templateId}', [Controllers\v1\ServiceableController::class, 'update'])->name('templates.update.connect');
+        Route::delete('/templates/{id}', [Controllers\v1\ServiceableController::class, 'destroy'])->name('templates.destroy');
 
         // package question
         Route::get('/packages/{id}/questions', [Controllers\v1\PackageQuestionController::class, 'getByPackageId'])->name('package.question.index');
