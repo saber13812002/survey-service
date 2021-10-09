@@ -41,7 +41,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
                 'campaigns',
                 'categories',
                 'tags',
-                'template'
+                'templates'
             ]
         )
             ->appId()
@@ -67,7 +67,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
                 'campaigns',
                 'categories',
                 'tags',
-                'template'
+                'templates'
             ]
         )->findOrFail($id);
         $item->fill($data);
