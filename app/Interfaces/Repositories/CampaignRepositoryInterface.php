@@ -4,9 +4,11 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\CampaignFilter;
+
 interface CampaignRepositoryInterface
 {
-    public function index();
+    public function index(CampaignFilter $filters);
 
     public function show(int $id);
 

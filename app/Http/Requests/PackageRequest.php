@@ -9,10 +9,10 @@ use Behamin\BResources\Requests\BasicRequest;
  *      title="PackageRequest",
  *      description="Package Request",
  *      type="object",
+ *      required={"title"},
  *      example={
  *          "title": "نام پکیج",
  *          "package_type_id": 1,
- *          "client_app_id": 1,
  *          "parent_id": null,
  *          "description": "description",
  *          "first_text": "first_text",
@@ -51,12 +51,10 @@ class PackageRequest extends BasicRequest
         return [
             'title' => 'required|string',
             'description' => 'nullable|string',
-//            'client_app_id' => 'required',    //TODO: client app id is required or not
             'package_type_id' => 'required|exists:package_types,id',
             'tags.connect' => 'nullable|exists_va:tags,id',
             'categories.connect' => 'nullable|exists_va:categories,id',
             'campaigns.connect' => 'nullable|exists_va:categories,id',
-
             'started_at' => [
                 'nullable', 'date'
             ],

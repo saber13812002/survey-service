@@ -17,6 +17,7 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 ## Installation
 
 - clone this repo
+- JENKINS section (in this file)  
 - composer install
 - create .env file by clone .env.example
 - create db and update .env
@@ -29,12 +30,15 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 
 - we should have PackageType with run:
 
-```php artisan db:seed --class=PackageTypeSeeder```
+```php artisan db:seed --class=Database\Seeders\Migrations\PackageTypeSeeder```
 
 ```php artisan db:seed --class=AnswerTypeSeeder```
 
 - run 
 ```php artisan serve```
+
+- open {APP_URL}/health
+- open {APP_URL}/api/docs
 
 ## for test in locahost ENV
     
@@ -44,7 +48,7 @@ Survey-service is a service to manage surveys in Kermany.com architecture
 
 ```php artisan test```
 
-```php artisan db:seed --class=PackageTypeSeeder```
+```php artisan db:seed --class=Database\Seeders\Migrations\PackageTypeSeeder```
 
 ```php artisan db:seed --class=AnswerTypeSeeder```
 
@@ -67,6 +71,35 @@ Survey-service is a service to manage surveys in Kermany.com architecture
   - یا سوالات رضایت مشتری 
   -    یا سوالات هوش 
   - یا سوالات دغدغه های اجتماعی
+
+## JENKINS CI/CD
+
+- add jenkins file into root
+- install health package:
+  
+      composer require ukfast/laravel-health-check
+    
+- modify l5-swagger config file by read Readme.md file >> section [l5-sqagger]
+
+## l5-swagger
+
+راهنمای استقرار مستندات
+
+openApi
+
+سرویس‌ها در تمام محیط ها.
+
+بعد از نصب پکیج darkaonline/l5-swagger کانفیگ زیر در فایل کانفیگ این پکیج اعمال کنید.
+
+config/l5-swagger.php like this:
+
+    'documentations' => [
+    ...
+    'routes' => [
+        'api' => 'api/docs',
+        'docs' => 'swagger/docs',
+    ]
+    ...
 
 
 ## License

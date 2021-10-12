@@ -21,6 +21,12 @@ class CreatePackageTypesTable extends Migration
 
             $table->timestamps();
         });
+
+        // Call seeder
+        Artisan::call('db:seed', [
+            '--class' => 'Database\Seeders\Migrations\PackageTypeSeeder',
+            '--force' => true
+        ]);
     }
 
     /**

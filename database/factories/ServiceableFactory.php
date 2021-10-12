@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ClientApp;
+use App\Models\Serviceable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClientAppFactory extends Factory
+class ServiceableFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ClientApp::class;
+    protected $model = Serviceable::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,7 @@ class ClientAppFactory extends Factory
     public function definition()
     {
         return [
-            'title' => 'App ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
-            'logo' => $this->faker->imageUrl(300,200),
+            //
         ];
     }
 }

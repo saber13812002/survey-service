@@ -4,24 +4,39 @@
 namespace App\Repositories;
 
 
+use App\Helpers\BulkActions\PackageQuestionHelper;
+use App\Http\Filters\PackageQuestionFilter;
+use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
+use App\Models\Package;
 use App\Models\PackageQuestion;
 
-class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQuestionRepositoryInterface
+class PackageQuestionRepository implements PackageQuestionRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function getByPackageId(PackageQuestionFilter $filters, int $packageId)
     {
-        return PackageQuestion::query()->simplePaginate();
+        return PackageQuestion::query()
+            ->where('package_id', $packageId)
+            ->orderBy('order')
+            ->filter($filters);
     }
 
-    public function getByPackageId(int $packageId): \Illuminate\Contracts\Pagination\Paginator
+    public function getItemsByPackageId(int $packageId)
     {
-        return PackageQuestion::query()->where('package_id', $packageId)->simplePaginate();
+        return PackageQuestion::query()
+            ->where('package_id', $packageId)
+            ->orderBy('order')
+            ->get();
     }
 
     public function show(int $id)
     {
         return PackageQuestion::query()->findOrFail($id);
+    }
+
+    public function getQuestionItemWithChoicesById(int $id)
+    {
+        return PackageQuestion::with("choices")->find($id);
     }
 
     public function store(array $data, int $packageId): PackageQuestion
@@ -36,9 +51,11 @@ class PackageQuestionRepository implements \App\Interfaces\Repositories\PackageQ
     /**
      * @inheritDoc
      */
-    public function storeBulk(array $data)
+    public function updateBulk(array $data, int $packageId)
     {
-        // TODO: Implement storeBulk() method.
+        $packageItem = Package::query()->findOrFail($packageId);
+        PackageQuestionHelper::manage($data, $packageItem);
+        return $packageItem;
     }
 
     public function update(int $id, array $data)

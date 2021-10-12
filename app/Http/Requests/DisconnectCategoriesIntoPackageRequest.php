@@ -6,7 +6,7 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="ConnectCategoriesIntoPackageRequest",
+ *      title="DisconnectCategoriesIntoPackageRequest",
  *      description="Connect Categories Into Package Request",
  *      type="object",
  *      required={"categories"},

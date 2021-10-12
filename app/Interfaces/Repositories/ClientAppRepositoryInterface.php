@@ -4,15 +4,17 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\ClientAppFilter;
+
 interface ClientAppRepositoryInterface
 {
-    public function index();
+    public function index(ClientAppFilter $filters);
 
-    public function show(int $id);
+    public function show();
 
     public function store(array $data);
 
-    public function update(int $id, array $data);
+    public function update(array $data);
 
-    public function destroy(int $id);
+    public function destroy();
 }

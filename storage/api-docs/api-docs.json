@@ -36,13 +36,24 @@
                 "operationId": "getListOfAnswerTypes",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -67,13 +78,24 @@
                 "operationId": "getListOfCampaigns",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -96,13 +118,24 @@
                 "operationId": "postANewCampaign",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -137,13 +170,13 @@
                 "operationId": "getCampaignItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "campaignId",
@@ -155,6 +188,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -177,13 +221,13 @@
                 "operationId": "updateCampaignItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "campaignId",
@@ -195,6 +239,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -227,13 +282,24 @@
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "campaignId",
@@ -269,13 +335,13 @@
                 "operationId": "connectCampaignsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -287,6 +353,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -319,13 +396,13 @@
                 "operationId": "disconnectCampaignsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -337,6 +414,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -371,13 +459,13 @@
                 "operationId": "connectCategoriesArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -389,6 +477,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -421,13 +520,13 @@
                 "operationId": "disconnectCategoriesArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -439,6 +538,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -473,13 +583,24 @@
                 "operationId": "getListOfCategories",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -502,13 +623,24 @@
                 "operationId": "postANewCategories",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -543,13 +675,13 @@
                 "operationId": "getCategoryItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "categoryId",
@@ -561,6 +693,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -583,13 +726,13 @@
                 "operationId": "updateCategoryItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "categoryId",
@@ -601,6 +744,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -633,13 +787,13 @@
                 "operationId": "removeItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "categoryId",
@@ -651,6 +805,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -675,13 +840,24 @@
                 "operationId": "getListOfApps",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -704,105 +880,24 @@
                 "operationId": "postANewApp",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/AppStoreRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
-                    "404": {
-                        "description": "not found"
-                    }
-                }
-            }
-        },
-        "/api/v1/apps/{appId}": {
-            "get": {
-                "tags": [
-                    "Apps"
-                ],
-                "summary": "get app item by id",
-                "operationId": "getAppItemById",
-                "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "app_id",
                         "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
-                    },
-                    {
-                        "name": "appId",
-                        "in": "path",
-                        "description": "ID of app",
+                        "description": "app id",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "404": {
-                        "description": "not found"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Apps"
-                ],
-                "summary": "update a new app item",
-                "operationId": "updateANewApp",
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
-                    },
-                    {
-                        "name": "appId",
-                        "in": "path",
-                        "description": "ID of app",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        },
-                        "example": "1"
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -831,30 +926,144 @@
                 "tags": [
                     "Apps"
                 ],
-                "summary": "remove and app",
+                "summary": "remove an app by id",
                 "operationId": "removeAnApp",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
-                        "name": "appId",
-                        "in": "path",
-                        "description": "ID of app",
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "0"
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/apps/{appId}": {
+            "get": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "get app item by id",
+                "operationId": "getAppItemById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "header",
+                        "description": "fake",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Apps"
+                ],
+                "summary": "update a new app item",
+                "operationId": "updateANewApp",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "header",
+                        "description": "fake",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppStoreRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -877,18 +1086,93 @@
                 "operationId": "getListOfAllAnswerItemsForPackage",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "packageId",
                         "in": "path",
                         "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/participants/{userId}": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get list of all asnwer items for this package for specific user ",
+                "operationId": "getListOfAllAnswerItemsForPackageForUser",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "ID of user",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -919,13 +1203,13 @@
                 "operationId": "getAnswerItemByQuestionId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -937,6 +1221,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -959,13 +1254,13 @@
                 "operationId": "updateAnswerItemByQuestionId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -976,7 +1271,18 @@
                             "type": "integer",
                             "format": "int64"
                         },
-                        "example": "1"
+                        "example": "61"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1009,13 +1315,13 @@
                 "operationId": "postANewAnswerItemForThisQuestion",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -1027,6 +1333,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1052,7 +1369,7 @@
                 }
             }
         },
-        "/api/v1/questions/answers/{answerId}": {
+        "/api/v1/answers/{answerId}": {
             "get": {
                 "tags": [
                     "Answers"
@@ -1061,13 +1378,13 @@
                 "operationId": "getAnswerItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "answerId",
@@ -1079,6 +1396,68 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "remove asnwer by id",
+                "operationId": "removeAnItemById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "answerId",
+                        "in": "path",
+                        "description": "ID of answer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1094,35 +1473,130 @@
                 }
             }
         },
-        "/api/v1/answers/{answerId}": {
-            "delete": {
+        "/api/v1/packages/{packageId}/answers/bulk": {
+            "post": {
                 "tags": [
                     "Answers"
                 ],
-                "summary": "remove and app by id",
-                "operationId": "removeAnItemById",
+                "summary": "post all answers by package id for create update or delete",
+                "operationId": "postArrayOfAnswersByPackageIdToUpdateDeleteOrCreate",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
-                        "name": "answerId",
+                        "name": "packageId",
                         "in": "path",
-                        "description": "ID of answer",
+                        "description": "ID of package",
                         "required": true,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PackageAnswerBulkStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{userId}/packages/{packageId}/answers/bulk": {
+            "post": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "post all answers by package id for create update or delete for specific user",
+                "operationId": "postArrayOfAnswersByPackageIdToUpdateDeleteOrCreateForUser",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "ID of user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PackageAnswerBulkStoreUserRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -1145,13 +1619,24 @@
                 "operationId": "getListOfPackages",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1174,13 +1659,24 @@
                 "operationId": "createNewPackage",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "Content-Type",
@@ -1215,6 +1711,48 @@
                 }
             }
         },
+        "/api/v1/packages/templates": {
+            "get": {
+                "tags": [
+                    "Packages"
+                ],
+                "summary": "get list of all packages with templates",
+                "operationId": "getListOfPackagesWithTemplates",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
         "/api/v1/packages/{packageId}": {
             "get": {
                 "tags": [
@@ -1224,13 +1762,13 @@
                 "operationId": "getPackageItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -1242,6 +1780,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1264,13 +1813,13 @@
                 "operationId": "updatepackageItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -1282,6 +1831,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1310,17 +1870,28 @@
                 "tags": [
                     "Packages"
                 ],
-                "summary": "remove and app by id",
+                "summary": "remove package by id",
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     },
                     {
                         "name": "packageId",
@@ -1356,13 +1927,13 @@
                 "operationId": "getListOfAllItems",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -1374,6 +1945,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1396,13 +1978,13 @@
                 "operationId": "postANewItem",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -1414,6 +1996,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1439,7 +2032,70 @@
                 }
             }
         },
-        "/api/v1/questions/choices/{choiceId}": {
+        "/api/v1/questions/{questionId}/choices/bulk": {
+            "post": {
+                "tags": [
+                    "Choices"
+                ],
+                "summary": "post all choices by question id for create update delete",
+                "operationId": "postArrayOfChoicesByQuestionIdToUpdateDeleteCreate",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "questionId",
+                        "in": "path",
+                        "description": "ID of question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChoiceBulkStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/choices/{choiceId}": {
             "get": {
                 "tags": [
                     "Choices"
@@ -1448,13 +2104,13 @@
                 "operationId": "getChoiceItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "choiceId",
@@ -1466,6 +2122,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1488,13 +2155,13 @@
                 "operationId": "updatechoiceItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "choiceId",
@@ -1534,17 +2201,17 @@
                 "tags": [
                     "Choices"
                 ],
-                "summary": "remove and app by id",
+                "summary": "remove choice by id",
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "choiceId",
@@ -1571,7 +2238,7 @@
                 }
             }
         },
-        "/api/v1/questions/packages/{packageId}": {
+        "/api/v1/packages/{packageId}/questions": {
             "get": {
                 "tags": [
                     "Questions"
@@ -1580,13 +2247,13 @@
                 "operationId": "getListOfAllItemsByPackageId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -1598,6 +2265,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1620,13 +2298,13 @@
                 "operationId": "postANewItemByPackageId",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -1638,6 +2316,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1646,6 +2335,69 @@
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/QuestionStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/questions/bulk": {
+            "post": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "post all questions by package id for create update or delete",
+                "operationId": "postArrayOfQuestionsByPackageIdToUpdateDeleteOrCreate",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuestionBulkStoreRequest"
                             }
                         }
                     }
@@ -1672,13 +2424,13 @@
                 "operationId": "getItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -1690,6 +2442,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1712,13 +2475,13 @@
                 "operationId": "updateQuestionItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -1730,6 +2493,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1758,17 +2532,17 @@
                 "tags": [
                     "Questions"
                 ],
-                "summary": "remove and app by id",
+                "summary": "remove question by id",
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "questionId",
@@ -1804,15 +2578,423 @@
                 "operationId": "getListOfPackageTypes",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/participants/{participantId}/packages": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get list of all package items by user id",
+                "operationId": "getListOfAllPackageItemsByUserId",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": " default 0 for env=prod,stage,.. and 1 for local",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    },
+                    {
+                        "name": "participantId",
+                        "in": "path",
+                        "description": "ID of participant",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/reports": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get reports by package id",
+                "operationId": "getReportByPackageId",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/participants": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get participants reports by package id",
+                "operationId": "getParticipantsByPackageId",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/packages/{packageId}/templates": {
+            "put": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "connect templates array into package by package id",
+                "operationId": "connectTemplatesArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectTemplatesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "patch template by package id",
+                "operationId": "patchTemplatePackageById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "package Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectTemplatesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/templates/{templateId}": {
+            "delete": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "disconnect templates array into package by package id",
+                "operationId": "disconnectTemplatesArrayIntoPackageById",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "description": "templateId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Templates into Package"
+                ],
+                "summary": "update templates",
+                "operationId": "updateTemplates",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "description": "Template Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectTemplatesIntoPackageRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -1835,13 +3017,24 @@
                 "operationId": "getListOfAllItems",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1864,13 +3057,24 @@
                 "operationId": "postANewItem",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1905,13 +3109,13 @@
                 "operationId": "getTagItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "tagId",
@@ -1923,6 +3127,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -1945,13 +3160,13 @@
                 "operationId": "updateTagItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "tagId",
@@ -1963,6 +3178,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -1991,17 +3217,17 @@
                 "tags": [
                     "Tags"
                 ],
-                "summary": "remove and app by id",
+                "summary": "remove tag by id",
                 "operationId": "removeAnItemById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "tagId",
@@ -2013,6 +3239,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "responses": {
@@ -2037,13 +3274,13 @@
                 "operationId": "connectTagsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -2055,6 +3292,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -2087,13 +3335,13 @@
                 "operationId": "disconnectTagsArrayIntoPackageById",
                 "parameters": [
                     {
-                        "name": "access_token",
+                        "name": "X-Proxy-Token",
                         "in": "header",
                         "required": true,
                         "schema": {
                             "type": "string"
                         },
-                        "example": "4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k"
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
                     },
                     {
                         "name": "packageId",
@@ -2105,6 +3353,17 @@
                             "format": "int64"
                         },
                         "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
                     }
                 ],
                 "requestBody": {
@@ -2117,6 +3376,59 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v2/packages/{packageId}/reports": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "get reports by package id v2",
+                "operationId": "getReportByPackageIdv2",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "161"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -2153,8 +3465,7 @@
                         1,
                         2,
                         3
-                    ],
-                    "client_app_id": 1
+                    ]
                 }
             },
             "AppStoreRequest": {
@@ -2190,6 +3501,57 @@
                     "title": "YOUR TITLE OF ..."
                 }
             },
+            "ChoiceBulkStoreRequest": {
+                "title": "ChoiceBulkStoreRequest",
+                "description": "Choices Store Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "FOR EXAMPLE ...",
+                            "is_correct": 0,
+                            "order": 1
+                        },
+                        {
+                            "title": "FOR EXAMPLE ...",
+                            "is_correct": 0,
+                            "order": 1
+                        },
+                        {
+                            "title": "FOR EXAMPLE ...",
+                            "is_correct": 1,
+                            "order": 1
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "FOR EXAMPLE ...",
+                            "is_active": 1,
+                            "is_correct": 1,
+                            "order": 1
+                        },
+                        {
+                            "id": 19,
+                            "title": "FOR EXAMPLE ...",
+                            "is_active": 1,
+                            "is_correct": 0,
+                            "order": 2
+                        },
+                        {
+                            "id": 20,
+                            "title": "FOR EXAMPLE ...",
+                            "is_active": 1,
+                            "is_correct": 0,
+                            "order": 3
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
+                }
+            },
             "ChoiceStoreRequest": {
                 "title": "ChoiceStoreRequest",
                 "description": "Choices Store Request body data",
@@ -2198,7 +3560,10 @@
                 ],
                 "type": "object",
                 "example": {
-                    "title": "YOUR TITLE OF ..."
+                    "title": "YOUR TITLE OF ...2",
+                    "weight": 2,
+                    "is_active": 1,
+                    "order": 1
                 }
             },
             "ConnectCampaignsIntoPackageRequest": {
@@ -2249,6 +3614,15 @@
                     }
                 }
             },
+            "ConnectTemplatesIntoPackageRequest": {
+                "title": "ConnectTemplatesIntoPackageRequest",
+                "description": "Connect Templates Into Package Request",
+                "type": "object",
+                "example": {
+                    "serviceable_type": "MEDYAR/TEMPLATE",
+                    "serviceable_id": 1024
+                }
+            },
             "DisconnectCampaignsIntoPackageRequest": {
                 "title": "DisconnectCampaignsIntoPackageRequest",
                 "description": "Connect Campaigns Into Package Request",
@@ -2266,7 +3640,7 @@
                 }
             },
             "DisconnectCategoriesIntoPackageRequest": {
-                "title": "ConnectCategoriesIntoPackageRequest",
+                "title": "DisconnectCategoriesIntoPackageRequest",
                 "description": "Connect Categories Into Package Request",
                 "required": [
                     "categories"
@@ -2283,7 +3657,7 @@
             },
             "DisconnectTagsIntoPackageRequest": {
                 "title": "DisconnectTagsIntoPackageRequest",
-                "description": "Connect Tags Into Package Request",
+                "description": "Disconnect Tags Into Package Request",
                 "required": [
                     "tags"
                 ],
@@ -2297,6 +3671,120 @@
                     }
                 }
             },
+            "PackageAnswerBulkStoreRequest": {
+                "title": "PackageAnswerBulkStoreRequest",
+                "description": "Answer Store Update Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "Question Example 1 ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 2 ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 3 ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 19,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 20,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "user_id": 4,
+                            "choice_id": 10
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
+                }
+            },
+            "PackageAnswerBulkStoreUserRequest": {
+                "title": "PackageAnswerBulkStoreUserRequest",
+                "description": "Answer Store Update Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "Question Example 1 ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 2 ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "title": "Question Example 3 ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "choice_id": 10
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 19,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "choice_id": 10
+                        },
+                        {
+                            "id": 20,
+                            "title": "Question EXAMPLE ...",
+                            "description": "asdfa22",
+                            "question_id": 10,
+                            "choice_id": 10
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
+                }
+            },
             "PackageQuestionRequest": {
                 "title": "PackageQuestionRequest",
                 "description": "Package Question Store Request body data",
@@ -2306,18 +3794,19 @@
                 "type": "object",
                 "example": {
                     "title": "YOUR TITLE OF ...",
-                    "answer_type_id": 1,
-                    "correct_choice_id": 1
+                    "answer_type_id": 1
                 }
             },
             "PackageRequest": {
                 "title": "PackageRequest",
                 "description": "Package Request",
+                "required": [
+                    "title"
+                ],
                 "type": "object",
                 "example": {
                     "title": "نام پکیج",
                     "package_type_id": 1,
-                    "client_app_id": 1,
                     "parent_id": null,
                     "description": "description",
                     "first_text": "first_text",
@@ -2326,6 +3815,51 @@
                     "finished_at": "2021-06-02T14:48:37",
                     "is_active": 1,
                     "is_deletable": 1
+                }
+            },
+            "QuestionBulkStoreRequest": {
+                "title": "QuestionBulkStoreRequest",
+                "description": "Question Store Request body data",
+                "type": "object",
+                "example": {
+                    "create": [
+                        {
+                            "title": "Question Example 1 ...",
+                            "order": 1
+                        },
+                        {
+                            "title": "Question Example 2 ...",
+                            "order": 2
+                        },
+                        {
+                            "title": "Question Example 3 ...",
+                            "order": 3
+                        }
+                    ],
+                    "update": [
+                        {
+                            "id": 18,
+                            "title": "Question EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 1
+                        },
+                        {
+                            "id": 19,
+                            "title": "Question EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 2
+                        },
+                        {
+                            "id": 20,
+                            "title": "Question EXAMPLE ...",
+                            "is_active": 1,
+                            "order": 3
+                        }
+                    ],
+                    "delete": [
+                        13,
+                        16
+                    ]
                 }
             },
             "QuestionStoreRequest": {
@@ -2337,7 +3871,11 @@
                 ],
                 "type": "object",
                 "example": {
-                    "title": "YOUR TITLE OF ..."
+                    "title": "YOUR TITLE OF ...",
+                    "package_id": 1,
+                    "weight": 2,
+                    "is_active": 1,
+                    "order": 1
                 }
             },
             "TagStoreRequest": {

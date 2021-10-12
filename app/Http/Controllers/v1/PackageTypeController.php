@@ -5,7 +5,6 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PackageTypeResource;
 use App\Models\PackageType;
-use Illuminate\Http\Request;
 
 class PackageTypeController extends Controller
 {
@@ -17,12 +16,24 @@ class PackageTypeController extends Controller
      *  tags={"Package Types"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -44,7 +55,7 @@ class PackageTypeController extends Controller
      */
     public function index(): PackageTypeResource
     {
-        return new PackageTypeResource(["data" => PackageType::query()->get()]);
+        return new PackageTypeResource(["data" => PackageType::query()->where('is_active', 1)->get()]);
     }
 
 }

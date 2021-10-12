@@ -4,25 +4,47 @@
 namespace App\Repositories;
 
 
+use App\Helpers\BulkActions\PackageQuestionChoiceHelper;
+use App\Http\Filters\PackageQuestionChoiceFilter;
+use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
+use App\Models\PackageQuestion;
 use App\Models\PackageQuestionChoice;
 
-class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface
+class PackageQuestionChoiceRepository implements PackageQuestionChoiceRepositoryInterface
 {
 
     /**
      * @inheritDoc
      */
-    public function index()
+    public function index(PackageQuestionChoiceFilter $filters, int $questionId)
     {
-        return PackageQuestionChoice::query()->simplePaginate();
+        return PackageQuestionChoice::query()
+            ->where('question_id', $questionId)
+            ->orderBy('order')
+            ->filter($filters);
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getByQuestionIdWithFilter(PackageQuestionChoiceFilter $filters, int $questionId)
+    {
+        return PackageQuestionChoice::query()
+            ->where('question_id', $questionId)
+            ->orderBy('order')
+            ->filter($filters);
     }
 
     /**
      * @inheritDoc
      */
-    public function getByQuestionId(int $questionId)
+    public function byQuestionId(int $questionId)
     {
-        return PackageQuestionChoice::query()->where('question_id',$questionId)->simplePaginate();
+        return PackageQuestionChoice::query()
+            ->where('question_id', $questionId)
+            ->orderBy('order')
+            ->get();
     }
 
     /**
@@ -48,9 +70,11 @@ class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\Pa
     /**
      * @inheritDoc
      */
-    public function storeBulk(array $data)
+    public function updateBulk(array $data, int $questionId)
     {
-        // TODO: Implement storeBulk() method.
+        $packageQuestionItem = PackageQuestion::query()->findOrFail($questionId);
+        PackageQuestionChoiceHelper::manage($data, $packageQuestionItem);
+        return $packageQuestionItem;
     }
 
 // TODO: when want to update all questions by one request
@@ -74,4 +98,5 @@ class PackageQuestionChoiceRepository implements \App\Interfaces\Repositories\Pa
         $item = PackageQuestionChoice::query()->findOrFail($id);
         return $item->delete();
     }
+
 }

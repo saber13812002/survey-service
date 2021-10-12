@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\PackageQuestionChoiceFilter;
+use App\Http\Requests\ChoiceBulkStoreRequest;
 use App\Http\Resources\PackageQuestionChoiceResource;
-use App\Http\Resources\PackageQuestionChoiceResourceCollection;
 use App\Interfaces\Repositories\PackageQuestionChoiceRepositoryInterface;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class PackageQuestionChoiceController extends Controller
@@ -18,10 +20,10 @@ class PackageQuestionChoiceController extends Controller
      *  tags={"Choices"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
      *       )
@@ -39,6 +41,17 @@ class PackageQuestionChoiceController extends Controller
      *       )
      *   ),
      *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
      *
      *   @OA\Response(
      *      response=200,
@@ -54,70 +67,85 @@ class PackageQuestionChoiceController extends Controller
      *)
      * Display a listing of the resource.
      *
-     * @return PackageQuestionChoiceResourceCollection
+     * @param PackageQuestionChoiceFilter $filters
+     * @param int $packageQuestionId
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index(Request $request, int $packageQuestionId)
-    {
-        return new PackageQuestionChoiceResourceCollection(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
-            ->getByQuestionId($packageQuestionId)]);
+    public function index(PackageQuestionChoiceFilter $filters, int $packageQuestionId)
+    {        list($items, $count) = app()->make(PackageQuestionChoiceRepositoryInterface::class)
+        ->index($filters, $packageQuestionId);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
+
     }
 
     /**
-    * @OA\Post(
-    *  path="/api/v1/questions/{questionId}/choices",
-    *  operationId="postANewItem",
-    *  summary="define a new choice item for specific question ",
-    *  tags={"Choices"},
-    *
-    *  @OA\Parameter(
-    *       name="access_token",
-    *       required=true,
-    *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
-    *       @OA\Schema(
-    *           type="string"
-    *       )
-    *   ),
-    *
-    *  @OA\Parameter(
-    *       description="ID of question",
-    *       name="questionId",
-    *       required=true,
-    *       in="path",
-    *       example="1",
-    *       @OA\Schema(
-    *           type="integer",
-    *           format="int64"
-    *       )
-    *   ),
-    *
-    *   @OA\RequestBody(
-    *       required=true,
-    *       @OA\JsonContent(ref="#/components/schemas/ChoiceStoreRequest")
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=200,
-    *       description="Success",
-    *      @OA\MediaType(
-    *           mediaType="application/json",
-    *      )
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=404,
-    *      description="not found"
-    *   ),
-    *)
-    *
-    * Store a newly created resource in storage.
-    *
-    * @param Request $request
-    * @param int $packageQuestionId
-    * @return PackageQuestionChoiceResource
-    * @throws \Illuminate\Contracts\Container\BindingResolutionException
-    */
+     * @OA\Post(
+     *  path="/api/v1/questions/{questionId}/choices",
+     *  operationId="postANewItem",
+     *  summary="define a new choice item for specific question ",
+     *  tags={"Choices"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of question",
+     *       name="questionId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/ChoiceStoreRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @param int $packageQuestionId
+     * @return PackageQuestionChoiceResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function store(Request $request, int $packageQuestionId): PackageQuestionChoiceResource
     {
         return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
@@ -125,17 +153,90 @@ class PackageQuestionChoiceController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *  path="/api/v1/questions/{questionId}/choices/bulk",
+     *  operationId="postArrayOfChoicesByQuestionIdToUpdateDeleteCreate",
+     *  summary="post all choices by question id for create update delete",
+     *  tags={"Choices"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of question",
+     *       name="questionId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/ChoiceBulkStoreRequest")
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param ChoiceBulkStoreRequest $request
+     * @param int $questionId
+     * @return PackageQuestionChoiceResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function updateBulk(ChoiceBulkStoreRequest $request, int $questionId): PackageQuestionChoiceResource
+    {
+        return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
+            ->updateBulk($request->all(), $questionId)]);
+    }
+
+    /**
     * @OA\Get(
-    *  path="/api/v1/questions/choices/{choiceId}",
+    *  path="/api/v1/choices/{choiceId}",
     *  operationId="getChoiceItemById",
     *  summary="get choice item by choice id",
     *  tags={"Choices"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -152,6 +253,18 @@ class PackageQuestionChoiceController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,
@@ -172,7 +285,7 @@ class PackageQuestionChoiceController extends Controller
     * @return PackageQuestionChoiceResource
     * @throws \Illuminate\Contracts\Container\BindingResolutionException
     */
-    public function show(int $id)
+    public function show(int $id): PackageQuestionChoiceResource
     {
         return new PackageQuestionChoiceResource(["data" => app()->make(PackageQuestionChoiceRepositoryInterface::class)
             ->show($id)]);
@@ -180,16 +293,16 @@ class PackageQuestionChoiceController extends Controller
 
     /**
      * @OA\Put(
-     *  path="/api/v1/questions/choices/{choiceId}",
+     *  path="/api/v1/choices/{choiceId}",
      *  operationId="updatechoiceItemById",
      *  summary="update choice item by id",
      *  tags={"Choices"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
      *       )
@@ -241,16 +354,16 @@ class PackageQuestionChoiceController extends Controller
 
     /**
     * @OA\Delete(
-    *  path="/api/v1/questions/choices/{choiceId}",
+    *  path="/api/v1/choices/{choiceId}",
     *  operationId="removeAnItemById",
-    *  summary="remove and app by id",
+    *  summary="remove choice by id",
     *  tags={"Choices"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )

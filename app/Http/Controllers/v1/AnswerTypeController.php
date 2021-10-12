@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AnswerTypeResource;
 use App\Models\AnswerType;
+use Behamin\BResources\Resources\BasicResourceCollection;
+use BFilters\Filter;
 
 class AnswerTypeController extends Controller
 {
@@ -16,12 +17,24 @@ class AnswerTypeController extends Controller
      *  tags={"Answer Types"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -39,11 +52,12 @@ class AnswerTypeController extends Controller
      *)
      * Display a listing of the answer type resource.
      *
-     * @return AnswerTypeResource
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Filter $filters)
     {
-        return new AnswerTypeResource(["data" => AnswerType::query()->get()]);
+        list($items, $count) = AnswerType::where('is_active', 1)->filter($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
 }

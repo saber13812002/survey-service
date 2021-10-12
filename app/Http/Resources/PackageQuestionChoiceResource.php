@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Interfaces\Repositories\PackageQuestionRepositoryInterface;
+use App\Models\PackageQuestion;
 use Behamin\BResources\Resources\BasicResource;
 
 class PackageQuestionChoiceResource extends BasicResource
@@ -16,8 +18,15 @@ class PackageQuestionChoiceResource extends BasicResource
         return [
             'id' => $resource->id,
             'title' => $resource->title,
-            "question_id" => $resource->question_id,
             "description" => $resource->description,
+
+            "question_id" => $resource->question_id,
+            "is_correct" => $resource->is_correct,
+
+            "order" => $resource->order,
+            "weight" => $resource->weight,
+            "is_active" => $resource->is_active,
+
             'created_at' => $resource->created_at,
             'updated_at' => $resource->updated_at
         ];

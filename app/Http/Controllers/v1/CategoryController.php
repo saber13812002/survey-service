@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\CategoryFilter;
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\CategoryResourceCollection;
 use App\Interfaces\Repositories\CategoryRepositoryInterface;
-use App\Interfaces\Repositories\ClientAppRepositoryInterface;
-use App\Models\Category;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -20,12 +19,24 @@ class CategoryController extends Controller
      *  tags={"Categories"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -44,12 +55,14 @@ class CategoryController extends Controller
      *
      * Display a listing of the categories resource.
      *
-     * @return CategoryResourceCollection
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(CategoryFilter $filters)
     {
-        return new CategoryResourceCollection(["data" => app()->make(CategoryRepositoryInterface::class)
-            ->index()]);
+        list($items, $count) = app()->make(CategoryRepositoryInterface::class)
+            ->index($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**
@@ -60,12 +73,24 @@ class CategoryController extends Controller
      *  tags={"Categories"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -100,53 +125,65 @@ class CategoryController extends Controller
     }
 
     /**
-    * @OA\Get(
-    *  path="/api/v1/categories/{categoryId}",
-    *  operationId="getCategoryItemById",
-    *  summary="get category item by id",
-    *  tags={"Categories"},
-    *
-    *  @OA\Parameter(
-    *       name="access_token",
-    *       required=true,
-    *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
-    *       @OA\Schema(
-    *           type="string"
-    *       )
-    *   ),
-    *
-    *  @OA\Parameter(
-    *       description="ID of category",
-    *       name="categoryId",
-    *       required=true,
-    *       in="path",
-    *       example="1",
-    *       @OA\Schema(
-    *           type="integer",
-    *           format="int64"
-    *       )
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=200,
-    *       description="Success",
-    *      @OA\MediaType(
-    *           mediaType="application/json",
-    *      )
-    *   ),
-    *   @OA\Response(
-    *      response=404,
-    *      description="not found"
-    *   ),
-    *)
-    *
-    * Display the specified resource.
-    *
-    * @param int $id
-    * @return CategoryResource
-    * @throws \Illuminate\Contracts\Container\BindingResolutionException
-    */
+     * @OA\Get(
+     *  path="/api/v1/categories/{categoryId}",
+     *  operationId="getCategoryItemById",
+     *  summary="get category item by id",
+     *  tags={"Categories"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of category",
+     *       name="categoryId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return CategoryResource
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function show(int $id)
     {
         return new CategoryResource(["data" => app()->make(CategoryRepositoryInterface::class)
@@ -161,10 +198,10 @@ class CategoryController extends Controller
      *  tags={"Categories"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
      *       )
@@ -176,6 +213,18 @@ class CategoryController extends Controller
      *       required=true,
      *       in="path",
      *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -215,47 +264,59 @@ class CategoryController extends Controller
     }
 
     /**
-    * @OA\Delete(
-    *  path="/api/v1/categories/{categoryId}",
-    *  operationId="removeItemById",
-    *  summary="remove item by id",
-    *  tags={"Categories"},
-    *
-    *  @OA\Parameter(
-    *       name="access_token",
-    *       required=true,
-    *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
-    *       @OA\Schema(
-    *           type="string"
-    *       )
-    *   ),
-    *
-    *  @OA\Parameter(
-    *       description="ID of category item",
-    *       name="categoryId",
-    *       required=true,
-    *       in="path",
-    *       example="1",
-    *       @OA\Schema(
-    *           type="integer",
-    *           format="int64"
-    *       )
-    *   ),
-    *
-    *   @OA\Response(
-    *      response=200,
-    *       description="Success",
-    *      @OA\MediaType(
-    *           mediaType="application/json",
-    *      )
-    *   ),
-    *   @OA\Response(
-    *      response=404,
-    *      description="not found"
-    *   ),
-    *)
-    *
+     * @OA\Delete(
+     *  path="/api/v1/categories/{categoryId}",
+     *  operationId="removeItemById",
+     *  summary="remove item by id",
+     *  tags={"Categories"},
+     *
+     *  @OA\Parameter(
+     *       name="X-Proxy-Token",
+     *       required=true,
+     *       in="header",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
+     *       @OA\Schema(
+     *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="ID of category item",
+     *       name="categoryId",
+     *       required=true,
+     *       in="path",
+     *       example="1",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *)
+     *
      * Remove the specified resource from storage.
      *
      * @param int $id

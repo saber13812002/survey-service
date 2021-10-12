@@ -4,19 +4,20 @@
 namespace App\Repositories;
 
 
+use App\Http\Filters\CampaignFilter;
 use App\Models\Campaign;
 
 class CampaignRepository implements \App\Interfaces\Repositories\CampaignRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function index(CampaignFilter $filters)
     {
-        return Campaign::query()->simplePaginate();
+        return Campaign::filter($filters);
     }
 
     public function show(int $id)
     {
-        return Campaign::query()->findOrFail($id);
+        return Campaign::with('packages')->findOrFail($id);
     }
 
     public function store(array $data): Campaign

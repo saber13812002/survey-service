@@ -4,18 +4,22 @@
 namespace App\Interfaces\Repositories;
 
 
+use App\Http\Filters\PackageQuestionFilter;
+
 interface PackageQuestionRepositoryInterface
 {
-    /**
-     * @return mixed
-     */
-    public function index();
 
     /**
      * @param int $packageId
      * @return mixed
      */
-    public function getByPackageId(int $packageId);
+    public function getByPackageId(PackageQuestionFilter $filters, int $packageId);
+
+    /**
+     * @param int $packageId
+     * @return mixed
+     */
+    public function getItemsByPackageId(int $packageId);
 
     /**
      * @param int $id
@@ -23,17 +27,21 @@ interface PackageQuestionRepositoryInterface
      */
     public function show(int $id);
 
+    public function getQuestionItemWithChoicesById(int $id);
+
     /**
      * @param array $data
+     * @param int $packageId
      * @return mixed
      */
     public function store(array $data, int $packageId);
 
     /**
      * @param array $data
+     * @param int $packageId
      * @return mixed
      */
-    public function storeBulk(array $data);
+    public function updateBulk(array $data, int $packageId);
 
     /**
      * @param int $id

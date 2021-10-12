@@ -4,22 +4,20 @@
 namespace App\Repositories;
 
 
-use App\Models\Categorizable;
+use App\Http\Filters\CategoryFilter;
 use App\Models\Category;
-use App\Models\Package;
-use Illuminate\Database\Eloquent\Model;
 
 class CategoryRepository implements \App\Interfaces\Repositories\CategoryRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function index(CategoryFilter $filters)
     {
-        return Category::query()->simplePaginate();
+        return Category::filter($filters);
     }
 
     public function show(int $id)
     {
-        return Category::query()->findOrFail($id);
+        return Category::with('packages')->findOrFail($id);
     }
 
     public function store(array $data): Category

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Campaign;
 use App\Models\ClientApp;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Ybazli\Faker\Faker;
 
 class CampaignFactory extends Factory
 {
@@ -22,12 +23,11 @@ class CampaignFactory extends Factory
      */
     public function definition(): array
     {
+//        $faker = new Faker();
         return [
-            'title' => 'Campaign ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
-            'client_app_id' => function () {
-                return ClientApp::factory()->create()->id;
-            },
+            'title' => 'کمپین ' . $this->faker->name,
+            'description' => $this->faker->realText(200),
+            'client_app_id' => 0,
         ];
     }
 }

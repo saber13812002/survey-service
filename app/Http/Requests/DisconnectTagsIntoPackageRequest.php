@@ -7,7 +7,7 @@ use Behamin\BResources\Requests\BasicRequest;
 /**
  * @OA\Schema(
  *      title="DisconnectTagsIntoPackageRequest",
- *      description="Connect Tags Into Package Request",
+ *      description="Disconnect Tags Into Package Request",
  *      type="object",
  *      required={"tags"},
  *     example={

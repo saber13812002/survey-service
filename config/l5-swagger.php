@@ -12,7 +12,8 @@ return [
                 /*
                  * Route for accessing api documentation interface
                 */
-                'api' => 'api/documentation',
+                'api' => 'api/docs',
+                'docs' => 'swagger/docs',
             ],
             'paths' => [
                 /*
@@ -145,13 +146,13 @@ return [
                 /*
                 'api_key_security_example' => [ // Unique name of security
                     'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
-                    'description' => 'A short description for security scheme',
+                    'description' => 'توضیحات',
                     'name' => 'api_key', // The name of the header or query parameter to be used.
                     'in' => 'header', // The location of the API key. Valid values are "query" or "header".
                 ],
                 'oauth2_security_example' => [ // Unique name of security
                     'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
-                    'description' => 'A short description for oauth2 security scheme.',
+                    'description' => 'توضیحات.',
                     'flow' => 'implicit', // The flow used by the OAuth2 security scheme. Valid values are "implicit", "password", "application" or "accessCode".
                     'authorizationUrl' => 'http://example.com/auth', // The authorization URL to be used for (implicit/accessCode)
                     //'tokenUrl' => 'http://example.com/auth' // The authorization URL to be used for (password/application/accessCode)

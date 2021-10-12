@@ -25,8 +25,8 @@ class PackageQuestionChoiceFactory extends Factory
         $packageQuestion = PackageQuestion::factory()->create();
 
         return [
-            'title' => 'Choice ' . $this->faker->name,
-            'description' => $this->faker->paragraph,
+            'title' => 'گزینه ' . $this->faker->name,
+            'description' => $this->faker->realText(200),
             'question_id' => function () use ($packageQuestion) {
                 return $packageQuestion->id;
             },

@@ -4,21 +4,48 @@
 namespace App\Repositories;
 
 
+use App\Http\Filters\PackageFilter;
 use App\Models\Package;
+use App\Models\PackageAnswer;
 use App\Models\PackageType;
-use Illuminate\Http\Request;
 
 class PackageRepository implements \App\Interfaces\Repositories\PackageRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function index(PackageFilter $filters)
     {
-        return Package::query()->simplePaginate();
+        return Package::appId()->filter($filters);
+    }
+
+    public function byTemplates(PackageFilter $filters)
+    {
+        return Package::with("templates")
+            ->appId()
+            ->filter($filters);
+    }
+
+    public function participants(PackageFilter $filters, int $id)
+    {
+        return PackageAnswer
+            ::query()
+            ->where('package_id', $id)
+            ->select(['user_id'])
+            ->distinct()
+            ->filter($filters);
     }
 
     public function show(int $id)
     {
-        return Package::query()->findOrFail($id);
+        return Package::with(
+            [
+                'campaigns',
+                'categories',
+                'tags',
+                'templates'
+            ]
+        )
+            ->appId()
+            ->findOrFail($id);
     }
 
     public function store(array $data): Package
@@ -35,7 +62,14 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     {
         $data = $this->setRequestedData($data);
 
-        $item = Package::query()->findOrFail($id);
+        $item = Package::with(
+            [
+                'campaigns',
+                'categories',
+                'tags',
+                'templates'
+            ]
+        )->findOrFail($id);
         $item->fill($data);
         $item->save();
         return $item;

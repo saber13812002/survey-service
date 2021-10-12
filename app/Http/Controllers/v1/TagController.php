@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\TagFilter;
 use App\Http\Resources\TagResource;
 use App\Interfaces\Repositories\TagRepositoryInterface;
 use App\Models\Tag;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -18,14 +20,26 @@ class TagController extends Controller
     *  tags={"Tags"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,
@@ -41,13 +55,14 @@ class TagController extends Controller
     *)
     * Display a listing of the resource.
     *
-    * @return TagResource
+    * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
     * @throws \Illuminate\Contracts\Container\BindingResolutionException
     */
-    public function index(): TagResource
+    public function index(TagFilter $filters)
     {
-        return new TagResource(["data" => app()->make(TagRepositoryInterface::class)
-            ->index()]);
+        list($items, $count) = app()->make(TagRepositoryInterface::class)
+            ->index($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**
@@ -58,14 +73,26 @@ class TagController extends Controller
     *  tags={"Tags"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\RequestBody(
     *       required=true,
@@ -106,10 +133,10 @@ class TagController extends Controller
     *  tags={"Tags"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -126,6 +153,18 @@ class TagController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,
@@ -160,10 +199,10 @@ class TagController extends Controller
     *  tags={"Tags"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -180,6 +219,18 @@ class TagController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\RequestBody(
     *       required=true,
@@ -217,14 +268,14 @@ class TagController extends Controller
     * @OA\Delete(
     *  path="/api/v1/tags/{tagId}",
     *  operationId="removeAnItemById",
-    *  summary="remove and app by id",
+    *  summary="remove tag by id",
     *  tags={"Tags"},
     *
     *  @OA\Parameter(
-    *       name="access_token",
+    *       name="X-Proxy-Token",
     *       required=true,
     *       in="header",
-    *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+    *       example="D6281688E663E19C9BD1FDECC2A2F",
     *       @OA\Schema(
     *           type="string"
     *       )
@@ -241,6 +292,18 @@ class TagController extends Controller
     *           format="int64"
     *       )
     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
     *
     *   @OA\Response(
     *      response=200,

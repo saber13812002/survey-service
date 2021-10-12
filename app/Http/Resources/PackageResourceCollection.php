@@ -2,20 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Behamin\BResources\Resources\BasicResourceCollection;
+use Behamin\BResources\Traits\CollectionResource;
 
-class PackageResourceCollection extends BasicResourceCollection
+class PackageResourceCollection extends PackageResource
 {
-    public function __construct($resourceCollection)
-    {
-        parent::__construct($resourceCollection, true);
-    }
-
-    protected function getArray($resource): array
-    {
-        return [
-            'id' => $resource->id,
-            'title' => $resource->title,
-            'description' => $resource->description,
-        ];
-    }}
+   use CollectionResource;
+}

@@ -4,19 +4,21 @@
 namespace App\Repositories;
 
 
+use App\Http\Filters\TagFilter;
 use App\Models\Tag;
+use BFilters\Filter;
 
 class TagRepository implements \App\Interfaces\Repositories\TagRepositoryInterface
 {
 
-    public function index(): \Illuminate\Contracts\Pagination\Paginator
+    public function index(TagFilter $filters)
     {
-        return Tag::query()->simplePaginate();
+        return Tag::filter($filters);
     }
 
     public function show(int $id)
     {
-        return Tag::query()->findOrFail($id);
+        return Tag::with('packages')->findOrFail($id);
     }
 
     public function store(array $data): Tag

@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-//        if (!Auth::guard('access_token')->check()) {
+//        if (!Auth::guard('X-Proxy-Token')->check()) {
 //            dd("sdf");
 //        }
 

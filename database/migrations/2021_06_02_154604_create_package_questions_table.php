@@ -20,8 +20,14 @@ class CreatePackageQuestionsTable extends Migration
 
             $table->string('title');
             $table->longText('description')->nullable();
-            $table->unsignedBigInteger('answer_type_id')->nullable(); // TODO: answer type id should implement
+
+            $table->unsignedBigInteger('answer_type_id')->nullable();
             $table->unsignedBigInteger('correct_choice_id')->nullable();
+
+            $table->integer('order')->default(0);
+            $table->integer('weight')->default(1);
+            $table->boolean('is_active')->default(1);
+
             $table->unsignedBigInteger('source_id')->nullable();
             $table->json('event_ids')->nullable();
 

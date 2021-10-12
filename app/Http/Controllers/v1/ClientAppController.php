@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\ClientAppFilter;
 use App\Http\Resources\ClientAppResource;
-use App\Http\Resources\ClientAppResourceCollection;
 use App\Interfaces\Repositories\ClientAppRepositoryInterface;
-use App\Models\ClientApp;
+use Behamin\BResources\Resources\BasicResourceCollection;
 use Illuminate\Http\Request;
 
 class ClientAppController extends Controller
@@ -19,12 +19,24 @@ class ClientAppController extends Controller
      *  tags={"Apps"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -42,12 +54,14 @@ class ClientAppController extends Controller
      *)
      * Display a listing of the resource.
      *
-     * @return ClientAppResourceCollection
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(ClientAppFilter $filters)
     {
-        return new ClientAppResourceCollection(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->index()]);
+        list($items, $count) = app()->make(ClientAppRepositoryInterface::class)
+            ->index($filters);
+        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
     }
 
     /**
@@ -58,12 +72,24 @@ class ClientAppController extends Controller
      *  tags={"Apps"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       description="app id",
+     *       name="app_id",
+     *       required=true,
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
      *       )
      *   ),
      *
@@ -88,11 +114,11 @@ class ClientAppController extends Controller
      *
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function store(Request $request)
+    public function store(Request $request): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
             ->store($request->all())]);
@@ -106,21 +132,33 @@ class ClientAppController extends Controller
      *  tags={"Apps"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
      *       )
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="appId",
+     *       description="fake",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -149,7 +187,7 @@ class ClientAppController extends Controller
     public function show(int $id)
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->show($id)]);
+            ->show()]);
     }
 
     /**
@@ -160,21 +198,33 @@ class ClientAppController extends Controller
      *  tags={"Apps"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
      *       )
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
      *       name="appId",
+     *       description="fake",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *       )
+     *   ),
+     *
+     *  @OA\Parameter(
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
+     *       required=true,
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -202,7 +252,7 @@ class ClientAppController extends Controller
      *
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
@@ -210,32 +260,32 @@ class ClientAppController extends Controller
     public function update(Request $request, int $id): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->update($id,$request->all())]);
+            ->update($request->all())]);
     }
 
     /**
      * @OA\Delete(
-     *  path="/api/v1/apps/{appId}",
+     *  path="/api/v1/apps",
      *  operationId="removeAnApp",
-     *  summary="remove and app",
+     *  summary="remove an app by id",
      *  tags={"Apps"},
      *
      *  @OA\Parameter(
-     *       name="access_token",
+     *       name="X-Proxy-Token",
      *       required=true,
      *       in="header",
-     *       example="4fVB9SZidiBAADD2333nLZxxbWk92UcPQkwM8k",
+     *       example="D6281688E663E19C9BD1FDECC2A2F",
      *       @OA\Schema(
      *           type="string"
      *       )
      *   ),
      *
      *  @OA\Parameter(
-     *       description="ID of app",
-     *       name="appId",
+     *       name="app_id",
+     *       description=" default 0 for env=prod,stage,.. and 1 for local",
      *       required=true,
-     *       in="path",
-     *       example="1",
+     *       in="header",
+     *       example="0",
      *       @OA\Schema(
      *           type="integer",
      *           format="int64"
@@ -261,9 +311,9 @@ class ClientAppController extends Controller
      * @return ClientAppResource
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function destroy(int $id): ClientAppResource
+    public function destroy(): ClientAppResource
     {
         return new ClientAppResource(["data" => app()->make(ClientAppRepositoryInterface::class)
-            ->destroy($id)]);
+            ->destroy()]);
     }
 }

@@ -15,12 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\ClientApp::factory(10)->create();
+        // when boot() method in package check request()->header("app_id")
+        (new \App\Helpers\CustomSeeder\Seeder)->start();
 
-        $this->call([
-            ClientAppSeeder::class,
-        ]);
+
+        $this->call(AppsTableSeeder::class);
+        // \App\Models\User::factory(10)->create();
+
 
         \App\Models\Campaign::factory(10)->create();
 
@@ -64,11 +65,11 @@ class DatabaseSeeder extends Seeder
             CampanileSeeder::class,
         ]);
 
-        // PackageType
+        // PackageType moved to migrations folder in seeders
 
-        $this->call([
-            PackageTypeSeeder::class,
-        ]);
+//        $this->call([
+//            PackageTypeSeeder::class,
+//        ]);
 
         // AnswerType
 
@@ -76,13 +77,13 @@ class DatabaseSeeder extends Seeder
             AnswerTypeSeeder::class,
         ]);
 
-        \App\Models\PackageQuestion::factory(10)->create();
+        \App\Models\PackageQuestion::factory()->count(10);
 
         $this->call([
             PackageQuestionSeeder::class,
         ]);
 
-        \App\Models\PackageQuestionChoice::factory(10)->create();
+        \App\Models\PackageQuestionChoice::factory(40)->create();
 
         $this->call([
             PackageQuestionChoiceSeeder::class,
@@ -94,5 +95,23 @@ class DatabaseSeeder extends Seeder
             PackageAnswerSeeder::class,
         ]);
 
+        $this->call(PackageAnswersTableSeeder::class);
+
+        $this->call(PackageQuestionsTableSeeder::class);
+
+        $this->call(PackageChoicesTableSeeder::class);
+
+
+        // QUIZ
+        $this->call(CategoriesTableSeederQuiz::class);
+
+        $this->call(PackagesTableSeederQuiz::class);
+
+        $this->call(CategorizablesTableSeederQuiz::class);
+
+        $this->call(PackageQuestionsTableSeederQuiz::class);
+
+        $this->call(PackageQuestionChoicesTableSeederQuiz::class);
+        $this->call(ServiceablesTableSeederQuiz::class);
     }
 }

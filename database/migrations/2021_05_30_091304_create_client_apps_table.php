@@ -16,6 +16,8 @@ class CreateClientAppsTable extends Migration
         Schema::create('client_apps', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('client_app_id')->unique();
+
             $table->string('title');
             $table->longText('description')->nullable();
             $table->string('logo')->nullable();
