@@ -73,9 +73,9 @@ class DatabaseSeeder extends Seeder
 
         // AnswerType
 
-        $this->call([
-            AnswerTypeSeeder::class,
-        ]);
+//        $this->call([
+//            AnswerTypeSeeder::class,
+//        ]);
 
         \App\Models\PackageQuestion::factory()->count(10);
 
