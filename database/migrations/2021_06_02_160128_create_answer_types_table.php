@@ -22,6 +22,12 @@ class CreateAnswerTypesTable extends Migration
 
             $table->timestamps();
         });
+
+
+        Artisan::call('db:seed', [
+            '--class' => 'Database\Seeders\AnswerTypeSeeder',
+            '--force' => true
+        ]);
     }
 
     /**
