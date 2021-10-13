@@ -4,6 +4,25 @@ namespace App\Http\Requests;
 
 use Behamin\BResources\Requests\BasicRequest;
 
+/**
+ * @OA\Schema(
+ *      title="PackageCategoryUpdateRequest",
+ *      description="Connect Campaigns Into Package Request",
+ *      type="object",
+ *      required={"campaigns"},
+ *     example={
+ *         {
+ *              "id":"8",
+ *              "order": 4
+ *         },
+ *         {
+ *              "id":"9",
+ *              "order": 1
+ *         }
+ *     }
+ * )
+ */
+
 class PackageCategoryUpdateRequest extends BasicRequest
 {
     /**
