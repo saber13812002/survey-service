@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Helpers\BulkActions\CategorizableHelper;
 use App\Http\Filters\PackageFilter;
+use App\Models\Category;
 use App\Models\Package;
 use App\Models\PackageAnswer;
 use App\Models\PackageType;
@@ -101,14 +102,32 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     /**
      * @inheritDoc
      */
-    public function updateCategorizable(array $data, int $packageId)
+    public function updateCategorizableByPackageId(array $data, int $packageId)
     {
         $packageItem = Package::query()->findOrFail($packageId);
-        CategorizableHelper::manage($data, $packageItem);
+//        CategorizableHelper::manage($data, $packageItem);
         return $packageItem
             ->load(
                 [
                     'categories' => function ($q) {
+                        //$q->orderBy('order', 'asc');
+                    }
+                ]
+            );
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function updateCategorizableByCategoryId(array $data, int $categoryId)
+    {
+        $categoryItems = Category::query()->findOrFail($categoryId);
+        CategorizableHelper::manage($data, $categoryItems);
+        return $categoryItems
+            ->load(
+                [
+                    'packages' => function ($q) {
                         //$q->orderBy('order', 'asc');
                     }
                 ]

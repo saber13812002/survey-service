@@ -5,6 +5,7 @@ namespace App\Models;
 use BFilters\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
@@ -35,6 +36,14 @@ class Category extends Model
      */
     public function packages()
     {
-        return $this->morphedByMany(Package::class, 'categorizable');
+        return $this->morphedByMany(Package::class, 'categorizable')->select('*')->orderBy('order', 'asc');
+    }
+
+    /**
+     * Get the questions
+     */
+    public function categorizables(): HasMany
+    {
+        return $this->hasMany(Categorizable::class, 'category_id');
     }
 }
