@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Categorizable extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'order',
+        'weight'
+    ];
 }

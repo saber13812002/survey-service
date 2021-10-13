@@ -99,7 +99,15 @@ class Package extends Model
      */
     public function categories(): MorphToMany
     {
-        return $this->morphToMany(Category::class, 'categorizable');
+        return $this->morphToMany(Category::class, 'categorizable')->select('*')->orderBy('order', 'asc');
+    }
+
+    /**
+     * Get the questions
+     */
+    public function categorizables(): HasMany
+    {
+        return $this->hasMany(Categorizable::class, 'categorizable_id');
     }
 
     /**

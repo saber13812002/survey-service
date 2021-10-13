@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 
+use App\Helpers\BulkActions\CategorizableHelper;
 use App\Http\Filters\PackageFilter;
 use App\Models\Package;
 use App\Models\PackageAnswer;
@@ -94,6 +95,24 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
     {
         $item = Package::query()->findOrFail($packageId);
         return $item->categories()->detach($categoryIds, false);
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function updateCategorizable(array $data, int $packageId)
+    {
+        $packageItem = Package::query()->findOrFail($packageId);
+        CategorizableHelper::manage($data, $packageItem);
+        return $packageItem
+            ->load(
+                [
+                    'categories' => function ($q) {
+                        //$q->orderBy('order', 'asc');
+                    }
+                ]
+            );
     }
 
     /**
