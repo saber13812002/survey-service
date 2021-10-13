@@ -63,6 +63,13 @@ interface PackageRepositoryInterface
     public function detachCategorizable(array $categoryIds, int $packageId);
 
     /**
+     * @param array $categoryIds
+     * @param int $packageId
+     * @return mixed
+     */
+    public function updateCategorizable(array $data, int $packageId);
+
+    /**
      * @param array $campaignIds
      * @param int $packageId
      * @return mixed

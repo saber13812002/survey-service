@@ -69,6 +69,7 @@ Route::group([
         // category to package
         Route::put('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'connect'])->name('connect.categories.to.package');
         Route::delete('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'disconnect'])->name('disconnect.categories.from.package');
+        Route::patch('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'update'])->name('update.package.categories');
 
         // campaign to package
         Route::put('packages/{packageId}/campaigns', [Controllers\v1\CampanileController::class, 'connect'])->name('connect.campaigns.to.package');
