@@ -14,7 +14,7 @@ class AddOrderColumnToCategorizablesTable extends Migration
     public function up()
     {
         Schema::table('categorizables', function (Blueprint $table) {
-            $table->id()->before('category_id');
+            $table->id()->first();
             $table->integer('order')->after('categorizable_type')->default(0);
             $table->integer('weight')->after('order')->default(0);
         });
