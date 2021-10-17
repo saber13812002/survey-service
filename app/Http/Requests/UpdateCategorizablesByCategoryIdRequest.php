@@ -43,6 +43,8 @@ class UpdateCategorizablesByCategoryIdRequest extends BasicRequest
     public function rules()
     {
         return [
+            "*.id" => "required|integer",
+            "*.order" => "required|integer",
         ];
     }
 }
