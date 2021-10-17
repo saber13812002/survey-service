@@ -16,13 +16,13 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function index(PackageFilter $filters)
     {
-        return Package::appId()->filter($filters);
+        return  Package::appId()
+            ->filter($filters);
     }
 
     public function byTemplates(PackageFilter $filters)
     {
-        return Package::with("templates")
-            ->appId()
+        return Package::appId()
             ->filter($filters);
     }
 
