@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Helpers\BulkActions\CategorizableHelper;
 use App\Http\Filters\PackageFilter;
+use App\Models\Categorizable;
 use App\Models\Category;
 use App\Models\Package;
 use App\Models\PackageAnswer;
@@ -16,7 +17,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function index(PackageFilter $filters)
     {
-        return  Package::appId()
+        return Package::appId()
             ->filter($filters);
     }
 
@@ -94,8 +95,7 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
      */
     public function detachCategorizable(array $categoryIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($packageId);
-        return $item->categories()->detach($categoryIds, false);
+        return Categorizable::query()->whereIn('id', $categoryIds)->delete();
     }
 
 
