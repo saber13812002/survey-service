@@ -4,7 +4,10 @@
 namespace App\Repositories;
 
 
+use App\Helpers\BulkActions\CategorizableHelper;
 use App\Http\Filters\PackageFilter;
+use App\Models\Categorizable;
+use App\Models\Category;
 use App\Models\Package;
 use App\Models\PackageAnswer;
 use App\Models\PackageType;
@@ -14,13 +17,13 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
 
     public function index(PackageFilter $filters)
     {
-        return Package::appId()->filter($filters);
+        return Package::appId()
+            ->filter($filters);
     }
 
     public function byTemplates(PackageFilter $filters)
     {
-        return Package::with("templates")
-            ->appId()
+        return Package::appId()
             ->filter($filters);
     }
 
@@ -92,8 +95,43 @@ class PackageRepository implements \App\Interfaces\Repositories\PackageRepositor
      */
     public function detachCategorizable(array $categoryIds, int $packageId)
     {
-        $item = Package::query()->findOrFail($packageId);
-        return $item->categories()->detach($categoryIds, false);
+        return Categorizable::query()->whereIn('id', $categoryIds)->delete();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function updateCategorizableByPackageId(array $data, int $packageId)
+    {
+        $packageItem = Package::query()->findOrFail($packageId);
+//        CategorizableHelper::manage($data, $packageItem);
+        return $packageItem
+            ->load(
+                [
+                    'categories' => function ($q) {
+                        //$q->orderBy('order', 'asc');
+                    }
+                ]
+            );
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function updateCategorizableByCategoryId(array $data, int $categoryId)
+    {
+        $categoryItems = Category::query()->findOrFail($categoryId);
+        CategorizableHelper::manage($data, $categoryItems);
+        return $categoryItems
+            ->load(
+                [
+                    'packages' => function ($q) {
+                        //$q->orderBy('order', 'asc');
+                    }
+                ]
+            );
     }
 
     /**

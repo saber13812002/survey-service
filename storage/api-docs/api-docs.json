@@ -572,6 +572,130 @@
                         "description": "not found"
                     }
                 }
+            },
+            "patch": {
+                "tags": [
+                    "Categories into Package"
+                ],
+                "summary": "update categorizable packages",
+                "operationId": "UpdatePackagesCategorizablesByPackageId",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "packageId",
+                        "in": "path",
+                        "description": "ID of package",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PackageCategoryUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/{categoryId}/categorizable": {
+            "patch": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "update categorizable by category id",
+                "operationId": "UpdatePackagesCategorizablesByCategoryId",
+                "parameters": [
+                    {
+                        "name": "X-Proxy-Token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "D6281688E663E19C9BD1FDECC2A2F"
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "ID of category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "app_id",
+                        "in": "header",
+                        "description": "app id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "0"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCategorizablesByCategoryIdRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
             }
         },
         "/api/v1/categories": {
@@ -3785,6 +3909,42 @@
                     ]
                 }
             },
+            "PackageCategoryUpdateRequest": {
+                "title": "PackageCategoryUpdateRequest",
+                "description": "Connect Campaigns Into Package Request",
+                "required": [
+                    "campaigns"
+                ],
+                "type": "object",
+                "example": [
+                    {
+                        "id": "8",
+                        "order": 4
+                    },
+                    {
+                        "id": "9",
+                        "order": 1
+                    }
+                ]
+            },
+            "PackageConnectToCategoryRequest": {
+                "title": "PackageConnectToCategoryRequest",
+                "description": "Connect Campaigns Into Package Request",
+                "required": [
+                    "campaigns"
+                ],
+                "type": "object",
+                "example": [
+                    {
+                        "id": "8",
+                        "order": 4
+                    },
+                    {
+                        "id": "9",
+                        "order": 1
+                    }
+                ]
+            },
             "PackageQuestionRequest": {
                 "title": "PackageQuestionRequest",
                 "description": "Package Question Store Request body data",
@@ -3888,6 +4048,24 @@
                 "example": {
                     "title": "YOUR TITLE OF ..."
                 }
+            },
+            "UpdateCategorizablesByCategoryIdRequest": {
+                "title": "UpdateCategorizablesByCategoryIdRequest",
+                "description": "Connect Campaigns Into Package Request",
+                "required": [
+                    "campaigns"
+                ],
+                "type": "object",
+                "example": [
+                    {
+                        "id": "8",
+                        "order": 4
+                    },
+                    {
+                        "id": "9",
+                        "order": 1
+                    }
+                ]
             }
         },
         "securitySchemes": {

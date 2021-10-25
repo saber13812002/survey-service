@@ -13,7 +13,7 @@ class PackageFilter extends Filter
 
         $this->relations = [
             'categories' => [
-                'id' => 'category_id'
+                'category_id'
             ]
         ];
 

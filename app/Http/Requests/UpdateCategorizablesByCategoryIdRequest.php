@@ -6,7 +6,7 @@ use Behamin\BResources\Requests\BasicRequest;
 
 /**
  * @OA\Schema(
- *      title="PackageConnectToCategoryRequest",
+ *      title="UpdateCategorizablesByCategoryIdRequest",
  *      description="Connect Campaigns Into Package Request",
  *      type="object",
  *      required={"campaigns"},
@@ -23,7 +23,7 @@ use Behamin\BResources\Requests\BasicRequest;
  * )
  */
 
-class PackageConnectToCategoryRequest extends BasicRequest
+class UpdateCategorizablesByCategoryIdRequest extends BasicRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -43,8 +43,8 @@ class PackageConnectToCategoryRequest extends BasicRequest
     public function rules()
     {
         return [
-            'categories.connect' => 'array|required',
-            'categories.connect.*' => 'required|exists:categories,id',
+            "*.id" => "required|integer",
+            "*.order" => "required|integer",
         ];
     }
 }

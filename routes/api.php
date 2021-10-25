@@ -37,6 +37,7 @@ Route::group([
         Route::post('/categories', [Controllers\v1\CategoryController::class, 'store'])->name('category.store');
         Route::put('/categories/{id}', [Controllers\v1\CategoryController::class, 'update'])->name('category.update');
         Route::delete('/categories/{id}', [Controllers\v1\CategoryController::class, 'destroy'])->name('category.destroy');
+        Route::patch('/categories/{id}/categorizable', [Controllers\v1\CategorizableController::class, 'updateCategorizableByCategoryId'])->name('update.categorizable.by.categoryId');
 
         // Campaign
         Route::get('/campaigns', [Controllers\v1\CampaignController::class, 'index'])->name('campaign.index');
@@ -69,6 +70,7 @@ Route::group([
         // category to package
         Route::put('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'connect'])->name('connect.categories.to.package');
         Route::delete('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'disconnect'])->name('disconnect.categories.from.package');
+//        Route::patch('/packages/{packageId}/categories', [Controllers\v1\CategorizableController::class, 'updateByPackageId'])->name('update.package.categories');
 
         // campaign to package
         Route::put('packages/{packageId}/campaigns', [Controllers\v1\CampanileController::class, 'connect'])->name('connect.campaigns.to.package');

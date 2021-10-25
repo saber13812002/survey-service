@@ -8,7 +8,6 @@ use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
 use App\Http\Resources\PackagesResourceCollection;
 use App\Interfaces\Repositories\PackageRepositoryInterface;
-use Behamin\BResources\Resources\BasicResourceCollection;
 
 class PackageController extends Controller
 {
@@ -58,7 +57,8 @@ class PackageController extends Controller
     {
         list($items, $count) = app()->make(PackageRepositoryInterface::class)
             ->index($filters);
-        return response(new BasicResourceCollection(['data' => $items->get(), 'count' => $count]));
+
+        return response(new PackagesResourceCollection(['data' => $items->get(), 'count' => $count], true));
     }
 
     /**
