@@ -24,6 +24,10 @@
         {
             "url": "https://develop.behaminplus.ir/survey-service",
             "description": "DEVELOP API Server"
+        },
+        {
+            "url": "https://behaminplus.ir/messaging-service",
+            "description": "Stage API Server"
         }
     ],
     "paths": {
