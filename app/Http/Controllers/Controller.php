@@ -36,6 +36,11 @@ use Illuminate\Routing\Controller as BaseController;
  *      description="DEVELOP API Server"
  * )
  *
+ * @OA\Server(
+ *      url="https://behaminplus.ir/messaging-service",
+ *      description="Stage API Server"
+ * )
+ *
  * @OA\SecurityScheme(
  *     name="AccessToken",
  *     type="http",
